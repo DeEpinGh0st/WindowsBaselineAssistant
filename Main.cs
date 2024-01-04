@@ -21,6 +21,7 @@ namespace WindowsBaselineAssistant
         {
             InitializeComponent();
         }
+        string currentDirectory = AppDomain.CurrentDomain.BaseDirectory;
         XmlNodeList xmlNodeList;
         XmlDocument xmlDocument;
         XmlElement xmlElement;
@@ -33,6 +34,53 @@ namespace WindowsBaselineAssistant
             XmlDocument xmlDocument = new XmlDocument();
             xmlDocument.Load(xmlpath);
             return xmlDocument;
+        }
+
+        private string GetResultByMark(string mark) {
+            /*// 要执行的命令
+            string command = "type config.cfg | findstr ";
+            // 创建一个新的进程启动信息
+            ProcessStartInfo processStartInfo = new ProcessStartInfo
+            {
+                FileName = "cmd.exe",
+                RedirectStandardInput = true,
+                RedirectStandardOutput = true,
+                UseShellExecute = false,
+                CreateNoWindow = true,
+                WindowStyle = ProcessWindowStyle.Hidden,
+                Arguments = "/c " + command + mark,
+                WorkingDirectory = currentDirectory
+            };
+            // 创建进程对象
+            Process process = new Process
+            {
+                StartInfo = processStartInfo
+            };
+            try
+            {
+                // 启动进程
+                process.Start();
+                // 获取命令输出
+                string output = process.StandardOutput.ReadToEnd().Split("=")[1];
+                // 等待进程执行完成
+                process.WaitForExit();
+
+                // 打印输出结果
+                return output;
+            }
+            catch (Exception ex)
+            {
+                UIMessageBox.ShowError(ex.Message);
+                return null;
+            }
+            finally
+            {
+                // 关闭进程
+                process.Close();
+                process.Dispose();
+            }*/
+            return "";
+            //TODO
         }
 
         private void AboutLinkLabel_Click(object sender, EventArgs e)
@@ -64,31 +112,46 @@ namespace WindowsBaselineAssistant
                     BaselineList.Rows[index].Cells[dataColumn.Ordinal + 2].Value = "不符合";
                 }
             }*/
-            xmlDocument = ReadXml(@"D:\Projects\C#\WindowsBaselineAssistant\bin\Debug\item.xml");
-            if (xmlDocument != null)
+            xmlDocument = ReadXml(currentDirectory+  @"\item.xml");
+            if (xmlDocument == null)
             {
-                BaselineList.Rows.Clear();
-                xmlElement = xmlDocument.DocumentElement;
-                xmlNodeList =  xmlElement.ChildNodes;
-                foreach (XmlNode xmlNode in xmlNodeList)
-                {
-                    int index = BaselineList.Rows.Add();
-                    /*string name = xmlNode["name"].InnerText;*/
-                    BaselineList.Rows[index].Cells[0].Value = xmlNode["name"].InnerText;
-                    BaselineList.Rows[index].Cells[1].Value = xmlNode["description"].InnerText;
-                    BaselineList.Rows[index].Cells[2].Value = xmlNode["registry"].InnerText;
-                    BaselineList.Rows[index].Cells[3].Value = xmlNode["regitem"].InnerText;
-                    BaselineList.Rows[index].Cells[4].Value = xmlNode["standard"].InnerText;
-                    //检测实际值
-                    string reality = RegistryHelper.GetValue(Registry.LocalMachine, xmlNode["registry"].InnerText, xmlNode["regitem"].InnerText);
-                    BaselineList.Rows[index].Cells[5].Value = reality;
-                    if (reality == xmlNode["standard"].InnerText)
-                    {
-                        BaselineList.Rows[index].Cells[6].Value = "符合";
-                    }
-                    BaselineList.Rows[index].Cells[6].Value = "不符合";
-                }
+                UIMessageBox.ShowError("未找到配置文件");
+                return;
             }
+            BaselineList.Rows.Clear();
+            xmlElement = xmlDocument.DocumentElement;
+            xmlNodeList = xmlElement.ChildNodes;
+            foreach (XmlNode xmlNode in xmlNodeList)
+            {
+                int index = BaselineList.Rows.Add();
+                /*string name = xmlNode["name"].InnerText;*/
+                BaselineList.Rows[index].Cells[0].Value = xmlNode["name"].InnerText;
+                BaselineList.Rows[index].Cells[1].Value = xmlNode["description"].InnerText;
+                BaselineList.Rows[index].Cells[4].Value = xmlNode["standard"].InnerText;
+                string queryType = xmlNode["type"].InnerText;
+                string reality;
+                switch (queryType)
+                {
+                    case "secedit":
+                        reality = GetResultByMark(xmlNode["mark"].InnerText);
+                        BaselineList.Rows[index].Cells[5].Value = reality;
+                        break;
+                    case "registry":
+                        BaselineList.Rows[index].Cells[2].Value = xmlNode["registry"].InnerText;
+                        BaselineList.Rows[index].Cells[3].Value = xmlNode["regitem"].InnerText;
+                        reality = RegistryHelper.GetValue(Registry.LocalMachine, xmlNode["registry"].InnerText, xmlNode["regitem"].InnerText);
+                        BaselineList.Rows[index].Cells[5].Value = reality;
+                        break;
+                    default:
+                        break;
+                }
+                /*if (reality == xmlNode["standard"].InnerText)
+                {
+                    BaselineList.Rows[index].Cells[6].Value = "符合";
+                }
+                BaselineList.Rows[index].Cells[6].Value = "不符合";*/
+            }
+            
         }
     }
 }
