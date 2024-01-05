@@ -12,6 +12,8 @@ using Sunny.UI;
 using WHC.OrderWater.Commons;
 using System.IO;
 using System.Reflection;
+using System.Windows.Forms.VisualStyles;
+using System.Threading;
 
 namespace WindowsBaselineAssistant
 {
@@ -37,51 +39,65 @@ namespace WindowsBaselineAssistant
         }
 
         private string GetResultByMark(string mark) {
-            /*// 要执行的命令
-            string command = "type config.cfg | findstr ";
-            // 创建一个新的进程启动信息
-            ProcessStartInfo processStartInfo = new ProcessStartInfo
+            
+            IniFile ini = new IniFile(currentDirectory + "\\config.cfg");
+            string[] sections = ini.Sections;
+            string name = string.Empty;
+            foreach (var section in sections)
             {
-                FileName = "cmd.exe",
-                RedirectStandardInput = true,
-                RedirectStandardOutput = true,
-                UseShellExecute = false,
-                CreateNoWindow = true,
-                WindowStyle = ProcessWindowStyle.Hidden,
-                Arguments = "/c " + command + mark,
-                WorkingDirectory = currentDirectory
-            };
-            // 创建进程对象
-            Process process = new Process
-            {
-                StartInfo = processStartInfo
-            };
-            try
-            {
-                // 启动进程
-                process.Start();
-                // 获取命令输出
-                string output = process.StandardOutput.ReadToEnd().Split("=")[1];
-                // 等待进程执行完成
-                process.WaitForExit();
+                name = ini.ReadString(section, mark, "");
+                if (name != string.Empty)
+                {
+                    break;
+                }
+            }
+            return name;
+        }
 
-                // 打印输出结果
-                return output;
+
+        private int GenerateSecInfo() {
+                //要执行的命令
+                string command = "secedit /export /cfg config.cfg";
+                // 创建一个新的进程启动信息
+                ProcessStartInfo processStartInfo = new ProcessStartInfo
+                {
+                    FileName = "cmd.exe",
+                    RedirectStandardInput = true,
+                    RedirectStandardOutput = true,
+                    UseShellExecute = false,
+                    CreateNoWindow = true,
+                    WindowStyle = ProcessWindowStyle.Hidden,
+                    Arguments = "/c " + command,
+                    WorkingDirectory = currentDirectory
+                };
+                // 创建进程对象
+                Process process = new Process
+                {
+                    StartInfo = processStartInfo
+                };
+                try
+                {
+                    // 启动进程
+                    process.Start();
+                process.WaitForExit();
+                Thread.Sleep(1000);
+                // 获取返回值
+                int exitCode = process.ExitCode;
+                    return exitCode;
             }
-            catch (Exception ex)
-            {
-                UIMessageBox.ShowError(ex.Message);
-                return null;
-            }
+                catch (Exception ex)
+                {
+                    UIMessageBox.ShowError(ex.Message);
+                    return -1;
+                }
             finally
             {
                 // 关闭进程
                 process.Close();
                 process.Dispose();
-            }*/
-            return "";
-            //TODO
+            }
         }
+
 
         private void AboutLinkLabel_Click(object sender, EventArgs e)
         {
@@ -118,6 +134,12 @@ namespace WindowsBaselineAssistant
                 UIMessageBox.ShowError("未找到配置文件");
                 return;
             }
+            //int code = GenerateSecInfo();
+            if (!GenerateSecInfo().Equals(0))
+            {
+                UIMessageBox.ShowError("secedit信息生成失败");
+                return;
+            }
             BaselineList.Rows.Clear();
             xmlElement = xmlDocument.DocumentElement;
             xmlNodeList = xmlElement.ChildNodes;
@@ -129,10 +151,13 @@ namespace WindowsBaselineAssistant
                 BaselineList.Rows[index].Cells[1].Value = xmlNode["description"].InnerText;
                 BaselineList.Rows[index].Cells[4].Value = xmlNode["standard"].InnerText;
                 string queryType = xmlNode["type"].InnerText;
-                string reality;
+                string reality = string.Empty;
+                string standard = xmlNode["standard"].InnerText;
                 switch (queryType)
                 {
                     case "secedit":
+                        BaselineList.Rows[index].Cells[2].Value = "-";
+                        BaselineList.Rows[index].Cells[3].Value = "-";
                         reality = GetResultByMark(xmlNode["mark"].InnerText);
                         BaselineList.Rows[index].Cells[5].Value = reality;
                         break;
@@ -143,6 +168,46 @@ namespace WindowsBaselineAssistant
                         BaselineList.Rows[index].Cells[5].Value = reality;
                         break;
                     default:
+                        break;
+                }
+                string dataType = xmlNode["dtype"].InnerText;
+                BaselineList.Rows[index].Cells[6].Value = "不符合";
+                switch (dataType)
+                {
+                    case "fixed":
+                        if (!reality.Equals(standard))
+                        {
+                            BaselineList.Rows[index].Cells[6].Value = "符合";
+                        }
+                        break;
+                    case "equals":
+                    case "enum":
+                        if (reality.Equals(standard))
+                        {
+                            BaselineList.Rows[index].Cells[6].Value = "符合";
+                        }
+                        break;
+                    case "greaternumber":
+                        
+                        if (reality.ToInt() >= standard.ToInt())
+                        {
+                            BaselineList.Rows[index].Cells[6].Value = "符合";
+                        }
+                        break;
+                    case "lessnumber":
+                        if (reality.ToInt() <= standard.ToInt())
+                        {
+                            BaselineList.Rows[index].Cells[6].Value = "符合";
+                        }
+                        break;
+                    case "array":
+                        if (reality.Equals(standard))
+                        {
+                            BaselineList.Rows[index].Cells[6].Value = "符合";
+                        }
+                        break;
+                    default:
+                        BaselineList.Rows[index].Cells[6].Value = "未定义的类型";
                         break;
                 }
                 /*if (reality == xmlNode["standard"].InnerText)

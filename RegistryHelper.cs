@@ -19,6 +19,16 @@ namespace WHC.OrderWater.Commons
         /// </summary>
         /// <param name="key">registry key</param>
         /// <returns>Returns the value of the specified key.</returns>
+        /// 
+        private static string ArrayToString(string[] strings) {
+            string result = string.Empty;
+            foreach (var item in strings)
+            {
+                result = result + item + "\r\n";
+            }
+            return result;
+        }
+
         public static string GetValue(string key)
         {
             return GetValue(Registry.CurrentUser,Software_Key, key);
@@ -43,12 +53,22 @@ namespace WHC.OrderWater.Commons
                 int indexOfFirstBackslash = softwareKey.IndexOf('\\');
                 softwareKey = softwareKey.Substring(indexOfFirstBackslash + 1);
                 RegistryKey regKey = registryKey.OpenSubKey(softwareKey);
-                if (regKey.GetValue(key) == null) {
+                object value = regKey.GetValue(key);
+                if (value == null) {
                     return "Œ¥…Ë÷√";
                 }
-                if (regKey.GetValueKind(key) == RegistryValueKind.MultiString && regKey.GetValue(key) is string[] stringArray && (stringArray == null || stringArray.Length == 0)) { 
-                    return "";
+                if (value is string[] stringArray)
+                {
+                    if (stringArray.Length.Equals(0))
+                    {
+                        return "";
+                    }
+                    strRet = ArrayToString((string[])value);
+                    return strRet;
                 }
+                /*if (regKey.GetValueKind(key) == RegistryValueKind.MultiString && regKey.GetValue(key) is string[] stringArray && (stringArray == null || stringArray.Length == 0)) { 
+                    return "";
+                }*/
                 strRet = regKey.GetValue(key).ToString();
             }
             catch

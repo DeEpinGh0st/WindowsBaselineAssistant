@@ -172,13 +172,13 @@
             // 
             // Column6
             // 
-            this.Column6.HeaderText = "注册表项";
+            this.Column6.HeaderText = "注册/策略表项";
             this.Column6.Name = "Column6";
             this.Column6.ReadOnly = true;
             // 
             // Column7
             // 
-            this.Column7.HeaderText = "注册表字段";
+            this.Column7.HeaderText = "注册/策略表字段";
             this.Column7.Name = "Column7";
             this.Column7.ReadOnly = true;
             // 
