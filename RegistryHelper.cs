@@ -29,9 +29,29 @@ namespace WHC.OrderWater.Commons
             return result;
         }
 
-        public static string GetValue(string key)
+        public static string GetValue(string softwareKey, string key)
         {
-            return GetValue(Registry.CurrentUser,Software_Key, key);
+            RegistryKey registryKey = Registry.LocalMachine;
+            int indexOfFirstBackslash = softwareKey.IndexOf('\\');
+            string baseKey = softwareKey.Substring(0,indexOfFirstBackslash);
+            string subKey = softwareKey.Substring(indexOfFirstBackslash + 1);
+            if (baseKey.Contains("USER"))
+            {
+                registryKey = Registry.CurrentUser;
+            }
+            if (baseKey.Contains("ROOT"))
+            {
+                registryKey = Registry.ClassesRoot;
+            }
+            if (baseKey.Contains("USERS"))
+            {
+                registryKey = Registry.Users;
+            }
+            if (baseKey.Contains("CONFIG"))
+            {
+                registryKey = Registry.CurrentConfig;
+            }
+            return GetValue(registryKey,subKey, key);
         }
 
         /// <summary>
@@ -50,8 +70,8 @@ namespace WHC.OrderWater.Commons
             string strRet = string.Empty;
             try
             {
-                int indexOfFirstBackslash = softwareKey.IndexOf('\\');
-                softwareKey = softwareKey.Substring(indexOfFirstBackslash + 1);
+                /*int indexOfFirstBackslash = softwareKey.IndexOf('\\');
+                softwareKey = softwareKey.Substring(indexOfFirstBackslash + 1);*/
                 RegistryKey regKey = registryKey.OpenSubKey(softwareKey);
                 object value = regKey.GetValue(key);
                 if (value == null) {
