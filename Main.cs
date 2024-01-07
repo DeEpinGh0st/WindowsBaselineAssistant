@@ -8,6 +8,8 @@ using System.IO;
 using System.Threading;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Management;
+using System.Runtime.InteropServices;
 
 namespace WindowsBaselineAssistant
 {
@@ -48,7 +50,63 @@ namespace WindowsBaselineAssistant
             }
             return name;
         }
+        public static string GetIPAddress()
+        {
+            string st = "";
+            ManagementClass mc = new ManagementClass("Win32_NetworkAdapterConfiguration");
+            ManagementObjectCollection moc = mc.GetInstances();
+            foreach (ManagementObject mo in moc)
+            {
+                if ((bool)mo["IPEnabled"] == true)
+                {
+                    //st=mo["IpAddress"].ToString();
+                    System.Array ar;
+                    ar = (System.Array)(mo.Properties["IpAddress"].Value);
+                    st = ar.GetValue(0).ToString();
+                    break;
+                }
+            }
+            return st;
+        }
 
+        private static string GetOSVersion()
+        {
+            try
+            {
+                ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT Caption, Version, CSDVersion FROM Win32_OperatingSystem");
+                foreach (ManagementObject os in searcher.Get())
+                {
+                    string caption = os["Caption"].ToString();
+                    string version = os["Version"].ToString();
+                    string csdVersion = os["CSDVersion"] != null ? os["CSDVersion"].ToString() : string.Empty;
+                    //string buildNumber = os["BuildNumber"].ToString();
+                    // 组合详细版本信息
+                    string systemInfo = $"{caption}{version}{csdVersion}";
+
+                    return systemInfo;
+                }
+            }
+            catch (Exception)
+            {
+                return "获取系统信息失败";
+            }
+            return "无法获取系统详细版本信息";
+        }
+
+        private void SetPassStyle(int index) {
+            BaselineList.Rows[index].Cells[6].Style.ForeColor = Color.Green;
+            BaselineList.Rows[index].Cells[7].ReadOnly = true;
+            BaselineList.Rows[index].Cells[7].Style.BackColor = Color.LightGray;
+        }
+
+        static bool ContainsElement(XmlNode parentNode, string elementName)
+        {
+            // 使用 SelectSingleNode 来查找指定名称的子节点
+            XmlNode elementNode = parentNode.SelectSingleNode(elementName);
+
+            // 判断是否找到了该节点
+            return elementNode != null;
+        }
         /// <summary>
         /// 执行外部程序
         /// </summary>
@@ -138,13 +196,17 @@ namespace WindowsBaselineAssistant
                 BaselineList.Rows[index].Cells[4].Value = xmlNode["standard"].InnerText;
                 string queryType = xmlNode["type"].InnerText;
                 string reality = string.Empty;
+                string warning = string.Empty;
                 string standard = xmlNode["standard"].InnerText;
                 switch (queryType)
                 {
                     case "secedit":
                         BaselineList.Rows[index].Cells[2].Value = "-";
                         BaselineList.Rows[index].Cells[3].Value = "-";
-                        reality = GetResultByMark(xmlNode["mark"].InnerText);
+                        string mark = xmlNode["mark"].InnerText;
+                        BaselineList.Rows[index].Cells[2].Value = mark;
+                        BaselineList.Rows[index].Cells[3].Value = mark;
+                        reality = GetResultByMark(mark);
                         BaselineList.Rows[index].Cells[5].Value = reality;
                         break;
                     case "registry":
@@ -157,6 +219,15 @@ namespace WindowsBaselineAssistant
                         break;
                 }
                 string dataType = xmlNode["dtype"].InnerText;
+                if (ContainsElement(xmlNode,"warning"))
+                {
+                    BaselineList.Rows[index].Cells[6].Value = "手动加固";
+                    BaselineList.Rows[index].Cells[7].ReadOnly = true;
+                    BaselineList.Rows[index].Cells[7].Style.BackColor = Color.Orange;
+                    BaselineList.Rows[index].Cells[7].ToolTipText = "该项不支持自动加固";
+                    passCount++;
+                    continue;
+                }
                 BaselineList.Rows[index].Cells[6].Value = "不符合";
                 if (reality.Equals("未设置"))
                 {
@@ -167,7 +238,7 @@ namespace WindowsBaselineAssistant
                     case "fixed"://注：固定值为不符合
                         if (!reality.Equals(standard))
                         {
-                            BaselineList.Rows[index].Cells[6].Style.ForeColor = Color.Green;
+                            SetPassStyle(index);
                             BaselineList.Rows[index].Cells[6].Value = "符合";
                             passCount++;
                         }
@@ -176,7 +247,7 @@ namespace WindowsBaselineAssistant
                     case "enum":
                         if (reality.Equals(standard))
                         {
-                            BaselineList.Rows[index].Cells[6].Style.ForeColor = Color.Green;
+                            SetPassStyle(index);
                             BaselineList.Rows[index].Cells[6].Value = "符合";
                             passCount++;
                         }
@@ -185,7 +256,7 @@ namespace WindowsBaselineAssistant
                         
                         if (reality.ToInt() >= standard.ToInt())
                         {
-                            BaselineList.Rows[index].Cells[6].Style.ForeColor = Color.Green;
+                            SetPassStyle(index);
                             BaselineList.Rows[index].Cells[6].Value = "符合";
                             passCount++;
                         }
@@ -193,7 +264,7 @@ namespace WindowsBaselineAssistant
                     case "lessnumber":
                         if (reality.ToInt() <= standard.ToInt())
                         {
-                            BaselineList.Rows[index].Cells[6].Style.ForeColor = Color.Green;
+                            SetPassStyle(index);
                             BaselineList.Rows[index].Cells[6].Value = "符合";
                             passCount++;
                         }
@@ -201,7 +272,7 @@ namespace WindowsBaselineAssistant
                     case "array":
                         if (reality.Equals(standard))
                         {
-                            BaselineList.Rows[index].Cells[6].Style.ForeColor = Color.Green;
+                            SetPassStyle(index);
                             BaselineList.Rows[index].Cells[6].Value = "符合";
                             passCount++;
                         }
@@ -210,6 +281,7 @@ namespace WindowsBaselineAssistant
                         BaselineList.Rows[index].Cells[6].Value = "未定义的类型";
                         break;
                 }
+                
             }
             //统计数据
             totalCount = xmlNodeList.Count;
@@ -238,10 +310,48 @@ namespace WindowsBaselineAssistant
         {
             int selectedRowIndex = BaselineList.SelectedCells[0].RowIndex;
             string cellValue = BaselineList[2, selectedRowIndex].Value.ToString();
+            if (!cellValue.Contains("HKEY"))
+            {
+                UIMessageBox.ShowError("该项不支持打开");
+                return;
+            }
             if (!ExecutExternalProgram(string.Format(openRegCmd,cellValue),true).Equals(0))
             {
                 UIMessageBox.ShowError("打开注册表项失败");
             }
+        }
+
+        private void Main_Load(object sender, EventArgs e)
+        {
+            OSLabel.Text = GetOSVersion();
+            IPLabel.Text = GetIPAddress();
+            OSNameLabel.Text = Environment.MachineName;
+        }
+
+        private void FortifyBtn_Click(object sender, EventArgs e)
+        {
+            int fortifyCount = 0;
+            foreach (DataGridViewRow dataGridViewRow in BaselineList.Rows)
+            {
+                if (dataGridViewRow.Cells["FortifyColumn"].Value == null || !(bool)dataGridViewRow.Cells["FortifyColumn"].Value)
+                {
+                    continue;
+                }
+                    string fortifyItem, fortifyField, fortifyValue = string.Empty;
+                    fortifyItem = dataGridViewRow.Cells["ItemColumn"].Value.ToString();
+                    fortifyField = dataGridViewRow.Cells["FieldColumn"].Value.ToString();
+                    fortifyValue = dataGridViewRow.Cells["StandardColumn"].Value.ToString();
+                    if (fortifyItem.Contains("HKEY"))
+                    {
+                        RegistryHelper.SaveValue(fortifyItem, fortifyField,fortifyValue);
+                        fortifyCount++;
+                        continue;
+                    }
+                    //secedit加固
+                    //TODO
+                fortifyCount++;
+            }
+            UIMessageBox.ShowSuccess(string.Format("已完成{0}项加固操作,请再次进行检测",fortifyCount.ToString()));
         }
     }
 }

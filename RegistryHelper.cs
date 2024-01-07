@@ -29,12 +29,12 @@ namespace WHC.OrderWater.Commons
             return result;
         }
 
-        public static string GetValue(string softwareKey, string key)
+        private static (RegistryKey,string) FormatBaseKey(string fullSoftwareKey)
         {
             RegistryKey registryKey = Registry.LocalMachine;
-            int indexOfFirstBackslash = softwareKey.IndexOf('\\');
-            string baseKey = softwareKey.Substring(0,indexOfFirstBackslash);
-            string subKey = softwareKey.Substring(indexOfFirstBackslash + 1);
+            int indexOfFirstBackslash = fullSoftwareKey.IndexOf('\\');
+            string baseKey = fullSoftwareKey.Substring(0, indexOfFirstBackslash);
+            string subKey = fullSoftwareKey.Substring(indexOfFirstBackslash + 1);
             if (baseKey.Contains("USER"))
             {
                 registryKey = Registry.CurrentUser;
@@ -51,6 +51,12 @@ namespace WHC.OrderWater.Commons
             {
                 registryKey = Registry.CurrentConfig;
             }
+            return (registryKey, subKey);
+        }
+
+        public static string GetValue(string softwareKey, string key)
+        {
+            (RegistryKey registryKey, string subKey) = FormatBaseKey(softwareKey);
             return GetValue(registryKey,subKey, key);
         }
 
@@ -66,12 +72,9 @@ namespace WHC.OrderWater.Commons
             {
                 throw new ArgumentNullException(parameter);
             }
-
             string strRet = string.Empty;
             try
             {
-                /*int indexOfFirstBackslash = softwareKey.IndexOf('\\');
-                softwareKey = softwareKey.Substring(indexOfFirstBackslash + 1);*/
                 RegistryKey regKey = registryKey.OpenSubKey(softwareKey);
                 object value = regKey.GetValue(key);
                 if (value == null) {
@@ -86,14 +89,11 @@ namespace WHC.OrderWater.Commons
                     strRet = ArrayToString((string[])value);
                     return strRet;
                 }
-                /*if (regKey.GetValueKind(key) == RegistryValueKind.MultiString && regKey.GetValue(key) is string[] stringArray && (stringArray == null || stringArray.Length == 0)) { 
-                    return "";
-                }*/
                 strRet = regKey.GetValue(key).ToString();
             }
             catch
             {
-                strRet = "";
+                return strRet;
             }
             return strRet;
         }
@@ -103,9 +103,11 @@ namespace WHC.OrderWater.Commons
         /// <param name="key">registry key</param>
         /// <param name="value">the value of the key</param>
         /// <returns>Returns true if successful, otherwise return false.</returns>
-        public static bool SaveValue(string key, string value)
+        public static void SaveValue(string softwareKey, string key, string value)
         {
-            return SaveValue(Software_Key, key, value);
+            (RegistryKey registryKey, string subKey) = FormatBaseKey(softwareKey);
+            //return GetValue(registryKey, subKey, key);
+            SaveValue(registryKey, subKey, key, value);
         }
 
         /// <summary>
@@ -114,31 +116,34 @@ namespace WHC.OrderWater.Commons
         /// <param name="key">registry key</param>
         /// <param name="value">the value of the key</param>
         /// <returns>Returns true if successful, otherwise return false.</returns>
-        public static bool SaveValue(string softwareKey, string key, string value)
+        public static void SaveValue(RegistryKey registryKey, string softwareKey, string key, string value)
         {
-            const string parameter1 = "key";
-            const string parameter2 = "value";
-            if (null == key)
+            try
             {
-                throw new ArgumentNullException(parameter1);
+                const string parameter1 = "key";
+                const string parameter2 = "value";
+                if (null == key)
+                {
+                    throw new ArgumentNullException(parameter1);
+                }
+                if (null == value)
+                {
+                    throw new ArgumentNullException(parameter2);
+                }
+                RegistryKey reg;
+                reg = registryKey.OpenSubKey(softwareKey, true);
+                if (null == reg)
+                {
+                    reg = registryKey.CreateSubKey(softwareKey);
+                }
+                reg.SetValue(key, value);
+                //return true;
             }
-
-            if (null == value)
+            catch (Exception)
             {
-                throw new ArgumentNullException(parameter2);
+                throw;
+                //return false;
             }
-
-            bool bReturn = false;
-            RegistryKey reg;
-            reg = Registry.CurrentUser.OpenSubKey(softwareKey, true);
-
-            if (null == reg)
-            {
-                reg = Registry.CurrentUser.CreateSubKey(softwareKey);
-            }
-            reg.SetValue(key, value);
-
-            return bReturn;
         } 
         #endregion
 

@@ -35,6 +35,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.BaselineList = new Sunny.UI.UIDataGridView();
+            this.uiContextMenuStrip = new Sunny.UI.UIContextMenuStrip();
+            this.OpenSubKeyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CheckBtn = new Sunny.UI.UIButton();
             this.FortifyBtn = new Sunny.UI.UIButton();
             this.ReportBtn = new Sunny.UI.UIButton();
@@ -47,15 +49,20 @@
             this.passCountLabel = new Sunny.UI.UILabel();
             this.failCountLabel = new Sunny.UI.UILabel();
             this.rateLabel = new Sunny.UI.UILabel();
-            this.uiContextMenuStrip = new Sunny.UI.UIContextMenuStrip();
-            this.OpenSubKeyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Column1 = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.uiLabel5 = new Sunny.UI.UILabel();
+            this.OSLabel = new Sunny.UI.UILabel();
+            this.uiLabel6 = new Sunny.UI.UILabel();
+            this.IPLabel = new Sunny.UI.UILabel();
+            this.uiLabel7 = new Sunny.UI.UILabel();
+            this.OSNameLabel = new Sunny.UI.UILabel();
+            this.NameColumn = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.DdescriptionColumn = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.ItemColumn = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.FieldColumn = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.StandardColumn = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.RealityColumn = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.StatusColumn = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.FortifyColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.BaselineList)).BeginInit();
             this.uiContextMenuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -81,13 +88,14 @@
             this.BaselineList.ColumnHeadersHeight = 32;
             this.BaselineList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.BaselineList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column6,
-            this.Column7,
-            this.Column3,
-            this.Column4,
-            this.Column5});
+            this.NameColumn,
+            this.DdescriptionColumn,
+            this.ItemColumn,
+            this.FieldColumn,
+            this.StandardColumn,
+            this.RealityColumn,
+            this.StatusColumn,
+            this.FortifyColumn});
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -101,7 +109,6 @@
             this.BaselineList.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.BaselineList.Location = new System.Drawing.Point(27, 104);
             this.BaselineList.Name = "BaselineList";
-            this.BaselineList.ReadOnly = true;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -120,6 +127,25 @@
             this.BaselineList.Size = new System.Drawing.Size(1024, 425);
             this.BaselineList.StripeOddColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
             this.BaselineList.TabIndex = 0;
+            // 
+            // uiContextMenuStrip
+            // 
+            this.uiContextMenuStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
+            this.uiContextMenuStrip.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiContextMenuStrip.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.uiContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.OpenSubKeyToolStripMenuItem});
+            this.uiContextMenuStrip.Name = "uiContextMenuStrip";
+            this.uiContextMenuStrip.Size = new System.Drawing.Size(171, 26);
+            this.uiContextMenuStrip.Style = Sunny.UI.UIStyle.Custom;
+            // 
+            // OpenSubKeyToolStripMenuItem
+            // 
+            this.OpenSubKeyToolStripMenuItem.Image = global::WindowsBaselineAssistant.Properties.Resources.file_type_registry_icon_130200;
+            this.OpenSubKeyToolStripMenuItem.Name = "OpenSubKeyToolStripMenuItem";
+            this.OpenSubKeyToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.OpenSubKeyToolStripMenuItem.Text = "打开注册表项";
+            this.OpenSubKeyToolStripMenuItem.Click += new System.EventHandler(this.OpenSubKeyToolStripMenuItem_Click);
             // 
             // CheckBtn
             // 
@@ -145,6 +171,7 @@
             this.FortifyBtn.TabIndex = 1;
             this.FortifyBtn.Text = "加固";
             this.FortifyBtn.TipsFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.FortifyBtn.Click += new System.EventHandler(this.FortifyBtn_Click);
             // 
             // ReportBtn
             // 
@@ -261,106 +288,154 @@
             this.rateLabel.Text = "-";
             this.rateLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // uiContextMenuStrip
+            // uiLabel5
             // 
-            this.uiContextMenuStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
-            this.uiContextMenuStrip.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiContextMenuStrip.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.OpenSubKeyToolStripMenuItem});
-            this.uiContextMenuStrip.Name = "uiContextMenuStrip";
-            this.uiContextMenuStrip.Size = new System.Drawing.Size(181, 48);
-            this.uiContextMenuStrip.Style = Sunny.UI.UIStyle.Custom;
+            this.uiLabel5.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.uiLabel5.Location = new System.Drawing.Point(27, 60);
+            this.uiLabel5.Name = "uiLabel5";
+            this.uiLabel5.Size = new System.Drawing.Size(80, 23);
+            this.uiLabel5.TabIndex = 5;
+            this.uiLabel5.Text = "系统版本: ";
+            this.uiLabel5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // OpenSubKeyToolStripMenuItem
+            // OSLabel
             // 
-            this.OpenSubKeyToolStripMenuItem.Image = global::WindowsBaselineAssistant.Properties.Resources.file_type_registry_icon_130200;
-            this.OpenSubKeyToolStripMenuItem.Name = "OpenSubKeyToolStripMenuItem";
-            this.OpenSubKeyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.OpenSubKeyToolStripMenuItem.Text = "打开注册表项";
-            this.OpenSubKeyToolStripMenuItem.Click += new System.EventHandler(this.OpenSubKeyToolStripMenuItem_Click);
+            this.OSLabel.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.OSLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.OSLabel.Location = new System.Drawing.Point(113, 61);
+            this.OSLabel.Name = "OSLabel";
+            this.OSLabel.Size = new System.Drawing.Size(416, 23);
+            this.OSLabel.TabIndex = 6;
+            this.OSLabel.Text = "-";
+            this.OSLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // Column1
+            // uiLabel6
             // 
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column1.HeaderText = "检测名称";
-            this.Column1.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-            this.Column1.LinkColor = System.Drawing.Color.Black;
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column1.TrackVisitedState = false;
-            this.Column1.VisitedLinkColor = System.Drawing.Color.Black;
+            this.uiLabel6.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.uiLabel6.Location = new System.Drawing.Point(547, 60);
+            this.uiLabel6.Name = "uiLabel6";
+            this.uiLabel6.Size = new System.Drawing.Size(67, 23);
+            this.uiLabel6.TabIndex = 7;
+            this.uiLabel6.Text = "IP地址: ";
+            this.uiLabel6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // Column2
+            // IPLabel
             // 
-            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column2.HeaderText = "描述";
-            this.Column2.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-            this.Column2.LinkColor = System.Drawing.Color.Black;
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.TrackVisitedState = false;
-            this.Column2.VisitedLinkColor = System.Drawing.Color.Black;
+            this.IPLabel.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.IPLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.IPLabel.Location = new System.Drawing.Point(613, 60);
+            this.IPLabel.Name = "IPLabel";
+            this.IPLabel.Size = new System.Drawing.Size(170, 23);
+            this.IPLabel.TabIndex = 8;
+            this.IPLabel.Text = "-";
+            this.IPLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // Column6
+            // uiLabel7
             // 
-            this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column6.ContextMenuStrip = this.uiContextMenuStrip;
-            this.Column6.HeaderText = "注册/策略表项";
-            this.Column6.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-            this.Column6.LinkColor = System.Drawing.Color.Black;
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            this.Column6.TrackVisitedState = false;
-            this.Column6.VisitedLinkColor = System.Drawing.Color.Black;
+            this.uiLabel7.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.uiLabel7.Location = new System.Drawing.Point(802, 61);
+            this.uiLabel7.Name = "uiLabel7";
+            this.uiLabel7.Size = new System.Drawing.Size(71, 23);
+            this.uiLabel7.TabIndex = 9;
+            this.uiLabel7.Text = "主机名: ";
+            this.uiLabel7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // Column7
+            // OSNameLabel
             // 
-            this.Column7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Column7.HeaderText = "注册/策略表字段";
-            this.Column7.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-            this.Column7.LinkColor = System.Drawing.Color.Black;
-            this.Column7.Name = "Column7";
-            this.Column7.ReadOnly = true;
-            this.Column7.TrackVisitedState = false;
-            this.Column7.VisitedLinkColor = System.Drawing.Color.Black;
-            this.Column7.Width = 132;
+            this.OSNameLabel.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.OSNameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.OSNameLabel.Location = new System.Drawing.Point(872, 60);
+            this.OSNameLabel.Name = "OSNameLabel";
+            this.OSNameLabel.Size = new System.Drawing.Size(166, 23);
+            this.OSNameLabel.TabIndex = 10;
+            this.OSNameLabel.Text = "-";
+            this.OSNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // Column3
+            // NameColumn
             // 
-            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Column3.HeaderText = "标准值";
-            this.Column3.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-            this.Column3.LinkColor = System.Drawing.Color.Black;
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.TrackVisitedState = false;
-            this.Column3.VisitedLinkColor = System.Drawing.Color.Black;
-            this.Column3.Width = 60;
+            this.NameColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.NameColumn.HeaderText = "检测名称";
+            this.NameColumn.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.NameColumn.LinkColor = System.Drawing.Color.Black;
+            this.NameColumn.Name = "NameColumn";
+            this.NameColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.NameColumn.TrackVisitedState = false;
+            this.NameColumn.VisitedLinkColor = System.Drawing.Color.Black;
             // 
-            // Column4
+            // DdescriptionColumn
             // 
-            this.Column4.HeaderText = "检测值";
-            this.Column4.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-            this.Column4.LinkColor = System.Drawing.Color.Black;
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            this.Column4.TrackVisitedState = false;
-            this.Column4.VisitedLinkColor = System.Drawing.Color.Black;
+            this.DdescriptionColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.DdescriptionColumn.HeaderText = "描述";
+            this.DdescriptionColumn.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.DdescriptionColumn.LinkColor = System.Drawing.Color.Black;
+            this.DdescriptionColumn.Name = "DdescriptionColumn";
+            this.DdescriptionColumn.TrackVisitedState = false;
+            this.DdescriptionColumn.VisitedLinkColor = System.Drawing.Color.Black;
             // 
-            // Column5
+            // ItemColumn
             // 
-            this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ItemColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ItemColumn.ContextMenuStrip = this.uiContextMenuStrip;
+            this.ItemColumn.HeaderText = "注册/SecEdit表项";
+            this.ItemColumn.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.ItemColumn.LinkColor = System.Drawing.Color.Black;
+            this.ItemColumn.Name = "ItemColumn";
+            this.ItemColumn.TrackVisitedState = false;
+            this.ItemColumn.VisitedLinkColor = System.Drawing.Color.Black;
+            // 
+            // FieldColumn
+            // 
+            this.FieldColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.FieldColumn.HeaderText = "注册/SecEdit表字段";
+            this.FieldColumn.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.FieldColumn.LinkColor = System.Drawing.Color.Black;
+            this.FieldColumn.Name = "FieldColumn";
+            this.FieldColumn.TrackVisitedState = false;
+            this.FieldColumn.VisitedLinkColor = System.Drawing.Color.Black;
+            this.FieldColumn.Width = 156;
+            // 
+            // StandardColumn
+            // 
+            this.StandardColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.StandardColumn.HeaderText = "标准值";
+            this.StandardColumn.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.StandardColumn.LinkColor = System.Drawing.Color.Black;
+            this.StandardColumn.Name = "StandardColumn";
+            this.StandardColumn.TrackVisitedState = false;
+            this.StandardColumn.VisitedLinkColor = System.Drawing.Color.Black;
+            this.StandardColumn.Width = 60;
+            // 
+            // RealityColumn
+            // 
+            this.RealityColumn.HeaderText = "检测值";
+            this.RealityColumn.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.RealityColumn.LinkColor = System.Drawing.Color.Black;
+            this.RealityColumn.Name = "RealityColumn";
+            this.RealityColumn.TrackVisitedState = false;
+            this.RealityColumn.VisitedLinkColor = System.Drawing.Color.Black;
+            // 
+            // StatusColumn
+            // 
+            this.StatusColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Red;
-            this.Column5.DefaultCellStyle = dataGridViewCellStyle3;
-            this.Column5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Column5.HeaderText = "检测结果";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            this.Column5.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column5.Width = 76;
+            this.StatusColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            this.StatusColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.StatusColumn.HeaderText = "检测结果";
+            this.StatusColumn.Name = "StatusColumn";
+            this.StatusColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.StatusColumn.Width = 76;
+            // 
+            // FortifyColumn
+            // 
+            this.FortifyColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.FortifyColumn.HeaderText = "加固";
+            this.FortifyColumn.Name = "FortifyColumn";
+            this.FortifyColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.FortifyColumn.Width = 44;
             // 
             // Main
             // 
@@ -368,6 +443,12 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
             this.ClientSize = new System.Drawing.Size(1078, 693);
             this.ControlBoxFillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(171)))), ((int)(((byte)(160)))));
+            this.Controls.Add(this.OSNameLabel);
+            this.Controls.Add(this.uiLabel7);
+            this.Controls.Add(this.IPLabel);
+            this.Controls.Add(this.uiLabel6);
+            this.Controls.Add(this.OSLabel);
+            this.Controls.Add(this.uiLabel5);
             this.Controls.Add(this.rateLabel);
             this.Controls.Add(this.failCountLabel);
             this.Controls.Add(this.passCountLabel);
@@ -388,6 +469,7 @@
             this.Text = "WindowsBaselineAssistant";
             this.TitleColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
             this.ZoomScaleRect = new System.Drawing.Rectangle(15, 15, 800, 450);
+            this.Load += new System.EventHandler(this.Main_Load);
             ((System.ComponentModel.ISupportInitialize)(this.BaselineList)).EndInit();
             this.uiContextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -409,14 +491,21 @@
         private Sunny.UI.UILabel passCountLabel;
         private Sunny.UI.UILabel failCountLabel;
         private Sunny.UI.UILabel rateLabel;
-        private System.Windows.Forms.DataGridViewLinkColumn Column1;
-        private System.Windows.Forms.DataGridViewLinkColumn Column2;
-        private System.Windows.Forms.DataGridViewLinkColumn Column6;
         private Sunny.UI.UIContextMenuStrip uiContextMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem OpenSubKeyToolStripMenuItem;
-        private System.Windows.Forms.DataGridViewLinkColumn Column7;
-        private System.Windows.Forms.DataGridViewLinkColumn Column3;
-        private System.Windows.Forms.DataGridViewLinkColumn Column4;
-        private System.Windows.Forms.DataGridViewButtonColumn Column5;
+        private Sunny.UI.UILabel uiLabel5;
+        private Sunny.UI.UILabel OSLabel;
+        private Sunny.UI.UILabel uiLabel6;
+        private Sunny.UI.UILabel IPLabel;
+        private Sunny.UI.UILabel uiLabel7;
+        private Sunny.UI.UILabel OSNameLabel;
+        private System.Windows.Forms.DataGridViewLinkColumn NameColumn;
+        private System.Windows.Forms.DataGridViewLinkColumn DdescriptionColumn;
+        private System.Windows.Forms.DataGridViewLinkColumn ItemColumn;
+        private System.Windows.Forms.DataGridViewLinkColumn FieldColumn;
+        private System.Windows.Forms.DataGridViewLinkColumn StandardColumn;
+        private System.Windows.Forms.DataGridViewLinkColumn RealityColumn;
+        private System.Windows.Forms.DataGridViewButtonColumn StatusColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn FortifyColumn;
     }
 }
