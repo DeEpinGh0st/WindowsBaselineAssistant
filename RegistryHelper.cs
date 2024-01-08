@@ -1,8 +1,6 @@
-using System;
 using Microsoft.Win32;
+using System;
 using System.Windows.Forms;
-using Sunny.UI;
-using System.Web.Configuration;
 
 namespace WHC.OrderWater.Commons
 {
@@ -20,7 +18,8 @@ namespace WHC.OrderWater.Commons
         /// <param name="key">registry key</param>
         /// <returns>Returns the value of the specified key.</returns>
         /// 
-        private static string ArrayToString(string[] strings) {
+        private static string ArrayToString(string[] strings)
+        {
             string result = string.Empty;
             foreach (var item in strings)
             {
@@ -29,7 +28,7 @@ namespace WHC.OrderWater.Commons
             return result;
         }
 
-        private static (RegistryKey,string) FormatBaseKey(string fullSoftwareKey)
+        private static (RegistryKey, string) FormatBaseKey(string fullSoftwareKey)
         {
             RegistryKey registryKey = Registry.LocalMachine;
             int indexOfFirstBackslash = fullSoftwareKey.IndexOf('\\');
@@ -57,7 +56,7 @@ namespace WHC.OrderWater.Commons
         public static string GetValue(string softwareKey, string key)
         {
             (RegistryKey registryKey, string subKey) = FormatBaseKey(softwareKey);
-            return GetValue(registryKey,subKey, key);
+            return GetValue(registryKey, subKey, key);
         }
 
         /// <summary>
@@ -77,7 +76,8 @@ namespace WHC.OrderWater.Commons
             {
                 RegistryKey regKey = registryKey.OpenSubKey(softwareKey);
                 object value = regKey.GetValue(key);
-                if (value == null) {
+                if (value == null)
+                {
                     return "未设置";
                 }
                 if (value is string[] stringArray)
@@ -144,7 +144,7 @@ namespace WHC.OrderWater.Commons
                 throw;
                 //return false;
             }
-        } 
+        }
         #endregion
 
         #region 自动启动程序设置

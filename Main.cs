@@ -1,15 +1,11 @@
-﻿using System;
+﻿using Sunny.UI;
+using System;
 using System.Diagnostics;
-using System.Xml;
-using Microsoft.Win32;
-using Sunny.UI;
-using WHC.OrderWater.Commons;
-using System.IO;
-using System.Threading;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
-using System.Management;
-using System.Runtime.InteropServices;
+using System.Xml;
+using WHC.OrderWater.Commons;
 
 namespace WindowsBaselineAssistant
 {
@@ -19,83 +15,14 @@ namespace WindowsBaselineAssistant
         {
             InitializeComponent();
         }
-        static string currentDirectory = AppDomain.CurrentDomain.BaseDirectory;
         XmlNodeList xmlNodeList;
         XmlDocument xmlDocument;
         XmlElement xmlElement;
-        static string secInfoFile = currentDirectory + "config.cfg";
-        static string fortifyFile = currentDirectory + "fortify.cfg";
+        static string secInfoFile = Util.CurrentDirectory + "config.cfg";
+        static string fortifyFile = Util.CurrentDirectory + "fortify.cfg";
         string secInfoCmd = "secedit /export /cfg config.cfg";
         string fortifyCmd = "secedit /configure /db fortify.sdb /cfg fortify.cfg";
         string openRegCmd = "regjump.exe {0} /accepteula";
-        private XmlDocument ReadXml(string xmlpath)
-        {
-            if (!File.Exists(xmlpath))
-            {
-                return null;
-            }
-            XmlDocument xmlDocument = new XmlDocument();
-            xmlDocument.Load(xmlpath);
-            return xmlDocument;
-        }
-
-        private (string, string) GetResultByMark(string mark)
-        {
-            IniFile ini = new IniFile(currentDirectory + "\\config.cfg");
-            string[] sections = ini.Sections;
-            foreach (var section in sections)
-            {
-                string value = ini.ReadString(section, mark, "");
-                if (value != string.Empty)
-                {
-                    return (section, value);
-                    //break;
-                }
-            }
-            return ("", "");
-        }
-        public static string GetIPAddress()
-        {
-            string st = "";
-            ManagementClass mc = new ManagementClass("Win32_NetworkAdapterConfiguration");
-            ManagementObjectCollection moc = mc.GetInstances();
-            foreach (ManagementObject mo in moc)
-            {
-                if ((bool)mo["IPEnabled"] == true)
-                {
-                    //st=mo["IpAddress"].ToString();
-                    System.Array ar;
-                    ar = (System.Array)(mo.Properties["IpAddress"].Value);
-                    st = ar.GetValue(0).ToString();
-                    break;
-                }
-            }
-            return st;
-        }
-
-        private static string GetOSVersion()
-        {
-            try
-            {
-                ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT Caption, Version, CSDVersion FROM Win32_OperatingSystem");
-                foreach (ManagementObject os in searcher.Get())
-                {
-                    string caption = os["Caption"].ToString();
-                    string version = os["Version"].ToString();
-                    string csdVersion = os["CSDVersion"] != null ? os["CSDVersion"].ToString() : string.Empty;
-                    //string buildNumber = os["BuildNumber"].ToString();
-                    // 组合详细版本信息
-                    string systemInfo = $"{caption}{version}{csdVersion}";
-
-                    return systemInfo;
-                }
-            }
-            catch (Exception)
-            {
-                return "获取系统信息失败";
-            }
-            return "无法获取系统详细版本信息";
-        }
 
         private void SetPassStyle(int index)
         {
@@ -103,67 +30,6 @@ namespace WindowsBaselineAssistant
             BaselineList.Rows[index].Cells[7].ReadOnly = true;
             BaselineList.Rows[index].Cells[7].Style.BackColor = Color.LightGray;
         }
-
-        static bool ContainsElement(XmlNode parentNode, string elementName)
-        {
-            // 使用 SelectSingleNode 来查找指定名称的子节点
-            XmlNode elementNode = parentNode.SelectSingleNode(elementName);
-
-            // 判断是否找到了该节点
-            return elementNode != null;
-        }
-        /// <summary>
-        /// 执行外部程序
-        /// </summary>
-        /// <param name="command">参数</param>
-        /// <param name="isnowindow">是否在新窗口中启动</param>
-        /// <param name="processWindowStyle">窗口状态.默认:Normal</param>
-        /// <returns></returns>
-        private int ExecutExternalProgram(string command, bool isnowindow, ProcessWindowStyle processWindowStyle = ProcessWindowStyle.Normal)
-        {
-            //要执行的命令
-            //string command = "secedit /export /cfg config.cfg";
-            // 创建一个新的进程启动信息
-            ProcessStartInfo processStartInfo = new ProcessStartInfo
-            {
-                FileName = "cmd.exe",
-                RedirectStandardInput = true,
-                RedirectStandardOutput = true,
-                UseShellExecute = false,
-                CreateNoWindow = isnowindow,
-                WindowStyle = processWindowStyle,
-                Arguments = "/c " + command,
-                WorkingDirectory = currentDirectory
-            };
-            // 创建进程对象
-            Process process = new Process
-            {
-                StartInfo = processStartInfo
-            };
-            try
-            {
-                // 启动进程
-                process.Start();
-                //Thread.Sleep(500);
-                process.WaitForExit();
-                //Thread.Sleep(1000);
-                // 获取返回值
-                int exitCode = process.ExitCode;
-                return exitCode;
-            }
-            catch (Exception ex)
-            {
-                UIMessageBox.ShowError(ex.Message);
-                return -1;
-            }
-            finally
-            {
-                // 关闭进程
-                process.Close();
-                process.Dispose();
-            }
-        }
-
 
         private void AboutLinkLabel_Click(object sender, EventArgs e)
         {
@@ -174,7 +40,7 @@ namespace WindowsBaselineAssistant
         {
             try
             {
-                xmlDocument = ReadXml(currentDirectory + @"\item.xml");
+                xmlDocument = Util.ReadXml(Util.CurrentDirectory + @"\item.xml");
                 if (xmlDocument == null)
                 {
                     UIMessageBox.ShowError("未找到配置文件");
@@ -185,7 +51,7 @@ namespace WindowsBaselineAssistant
                     File.Delete(secInfoFile);
                 }
                 //int code = GenerateSecInfo();
-                if (!ExecutExternalProgram(secInfoCmd, true, ProcessWindowStyle.Hidden).Equals(0))
+                if (!Util.ExecutExternalProgram(secInfoCmd, true, ProcessWindowStyle.Hidden).Equals(0))
                 {
                     UIMessageBox.ShowError("secedit信息生成失败");
                     return;
@@ -212,7 +78,7 @@ namespace WindowsBaselineAssistant
                             BaselineList.Rows[index].Cells[2].Value = "-";
                             BaselineList.Rows[index].Cells[3].Value = "-";
                             string mark = xmlNode["mark"].InnerText;
-                            (section, reality) = GetResultByMark(mark);
+                            (section, reality) = Util.GetResultByMark(mark);
                             BaselineList.Rows[index].Cells[2].Value = section;
                             BaselineList.Rows[index].Cells[3].Value = mark;
                             BaselineList.Rows[index].Cells[5].Value = reality;
@@ -227,7 +93,7 @@ namespace WindowsBaselineAssistant
                             break;
                     }
                     string dataType = xmlNode["dtype"].InnerText;
-                    if (ContainsElement(xmlNode, "warning"))
+                    if (Util.ContainsElement(xmlNode, "warning"))
                     {
                         BaselineList.Rows[index].Cells[6].Value = "手动加固";
                         BaselineList.Rows[index].Cells[7].ReadOnly = true;
@@ -326,7 +192,7 @@ namespace WindowsBaselineAssistant
                 UIMessageBox.ShowError("该项不支持打开");
                 return;
             }
-            if (!ExecutExternalProgram(string.Format(openRegCmd, cellValue), true).Equals(0))
+            if (!Util.ExecutExternalProgram(string.Format(openRegCmd, cellValue), true).Equals(0))
             {
                 UIMessageBox.ShowError("打开注册表项失败");
             }
@@ -334,8 +200,8 @@ namespace WindowsBaselineAssistant
 
         private void Main_Load(object sender, EventArgs e)
         {
-            OSLabel.Text = GetOSVersion();
-            IPLabel.Text = GetIPAddress();
+            OSLabel.Text = Util.GetOSVersion();
+            IPLabel.Text = Util.GetIPAddress();
             OSNameLabel.Text = Environment.MachineName;
         }
 
@@ -372,7 +238,7 @@ namespace WindowsBaselineAssistant
                     //TODO
                     fortifyCount++;
                 }
-                int code = ExecutExternalProgram(fortifyCmd, true, ProcessWindowStyle.Hidden);
+                int code = Util.ExecutExternalProgram(fortifyCmd, true, ProcessWindowStyle.Hidden);
                 if (code != 0)
                 {
                     UIMessageBox.ShowWarning(string.Format("已完成{0}项加固操作,secedit加固出现错误.请检查%windir%\\security\\logs\\scesrv.log", fortifyCount.ToString()));

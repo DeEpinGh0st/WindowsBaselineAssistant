@@ -1,16 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Data;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Xml.Serialization;
 using System.Xml;
-using System.Data;
+using System.Xml.Serialization;
 
 namespace WHC.OrderWater.Commons
 {
-     /// <summary>
+    /// <summary>
     /// XML操作类
     /// </summary>
     public class XmlHelper
