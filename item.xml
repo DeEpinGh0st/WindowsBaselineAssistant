@@ -1,16 +1,17 @@
 <items>
     <item>
         <name>检查远程桌面(RDP)服务端口</name>
-        <description>Windows系统RDP端口默认值为3389，容易猜测。所以为了提高系统的保密性，需要修改默认的RDP端口。</description>
+        <description>Windows系统RDP端口默认值为3389,容易猜测.所以为了提高系统的保密性,需要修改默认的RDP端口.</description>
 		<type>registry</type>
         <registry>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp</registry>
         <regitem>PortNumber</regitem>
         <standard>3389</standard>
 		<dtype>fixed</dtype>
+		<warning>1</warning>
     </item>
     <item>
         <name>检查源路由配置</name>
-        <description>源路由攻击有源地址欺骗、IP欺骗等，为了提高系统的可靠性，需要检查是否启用正确配置源路由攻击保护。</description>
+        <description>源路由攻击有源地址欺骗、IP欺骗等,为了提高系统的可靠性,需要检查是否启用正确配置源路由攻击保护.</description>
 		<type>registry</type>
         <registry>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters</registry>
         <regitem>DisableIPSourceRouting</regitem>
@@ -18,34 +19,16 @@
 		<dtype>enum</dtype>
     </item>
 	<item>
-        <name>检查是否已启用SYN攻击保护</name>
-        <description>SYN 攻击利用了 TCP/IP 连接建立机制中的安全漏洞。要实施 SYN 洪水攻击，攻击者会使用程序发送大量 TCP SYN 请求来填满服务器上的挂起连接队列</description>
-		<type>registry</type>
-        <registry>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters</registry>
-        <regitem>SynAttackProtect</regitem>
-        <standard>1</standard> 
-		<dtype>enum</dtype>
-    </item>
-	<item>
-        <name>检查Windows自动登录设置</name>
-        <description>安全基线项说明  	为了提高系统的保密性、可靠性，需要检查此项。Windows不可自动登陆</description>
-		<type>registry</type>
-        <registry>HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Winlogon</registry>
-        <regitem>AutoAdminLogon</regitem>
-        <standard>0</standard>
-		<dtype>enum</dtype>
-    </item>
-	<item>
         <name>检查密码最长使用期限</name>
-        <description>长期修改密码会提高密码暴露风险，所以为了提高系统的保密性。需要检查密码最长使用期限。</description>
+        <description>长期修改密码会提高密码暴露风险,所以为了提高系统的保密性.需要检查密码最长使用期限.</description>
 		<type>secedit</type>
 		<mark>MaximumPasswordAge</mark>
         <standard>90</standard>
-		<dtype>lessnumber</dtype>
+		<dtype>greaternumber</dtype>
     </item>
 		<item>
         <name>检查密码长度最小值</name>
-        <description>长度小的口令存在被爆破出的风险，所以为了保证密码的安全，提高保密性需要检查口令最小长度</description>
+        <description>长度小的口令存在被爆破出的风险,所以为了保证密码的安全,提高保密性需要检查口令最小长度</description>
 		<type>secedit</type>
 		<mark>MinimumPasswordLength</mark>
         <standard>8</standard>
@@ -53,15 +36,15 @@
     </item>
 	<item>
         <name>检查是否启用密码复杂度要求</name>
-        <description>仅包含字母数字字符的密码可通过多种公开可用的工具轻松发现。</description>
+        <description>仅包含字母数字字符的密码可通过多种公开可用的工具轻松发现.</description>
 		<type>secedit</type>
 		<mark>PasswordComplexity</mark>
         <standard>1</standard>
 		<dtype>enum</dtype>
     </item>
 	<item>
-        <name>检查“强制密码历史”个数</name>
-        <description>强制密码历史的意思是，系统会记住以前的密码历史，在修改密码的时候不可与以前的密码相同，修改相同的密码会提高密码的暴露性。</description>
+        <name>检查"强制密码历史"个数</name>
+        <description>强制密码历史的意思是,系统会记住以前的密码历史,在修改密码的时候不可与以前的密码相同,修改相同的密码会提高密码的暴露性.</description>
 		<type>secedit</type>
 		<mark>PasswordHistorySize</mark>
         <standard>2</standard>
@@ -72,20 +55,20 @@
         <description>此安全设置确定导致用户帐户被锁定的登录尝试失败的次数</description>
 		<type>secedit</type>
 		<mark>LockoutBadCount</mark>
-        <standard>0</standard>
-		<dtype>fixed</dtype>
+        <standard>1</standard>
+		<dtype>enum</dtype>
     </item>
 	<item>
         <name>检查是否已正确配置帐户锁定时间</name>
-        <description>用户登录失败次数过多应对服务器登录进行锁定，防止密码被爆破到风险</description>
+        <description>用户登录失败次数过多应对服务器登录进行锁定,防止密码被爆破到风险</description>
 		<type>secedit</type>
 		<mark>ResetLockoutCount</mark>
         <standard>5</standard>
 		<dtype>greaternumber</dtype>
     </item>
 	<item>
-        <name>检查是否已正确配置“复位帐户锁定计数器”时间</name>
-        <description>复位账户锁定计数器”是指确定登录尝试失败之后和登录尝试失败计数器被复位为 0 次失败登录尝试之前经过的分钟数。有效范围为 1 到 99,999 分钟之间</description>
+        <name>检查是否已正确配置"复位帐户锁定计数器"时间</name>
+        <description>复位账户锁定计数器"是指确定登录尝试失败之后和登录尝试失败计数器被复位为 0 次失败登录尝试之前经过的分钟数.有效范围为 1 到 99,999 分钟之间</description>
 		<type>secedit</type>
 		<mark>LockoutDuration</mark>
         <standard>5</standard>
@@ -93,7 +76,7 @@
     </item>
 	<item>
         <name>检查可远程访问的注册表路径和子路径</name>
-        <description>注册表是设备配置信息到数据库，其中大部分信息是敏感到，恶意用户可以使用它来促进未授权活动</description>
+        <description>注册表是设备配置信息到数据库,其中大部分信息是敏感到,恶意用户可以使用它来促进未授权活动</description>
 		<type>registry</type>
 		<registry>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurePipeServers\winreg\AllowedPaths</registry>
         <regitem>Machine</regitem>
@@ -102,7 +85,7 @@
     </item>
 	<item>
         <name>检查是否已删除可匿名访问的共享和命名管道</name>
-        <description>空会话是一个漏洞，可通过环境中设备上的各种共享文件夹来利用它。为了提高系统的可靠性，需要检查是否删除可匿名访问的共享和命名管道。</description>
+        <description>空会话是一个漏洞,可通过环境中设备上的各种共享文件夹来利用它.为了提高系统的可靠性,需要检查是否删除可匿名访问的共享和命名管道.</description>
 		<type>registry</type>
         <registry>HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\LanmanServer\Parameters</registry>
         <regitem>NullSessionPipes</regitem>
@@ -111,7 +94,7 @@
     </item>
 	<item>
         <name>检查是否已删除可匿名访问的共享和命名管道2</name>
-        <description>空会话是一个漏洞，可通过环境中设备上的各种共享文件夹来利用它。为了提高系统的可靠性，需要检查是否删除可匿名访问的共享和命名管道。</description>
+        <description>空会话是一个漏洞,可通过环境中设备上的各种共享文件夹来利用它.为了提高系统的可靠性,需要检查是否删除可匿名访问的共享和命名管道.</description>
 		<type>registry</type>
         <registry>HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\LanmanServer\Parameters</registry>
         <regitem>NullSessionShares</regitem>
@@ -120,25 +103,25 @@
     </item>
 	<item>
         <name>检查是否已限制SAM匿名用户连接</name>
-        <description>经授权到用户可以匿名列出账户名，存在社交工程共计或尝试猜测密码到风险。</description>
+        <description>经授权到用户可以匿名列出账户名,存在社交工程共计或尝试猜测密码到风险.</description>
 		<type>registry</type>
         <registry>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa</registry>
-        <regitem>restrictanonymous</regitem>
+        <regitem>Restrictanonymous</regitem>
         <standard>1</standard>
 		<dtype>enum</dtype>
     </item>
 	<item>
         <name>检查是否已限制SAM匿名用户连接2</name>
-        <description>经授权到用户可以匿名列出账户名，存在社交工程共计或尝试猜测密码到风险。</description>
+        <description>经授权到用户可以匿名列出账户名,存在社交工程共计或尝试猜测密码到风险.</description>
 		<type>registry</type>
         <registry>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa</registry>
-        <regitem>restrictanonymoussam</regitem>
+        <regitem>Restrictanonymoussam</regitem>
         <standard>1</standard>
 		<dtype>enum</dtype>
     </item>
 	<item>
         <name>检查可关闭系统的帐户和组</name>
-        <description>可以关闭系统的账户和组必须是管理员权限和组，所以为了提高系统的可靠性，需要检查是否限制关闭系统的账户和组</description>
+        <description>可以关闭系统的账户和组必须是管理员权限和组,所以为了提高系统的可靠性,需要检查是否限制关闭系统的账户和组</description>
 		<type>secedit</type>
 		<mark>SeShutdownPrivilege</mark>
         <standard>*S-1-5-32-544</standard>
@@ -146,15 +129,15 @@
     </item>
 	<item>
         <name>检查是否已限制可从远端关闭系统的帐户和组</name>
-        <description>可以远端关闭系统的账户和组必须是管理员权限和组，所以为了提高系统的可靠性，需要检查是否限制关闭系统的账户和组</description>
+        <description>可以远端关闭系统的账户和组必须是管理员权限和组,所以为了提高系统的可靠性,需要检查是否限制关闭系统的账户和组</description>
 		<type>secedit</type>
 		<mark>SeRemoteShutdownPrivilege</mark>
         <standard>*S-1-5-32-544</standard>
 		<dtype>equals</dtype>
     </item>
 	<item>
-        <name>检查是否已限制“取得文件或其他对象的所有权”的帐户和组</name>
-        <description>分配此用户权限可能会带来安全风险。 由于对象的所有者可以完全控制它们，因此仅向受信任的用户分配此用户权限</description>
+        <name>检查是否已限制"取得文件或其他对象的所有权"的帐户和组</name>
+        <description>分配此用户权限可能会带来安全风险. 由于对象的所有者可以完全控制它们,因此仅向受信任的用户分配此用户权限</description>
 		<type>secedit</type>
 		<mark>SeProfileSingleProcessPrivilege</mark>
         <standard>*S-1-5-32-544</standard>
@@ -162,7 +145,7 @@
     </item>
 	<item>
         <name>检查是否开启策略更改审核</name>
-        <description>服务器排错与维护是服务器开发必不可少到部分，故对日志文件到配置与管理尤为重要</description>
+        <description>服务器排错与维护是服务器开发必不可少到部分,故对日志文件到配置与管理尤为重要</description>
 		<type>secedit</type>
 		<mark>AuditSystemEvents</mark>
         <standard>3</standard>
@@ -170,7 +153,7 @@
     </item>
 	<item>
         <name>检查是否开启登录事件审核</name>
-        <description>服务器排错与维护是服务器开发必不可少到部分，故对日志文件到配置与管理尤为重要</description>
+        <description>服务器排错与维护是服务器开发必不可少到部分,故对日志文件到配置与管理尤为重要</description>
 		<type>secedit</type>
 		<mark>AuditLogonEvents</mark>
         <standard>3</standard>
@@ -178,7 +161,7 @@
     </item>
 	<item>
         <name>检查是否开启对象访问审核</name>
-        <description>服务器排错与维护是服务器开发必不可少到部分，故对日志文件到配置与管理尤为重要</description>
+        <description>服务器排错与维护是服务器开发必不可少到部分,故对日志文件到配置与管理尤为重要</description>
 		<type>secedit</type>
 		<mark>AuditObjectAccess</mark>
         <standard>3</standard>
@@ -186,7 +169,7 @@
     </item>
 	<item>
         <name>检查是否开启进程跟踪审核</name>
-        <description>服务器排错与维护是服务器开发必不可少到部分，故对日志文件到配置与管理尤为重要</description>
+        <description>服务器排错与维护是服务器开发必不可少到部分,故对日志文件到配置与管理尤为重要</description>
 		<type>secedit</type>
 		<mark>AuditProcessTracking</mark>
         <standard>3</standard>
@@ -194,7 +177,7 @@
     </item>
 	<item>
         <name>检查是否开启目录服务访问审核</name>
-        <description>服务器排错与维护是服务器开发必不可少到部分，故对日志文件到配置与管理尤为重要</description>
+        <description>服务器排错与维护是服务器开发必不可少到部分,故对日志文件到配置与管理尤为重要</description>
 		<type>secedit</type>
 		<mark>AuditDSAccess</mark>
         <standard>3</standard>
@@ -202,7 +185,7 @@
     </item>
 	<item>
         <name>检查是否开启特权使用审核</name>
-        <description>服务器排错与维护是服务器开发必不可少到部分，故对日志文件到配置与管理尤为重要</description>
+        <description>服务器排错与维护是服务器开发必不可少到部分,故对日志文件到配置与管理尤为重要</description>
 		<type>secedit</type>
 		<mark>AuditPrivilegeUse</mark>
         <standard>3</standard>
@@ -210,7 +193,7 @@
     </item>
 	<item>
         <name>检查是否开启系统事件审核</name>
-        <description>服务器排错与维护是服务器开发必不可少到部分，故对日志文件到配置与管理尤为重要</description>
+        <description>服务器排错与维护是服务器开发必不可少到部分,故对日志文件到配置与管理尤为重要</description>
 		<type>secedit</type>
 		<mark>AuditSystemEvents</mark>
         <standard>3</standard>
@@ -218,7 +201,7 @@
     </item>
 	<item>
         <name>检查是否开启帐户登录事件审核</name>
-        <description>服务器排错与维护是服务器开发必不可少到部分，故对日志文件到配置与管理尤为重要</description>
+        <description>服务器排错与维护是服务器开发必不可少到部分,故对日志文件到配置与管理尤为重要</description>
 		<type>secedit</type>
 		<mark>AuditAccountLogon</mark>
         <standard>3</standard>
@@ -226,10 +209,307 @@
     </item>
 	<item>
         <name>检查是否开启帐户管理审核</name>
-        <description>服务器排错与维护是服务器开发必不可少到部分，故对日志文件到配置与管理尤为重要</description>
+        <description>服务器排错与维护是服务器开发必不可少到部分,故对日志文件到配置与管理尤为重要</description>
 		<type>secedit</type>
 		<mark>AuditAccountManage</mark>
         <standard>3</standard>
 		<dtype>enum</dtype>
+    </item>
+	<item>
+        <name>检查系统日志文件达到最大大小时的动作的序号</name>
+        <description>配置"日志文件达到最大大小时"为"按需要改写(覆盖)事件"</description>
+		<type>registry</type>
+        <registry>HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\eventlog\System</registry>
+        <regitem>Retention</regitem>
+        <standard>0</standard>
+		<dtype>enum</dtype>
+    </item>
+	<item>
+        <name>检查系统日志最大大小</name>
+        <description>配置"日志文件最大大小"为不小于标准值(注意：标准值为16进制表示)的值</description>
+		<type>registry</type>
+        <registry>HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\eventlog\System</registry>
+        <regitem>MaxSize</regitem>
+        <standard>8388608</standard>
+		<dtype>greaternumber</dtype>
+    </item>
+	<item>
+        <name>检查应用程序日志文件达到最大大小时的动作的序号</name>
+        <description>配置"日志文件达到最大大小时"为"按需要改写(覆盖)事件"</description>
+		<type>registry</type>
+        <registry>HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\eventlog\Application</registry>
+        <regitem>Retention</regitem>
+        <standard>0</standard>
+		<dtype>enum</dtype>
+    </item>
+	<item>
+        <name>检查应用程序日志最大大小</name>
+        <description>配置"日志文件最大大小"为不小于标准值(注意：标准值为16进制表示)的值</description>
+		<type>registry</type>
+        <registry>HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\eventlog\Application</registry>
+        <regitem>MaxSize</regitem>
+        <standard>8388608</standard>
+		<dtype>greaternumber</dtype>
+    </item>
+	<item>
+        <name>检查安全日志文件达到最大大小时的动作的序号</name>
+        <description>配置"日志文件达到最大大小时"为"按需要改写(覆盖)事件"</description>
+		<type>registry</type>
+        <registry>HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\eventlog\Security</registry>
+        <regitem>Retention</regitem>
+        <standard>0</standard>
+		<dtype>enum</dtype>
+    </item>
+	<item>
+        <name>检查安全日志最大大小</name>
+        <description>配置"日志文件最大大小"为不小于标准值(注意：标准值为16进制表示)的值</description>
+		<type>registry</type>
+        <registry>HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\eventlog\Security</registry>
+        <regitem>MaxSize</regitem>
+        <standard>8388608</standard>
+		<dtype>greaternumber</dtype>
+    </item>
+	<item>
+        <name>检查是否已开启Windows防火墙</name>
+        <description>依据系统的情况检查是否需要开启windows防火墙,为了提高系统的可靠性,需要检查是否开启windows防火墙.</description>
+		<type>registry</type>
+        <registry>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile</registry>
+        <regitem>EnableFirewall</regitem>
+        <standard>1</standard>
+		<dtype>enum</dtype>
+    </item>
+	<item>
+        <name>检查是否已启用SYN攻击保护</name>
+        <description>SYN 攻击利用了 TCP/IP 连接建立机制中的安全漏洞.要实施 SYN 洪水攻击,攻击者会使用程序发送大量 TCP SYN 请求来填满服务器上的挂起连接队列</description>
+		<type>registry</type>
+        <registry>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\Tcpip\Parameters</registry>
+        <regitem>SynAttackProtect</regitem>
+        <standard>1</standard>
+		<dtype>enum</dtype>
+    </item>
+	<item>
+        <name>检查TCP连接请求阈值</name>
+        <description>SYN 攻击利用了 TCP/IP 连接建立机制中的安全漏洞.要实施 SYN 洪水攻击,攻击者会使用程序发送大量 TCP SYN 请求来填满服务器上的挂起连接队列</description>
+		<type>registry</type>
+        <registry>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\Tcpip\Parameters</registry>
+        <regitem>TcpMaxPortsExhausted</regitem>
+        <standard>5</standard>
+		<dtype>enum</dtype>
+    </item>
+	<item>
+        <name>检查取消尝试响应 SYN 请求之前要重新传输 SYN-ACK 的次数</name>
+        <description>SYN 攻击利用了 TCP/IP 连接建立机制中的安全漏洞.要实施 SYN 洪水攻击,攻击者会使用程序发送大量 TCP SYN 请求来填满服务器上的挂起连接队列</description>
+		<type>registry</type>
+        <registry>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\Tcpip\Parameters</registry>
+        <regitem>TcpMaxConnectResponseRetransmissions</regitem>
+        <standard>2</standard>
+		<dtype>enum</dtype>
+    </item>
+	<item>
+        <name>检查处于SYN_RCVD 状态下的 TCP 连接阈值</name>
+        <description>SYN 攻击利用了 TCP/IP 连接建立机制中的安全漏洞.要实施 SYN 洪水攻击,攻击者会使用程序发送大量 TCP SYN 请求来填满服务器上的挂起连接队列</description>
+		<type>registry</type>
+        <registry>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\Tcpip\Parameters</registry>
+        <regitem>TcpMaxHalfOpen</regitem>
+        <standard>500</standard>
+		<dtype>lessnumber</dtype>
+    </item>
+	<item>
+        <name>检查处于SYN_RCVD 状态下,且至少已经进行了一次重新传输的TCP连接阈值</name>
+        <description>SYN 攻击利用了 TCP/IP 连接建立机制中的安全漏洞.要实施 SYN 洪水攻击,攻击者会使用程序发送大量 TCP SYN 请求来填满服务器上的挂起连接队列</description>
+		<type>registry</type>
+        <registry>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\Tcpip\Parameters</registry>
+        <regitem>TcpMaxHalfOpenRetried</regitem>
+        <standard>400</standard>
+		<dtype>lessnumber</dtype>
+    </item>
+	<item>
+        <name>检查是否已启用并正确配置ICMP攻击保护</name>
+        <description>配置ICMP攻击保护预防ICMP攻击,防止DOS攻击导致服务器停止响应与奔溃</description>
+		<type>registry</type>
+        <registry>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\Tcpip\Parameters</registry>
+        <regitem>EnableICMPRedirect</regitem>
+        <standard>0</standard>
+		<dtype>enum</dtype>
+    </item>
+	<item>
+        <name>检查是否已禁用失效网关检测</name>
+        <description>禁用失效网关检测,防止DOS攻击导致服务器停止响应与崩溃</description>
+		<type>registry</type>
+        <registry>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\Tcpip\Parameters</registry>
+        <regitem>EnableDeadGWDetect</regitem>
+        <standard>0</standard>
+		<dtype>enum</dtype>
+    </item>
+	<item>
+        <name>检查是否已正确配置重传单独数据片段的次数</name>
+        <description>配置重传次数,防止频繁重传导致服务器停止响应与崩溃</description>
+		<type>registry</type>
+        <registry>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\Tcpip\Parameters</registry>
+        <regitem>TcpMaxDataRetransmissions</regitem>
+        <standard>2</standard>
+		<dtype>enum</dtype>
+    </item>
+	<item>
+        <name>检查是否已禁用路由发现功能</name>
+        <description>禁用路由发现功能,防止DOS攻击导致服务器停止响应与奔溃</description>
+		<type>registry</type>
+        <registry>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\Tcpip\Parameters</registry>
+        <regitem>PerformRouterDiscovery</regitem>
+        <standard>0</standard>
+		<dtype>enum</dtype>
+    </item>
+	<item>
+        <name>检查是否已正确配置TCP"连接存活时间</name>
+        <description>链接存活时间过长,会加剧网络拥塞程度,可能导致服务器停止响应与崩溃</description>
+		<type>registry</type>
+        <registry>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\Tcpip\Parameters</registry>
+        <regitem>KeepAliveTime</regitem>
+        <standard>300000</standard>
+		<dtype>lessnumber</dtype>
+    </item>
+	<item>
+        <name>检查是否已启用并正确配置TCP碎片攻击保护</name>
+        <description>攻击者有意发送大型ip碎片,可能导致服务器停止响应与崩溃</description>
+		<type>registry</type>
+        <registry>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\Tcpip\Parameters</registry>
+        <regitem>EnablePMTUDiscovery</regitem>
+        <standard>0</standard>
+		<dtype>enum</dtype>
+    </item>
+	<item>
+        <name>检查是否已启用"不显示最后的用户名"策略</name>
+        <description>配置该策略防止用户名信息泄露</description>
+		<type>registry</type>
+        <registry>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System</registry>
+        <regitem>Dontdisplaylastusername</regitem>
+        <standard>1</standard>
+		<dtype>enum</dtype>
+    </item>
+	<item>
+        <name>检查是否已正确配置"提示用户在密码过期之前进行更改"策略</name>
+        <description>配置密码过期提醒策略防止密码过期无法登陆</description>
+		<type>registry</type>
+        <registry>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon</registry>
+        <regitem>PasswordExpiryWarning</regitem>
+        <standard>14</standard>
+		<dtype>greaternumber</dtype>
+    </item>
+	<item>
+        <name>检查是否已正确配置"锁定会话时显示用户信息"策略</name>
+        <description>在锁定会话时,系统不应显示用户信息.</description>
+		<type>registry</type>
+        <registry>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System</registry>
+        <regitem>DontDisplayLockedUserId</regitem>
+        <standard>3</standard>
+		<dtype>enum</dtype>
+    </item>
+	<item>
+        <name>检查是否已禁用Windows硬盘默认共享</name>
+        <description>(适用非域环境)部分操作系统提供了默认共享功能,如果服务器联网,那么网络上到任何人都可以通过共享盘,随意访问该电脑</description>
+		<type>registry</type>
+        <registry>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\LanmanServer\Parameters</registry>
+        <regitem>AutoShareServer</regitem>
+        <standard>0</standard>
+		<dtype>enum</dtype>
+    </item>
+	<item>
+        <name>检查是否已禁用Windows硬盘默认共享2</name>
+        <description>(适用非域环境)部分操作系统提供了默认共享功能,如果服务器联网,那么网络上到任何人都可以通过共享盘,随意访问该电脑</description>
+		<type>registry</type>
+        <registry>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\LanmanServer\Parameters</registry>
+        <regitem>AutoShareWks</regitem>
+        <standard>0</standard>
+		<dtype>enum</dtype>
+    </item>
+	<item>
+        <name>检查是否已启用并正确配置屏幕保护程序</name>
+        <description>在无操作到一段时间内,系统应开启屏幕保护程序</description>
+		<type>registry</type>
+        <registry>HKEY_CURRENT_USER\Control Panel\Desktop</registry>
+        <regitem>ScreenSaveActive</regitem>
+        <standard>1</standard>
+		<dtype>enum</dtype>
+    </item>
+	<item>
+        <name>检查屏幕保护程序等待时间</name>
+        <description>在无操作到一段时间内,系统应开启屏幕保护程序</description>
+		<type>registry</type>
+        <registry>HKEY_CURRENT_USER\Control Panel\Desktop</registry>
+        <regitem>ScreenSaveTimeOut</regitem>
+        <standard>300</standard>
+		<dtype>lessnumber</dtype>
+    </item>
+	<item>
+        <name>检查是否已启用在恢复时显示登陆界面</name>
+        <description>在无操作到一段时间内,系统应开启屏幕保护程序</description>
+		<type>registry</type>
+        <registry>HKEY_CURRENT_USER\Control Panel\Desktop</registry>
+        <regitem>ScreenSaverIsSecure</regitem>
+        <standard>1</standard>
+		<dtype>enum</dtype>
+    </item>
+	<item>
+        <name>检查是否已启用并正确配置Windows网络时间同步服务(NTP)</name>
+        <description>应保证windows系统到时间同步,提高系统日志到准确性</description>
+		<type>registry</type>
+        <registry>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\W32Time\TimeProviders\NtpServer</registry>
+        <regitem>Enabled</regitem>
+        <standard>0</standard>
+		<dtype>enum</dtype>
+    </item>
+	<item>
+        <name>检查是否已关闭Windows自动播放</name>
+        <description>通过恶意代码写在U盘上,如果系统开启了自动播放功能,那么只要这些U盘插入在服务器上,该服务器就会感染到U盘上到病毒</description>
+		<type>registry</type>
+        <registry>HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\AutoplayHandlers</registry>
+        <regitem>DisableAutoplay</regitem>
+        <standard>1</standard>
+		<dtype>enum</dtype>
+    </item>
+	<item>
+        <name>检查是否正确配置服务器在暂停会话前所需的空闲时间量</name>
+        <description>SMB会话会占用服务器资源,攻击者可能反复建立SMB会话导致系统缓慢或无响应</description>
+		<type>registry</type>
+        <registry>HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\LanmanServer\Parameters</registry>
+        <regitem>Autodisconnect</regitem>
+        <standard>15</standard>
+		<dtype>enum</dtype>
+    </item>
+	<item>
+        <name>检查是否已启用"当登录时间用完时自动注销用户"策略</name>
+        <description>登录时间完应自动注销用户,此项建议系统管理员根据系统情况自行判断</description>
+		<type>registry</type>
+        <registry>HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\LanmanServer\Parameters</registry>
+        <regitem>Enableforcedlogoff</regitem>
+        <standard>1</standard>
+		<dtype>enum</dtype>
+    </item>
+	<item>
+        <name>检查是否已禁用"登录时无须按 Ctrl+Alt+Del"策略</name>
+        <description>攻击者可能会安装看似标准的登录对话框的特洛伊木马程序,并捕获用户密码</description>
+		<type>registry</type>
+        <registry>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System</registry>
+        <regitem>Disablecad</regitem>
+        <standard>0</standard>
+		<dtype>enum</dtype>
+    </item>
+	<item>
+        <name>检查是否已禁止Windows自动登录</name>
+        <description>防止非授权访问,服务器应禁止windows自动登录</description>
+		<type>registry</type>
+        <registry>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon</registry>
+        <regitem>AutoAdminLogon</regitem>
+        <standard>0</standard>
+		<dtype>enum</dtype>
+    </item>
+	<item>
+        <name>域环境：检查是否已正确配置"可被缓存保存的登录的个数"策略</name>
+        <description>此项仅适用于域成员</description>
+		<type>registry</type>
+        <registry>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon</registry>
+        <regitem>CachedLogonsCount</regitem>
+        <standard>5</standard>
+		<dtype>lessnumber</dtype>
     </item>
 </items>

@@ -34,9 +34,18 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.BaselineList = new Sunny.UI.UIDataGridView();
+            this.NameColumn = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.DdescriptionColumn = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.ItemColumn = new System.Windows.Forms.DataGridViewLinkColumn();
             this.uiContextMenuStrip = new Sunny.UI.UIContextMenuStrip();
             this.OpenSubKeyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.FieldColumn = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.StandardColumn = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.RealityColumn = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.StatusColumn = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.FortifyColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.CheckBtn = new Sunny.UI.UIButton();
             this.FortifyBtn = new Sunny.UI.UIButton();
             this.ReportBtn = new Sunny.UI.UIButton();
@@ -55,14 +64,7 @@
             this.IPLabel = new Sunny.UI.UILabel();
             this.uiLabel7 = new Sunny.UI.UILabel();
             this.OSNameLabel = new Sunny.UI.UILabel();
-            this.NameColumn = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.DdescriptionColumn = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.ItemColumn = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.FieldColumn = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.StandardColumn = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.RealityColumn = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.StatusColumn = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.FortifyColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.checkAllCheckBox = new Sunny.UI.UICheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.BaselineList)).BeginInit();
             this.uiContextMenuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -128,6 +130,38 @@
             this.BaselineList.StripeOddColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
             this.BaselineList.TabIndex = 0;
             // 
+            // NameColumn
+            // 
+            this.NameColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.NameColumn.HeaderText = "检测名称";
+            this.NameColumn.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.NameColumn.LinkColor = System.Drawing.Color.Black;
+            this.NameColumn.Name = "NameColumn";
+            this.NameColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.NameColumn.TrackVisitedState = false;
+            this.NameColumn.VisitedLinkColor = System.Drawing.Color.Black;
+            // 
+            // DdescriptionColumn
+            // 
+            this.DdescriptionColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.DdescriptionColumn.HeaderText = "描述";
+            this.DdescriptionColumn.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.DdescriptionColumn.LinkColor = System.Drawing.Color.Black;
+            this.DdescriptionColumn.Name = "DdescriptionColumn";
+            this.DdescriptionColumn.TrackVisitedState = false;
+            this.DdescriptionColumn.VisitedLinkColor = System.Drawing.Color.Black;
+            // 
+            // ItemColumn
+            // 
+            this.ItemColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ItemColumn.ContextMenuStrip = this.uiContextMenuStrip;
+            this.ItemColumn.HeaderText = "注册/SecEdit表项";
+            this.ItemColumn.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.ItemColumn.LinkColor = System.Drawing.Color.Black;
+            this.ItemColumn.Name = "ItemColumn";
+            this.ItemColumn.TrackVisitedState = false;
+            this.ItemColumn.VisitedLinkColor = System.Drawing.Color.Black;
+            // 
             // uiContextMenuStrip
             // 
             this.uiContextMenuStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
@@ -146,6 +180,57 @@
             this.OpenSubKeyToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.OpenSubKeyToolStripMenuItem.Text = "打开注册表项";
             this.OpenSubKeyToolStripMenuItem.Click += new System.EventHandler(this.OpenSubKeyToolStripMenuItem_Click);
+            // 
+            // FieldColumn
+            // 
+            this.FieldColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.FieldColumn.HeaderText = "注册/SecEdit表字段";
+            this.FieldColumn.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.FieldColumn.LinkColor = System.Drawing.Color.Black;
+            this.FieldColumn.Name = "FieldColumn";
+            this.FieldColumn.TrackVisitedState = false;
+            this.FieldColumn.VisitedLinkColor = System.Drawing.Color.Black;
+            this.FieldColumn.Width = 156;
+            // 
+            // StandardColumn
+            // 
+            this.StandardColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.StandardColumn.HeaderText = "标准值";
+            this.StandardColumn.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.StandardColumn.LinkColor = System.Drawing.Color.Black;
+            this.StandardColumn.Name = "StandardColumn";
+            this.StandardColumn.TrackVisitedState = false;
+            this.StandardColumn.VisitedLinkColor = System.Drawing.Color.Black;
+            this.StandardColumn.Width = 60;
+            // 
+            // RealityColumn
+            // 
+            this.RealityColumn.HeaderText = "检测值";
+            this.RealityColumn.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.RealityColumn.LinkColor = System.Drawing.Color.Black;
+            this.RealityColumn.Name = "RealityColumn";
+            this.RealityColumn.TrackVisitedState = false;
+            this.RealityColumn.VisitedLinkColor = System.Drawing.Color.Black;
+            // 
+            // StatusColumn
+            // 
+            this.StatusColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Red;
+            this.StatusColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            this.StatusColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.StatusColumn.HeaderText = "检测结果";
+            this.StatusColumn.Name = "StatusColumn";
+            this.StatusColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.StatusColumn.Width = 76;
+            // 
+            // FortifyColumn
+            // 
+            this.FortifyColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.FortifyColumn.HeaderText = "加固";
+            this.FortifyColumn.Name = "FortifyColumn";
+            this.FortifyColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.FortifyColumn.Width = 44;
             // 
             // CheckBtn
             // 
@@ -184,6 +269,7 @@
             this.ReportBtn.TabIndex = 1;
             this.ReportBtn.Text = "导出报告";
             this.ReportBtn.TipsFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ReportBtn.Click += new System.EventHandler(this.ReportBtn_Click);
             // 
             // AboutLinkLabel
             // 
@@ -191,9 +277,9 @@
             this.AboutLinkLabel.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.AboutLinkLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.AboutLinkLabel.LinkBehavior = System.Windows.Forms.LinkBehavior.AlwaysUnderline;
-            this.AboutLinkLabel.Location = new System.Drawing.Point(912, 650);
+            this.AboutLinkLabel.Location = new System.Drawing.Point(834, 650);
             this.AboutLinkLabel.Name = "AboutLinkLabel";
-            this.AboutLinkLabel.Size = new System.Drawing.Size(139, 27);
+            this.AboutLinkLabel.Size = new System.Drawing.Size(217, 27);
             this.AboutLinkLabel.TabIndex = 2;
             this.AboutLinkLabel.TabStop = true;
             this.AboutLinkLabel.Text = "Author: S0cke3t";
@@ -354,88 +440,18 @@
             this.OSNameLabel.Text = "-";
             this.OSNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // NameColumn
+            // checkAllCheckBox
             // 
-            this.NameColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.NameColumn.HeaderText = "检测名称";
-            this.NameColumn.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-            this.NameColumn.LinkColor = System.Drawing.Color.Black;
-            this.NameColumn.Name = "NameColumn";
-            this.NameColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.NameColumn.TrackVisitedState = false;
-            this.NameColumn.VisitedLinkColor = System.Drawing.Color.Black;
-            // 
-            // DdescriptionColumn
-            // 
-            this.DdescriptionColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.DdescriptionColumn.HeaderText = "描述";
-            this.DdescriptionColumn.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-            this.DdescriptionColumn.LinkColor = System.Drawing.Color.Black;
-            this.DdescriptionColumn.Name = "DdescriptionColumn";
-            this.DdescriptionColumn.TrackVisitedState = false;
-            this.DdescriptionColumn.VisitedLinkColor = System.Drawing.Color.Black;
-            // 
-            // ItemColumn
-            // 
-            this.ItemColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ItemColumn.ContextMenuStrip = this.uiContextMenuStrip;
-            this.ItemColumn.HeaderText = "注册/SecEdit表项";
-            this.ItemColumn.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-            this.ItemColumn.LinkColor = System.Drawing.Color.Black;
-            this.ItemColumn.Name = "ItemColumn";
-            this.ItemColumn.TrackVisitedState = false;
-            this.ItemColumn.VisitedLinkColor = System.Drawing.Color.Black;
-            // 
-            // FieldColumn
-            // 
-            this.FieldColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.FieldColumn.HeaderText = "注册/SecEdit表字段";
-            this.FieldColumn.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-            this.FieldColumn.LinkColor = System.Drawing.Color.Black;
-            this.FieldColumn.Name = "FieldColumn";
-            this.FieldColumn.TrackVisitedState = false;
-            this.FieldColumn.VisitedLinkColor = System.Drawing.Color.Black;
-            this.FieldColumn.Width = 156;
-            // 
-            // StandardColumn
-            // 
-            this.StandardColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.StandardColumn.HeaderText = "标准值";
-            this.StandardColumn.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-            this.StandardColumn.LinkColor = System.Drawing.Color.Black;
-            this.StandardColumn.Name = "StandardColumn";
-            this.StandardColumn.TrackVisitedState = false;
-            this.StandardColumn.VisitedLinkColor = System.Drawing.Color.Black;
-            this.StandardColumn.Width = 60;
-            // 
-            // RealityColumn
-            // 
-            this.RealityColumn.HeaderText = "检测值";
-            this.RealityColumn.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-            this.RealityColumn.LinkColor = System.Drawing.Color.Black;
-            this.RealityColumn.Name = "RealityColumn";
-            this.RealityColumn.TrackVisitedState = false;
-            this.RealityColumn.VisitedLinkColor = System.Drawing.Color.Black;
-            // 
-            // StatusColumn
-            // 
-            this.StatusColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Red;
-            this.StatusColumn.DefaultCellStyle = dataGridViewCellStyle3;
-            this.StatusColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.StatusColumn.HeaderText = "检测结果";
-            this.StatusColumn.Name = "StatusColumn";
-            this.StatusColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.StatusColumn.Width = 76;
-            // 
-            // FortifyColumn
-            // 
-            this.FortifyColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.FortifyColumn.HeaderText = "加固";
-            this.FortifyColumn.Name = "FortifyColumn";
-            this.FortifyColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.FortifyColumn.Width = 44;
+            this.checkAllCheckBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.checkAllCheckBox.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.checkAllCheckBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.checkAllCheckBox.Location = new System.Drawing.Point(984, 535);
+            this.checkAllCheckBox.MinimumSize = new System.Drawing.Size(1, 1);
+            this.checkAllCheckBox.Name = "checkAllCheckBox";
+            this.checkAllCheckBox.Size = new System.Drawing.Size(67, 29);
+            this.checkAllCheckBox.TabIndex = 11;
+            this.checkAllCheckBox.Text = "全选";
+            this.checkAllCheckBox.CheckedChanged += new System.EventHandler(this.checkAllCheckBox_CheckedChanged);
             // 
             // Main
             // 
@@ -443,6 +459,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
             this.ClientSize = new System.Drawing.Size(1078, 693);
             this.ControlBoxFillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(171)))), ((int)(((byte)(160)))));
+            this.Controls.Add(this.checkAllCheckBox);
             this.Controls.Add(this.OSNameLabel);
             this.Controls.Add(this.uiLabel7);
             this.Controls.Add(this.IPLabel);
@@ -462,11 +479,12 @@
             this.Controls.Add(this.FortifyBtn);
             this.Controls.Add(this.CheckBtn);
             this.Controls.Add(this.BaselineList);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Main";
             this.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
             this.Style = Sunny.UI.UIStyle.Custom;
-            this.Text = "WindowsBaselineAssistant";
+            this.Text = "Windows基线检测加固助手 预览版";
             this.TitleColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
             this.ZoomScaleRect = new System.Drawing.Rectangle(15, 15, 800, 450);
             this.Load += new System.EventHandler(this.Main_Load);
@@ -507,5 +525,6 @@
         private System.Windows.Forms.DataGridViewLinkColumn RealityColumn;
         private System.Windows.Forms.DataGridViewButtonColumn StatusColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn FortifyColumn;
+        private Sunny.UI.UICheckBox checkAllCheckBox;
     }
 }
