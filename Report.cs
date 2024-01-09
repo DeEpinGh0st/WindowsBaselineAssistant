@@ -1,24 +1,29 @@
 ﻿using NPOI.SS.UserModel;
 using NPOI.SS.Util;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace WindowsBaselineAssistant
 {
     internal class Report
     {
+        /// <summary>
+        /// 自动调整列宽
+        /// </summary>
+        /// <param name="sheet">要调整的工作簿</param>
         public static void AutoSizeColumns(ISheet sheet)
         {
-            int x = sheet.GetRow(1).LastCellNum;
             for (int i = 0; i < sheet.GetRow(1).LastCellNum; i++)
             {
                 sheet.AutoSizeColumn(i);
             }
         }
 
+        /// <summary>
+        /// 添加系统信息表头
+        /// </summary>
+        /// <param name="sheet">要添加的工作簿</param>
+        [Obsolete]
         public static void AddSystemInfoRow(ISheet sheet)
         {
             try
@@ -66,7 +71,11 @@ namespace WindowsBaselineAssistant
         }
 
 
-
+        /// <summary>
+        /// 将dataGridView数据转换为Excel
+        /// </summary>
+        /// <param name="dataGridView">要转换的dataGridView空间</param>
+        /// <param name="sheet">转换到的工作簿</param>
         [Obsolete]
         public static void WriteDataGridViewToExcel(DataGridView dataGridView, ISheet sheet)
         {
@@ -76,26 +85,20 @@ namespace WindowsBaselineAssistant
                 ICellStyle headerStyle = sheet.Workbook.CreateCellStyle();
                 headerStyle.FillForegroundColor = IndexedColors.LightGreen.Index;
                 headerStyle.FillPattern = FillPattern.SolidForeground;
-
                 IFont headerFont = sheet.Workbook.CreateFont();
                 headerFont.Boldweight = (short)FontBoldWeight.Bold;
                 headerFont.FontHeightInPoints = 14; // 设置字体大小
                 headerStyle.SetFont(headerFont);
-
                 // 创建单元格样式
                 ICellStyle cellStyle = sheet.Workbook.CreateCellStyle();
-
-
-
                 // 写入表头
                 IRow headerRow = sheet.CreateRow(1);
                 for (int i = 0; i < dataGridView.Columns.Count - 1; i++) // 不输出最后一列数据
                 {
-                    NPOI.SS.UserModel.ICell cell = headerRow.CreateCell(i);
+                    ICell cell = headerRow.CreateCell(i);
                     cell.SetCellValue(dataGridView.Columns[i].HeaderText);
                     cell.CellStyle = headerStyle;
                 }
-
                 // 写入数据行
                 for (int i = 0; i < dataGridView.Rows.Count; i++)
                 {
@@ -105,7 +108,7 @@ namespace WindowsBaselineAssistant
                     for (int j = 0; j < dataGridViewRow.Cells.Count - 1; j++) // 不输出最后一列数据
                     {
                         DataGridViewCell dataGridViewCell = dataGridViewRow.Cells[j];
-                        NPOI.SS.UserModel.ICell cell = excelRow.CreateCell(j);
+                        ICell cell = excelRow.CreateCell(j);
                         cell.SetCellValue(dataGridViewCell.Value?.ToString() ?? "");
 
                         // 根据倒数第二列的值设置单元格底色
@@ -122,7 +125,12 @@ namespace WindowsBaselineAssistant
 
         }
 
-        static void SetCellStyleBasedOnValue(NPOI.SS.UserModel.ICell cell, string value)
+        /// <summary>
+        /// 设置单元格样式
+        /// </summary>
+        /// <param name="cell">单元格</param>
+        /// <param name="value">单元格值</param>
+        static void SetCellStyleBasedOnValue(ICell cell, string value)
         {
             try
             {

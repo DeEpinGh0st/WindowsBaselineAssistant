@@ -283,6 +283,7 @@
             this.AboutLinkLabel.TabIndex = 2;
             this.AboutLinkLabel.TabStop = true;
             this.AboutLinkLabel.Text = "Author: S0cke3t";
+            this.AboutLinkLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.AboutLinkLabel.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
             this.AboutLinkLabel.Click += new System.EventHandler(this.AboutLinkLabel_Click);
             // 
@@ -484,7 +485,7 @@
             this.Name = "Main";
             this.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
             this.Style = Sunny.UI.UIStyle.Custom;
-            this.Text = "Windows基线检测加固助手 预览版";
+            this.Text = "Windows基线检测加固助手";
             this.TitleColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
             this.ZoomScaleRect = new System.Drawing.Rectangle(15, 15, 800, 450);
             this.Load += new System.EventHandler(this.Main_Load);

@@ -1,8 +1,5 @@
-﻿using NPOI.OpenXmlFormats.Wordprocessing;
-using NPOI.SS.UserModel;
-using NPOI.SS.Util;
+﻿using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
-using NPOI.XWPF.UserModel;
 using Sunny.UI;
 using System;
 using System.Diagnostics;
@@ -23,8 +20,8 @@ namespace WindowsBaselineAssistant
         XmlNodeList xmlNodeList;
         XmlDocument xmlDocument;
         XmlElement xmlElement;
-        static string secInfoFile = Util.CurrentDirectory + "config.cfg";
-        static string fortifyFile = Util.CurrentDirectory + "fortify.cfg";
+        static string secInfoFile = $"{Util.CurrentDirectory}config.cfg";
+        static string fortifyFile = $"{Util.CurrentDirectory}fortify.cfg";
         string secInfoCmd = "secedit /export /cfg config.cfg";
         string fortifyCmd = "secedit /configure /db fortify.sdb /cfg fortify.cfg";
         string openRegCmd = "regjump.exe {0} /accepteula";
@@ -244,7 +241,6 @@ namespace WindowsBaselineAssistant
                     //secedit加固
                     iniFile.Write(fortifyItem, fortifyField, fortifyValue);
                     iniFile.UpdateFile();
-                    //TODO
                     fortifyCount++;
                 }
                 int code = Util.ExecutExternalProgram(fortifyCmd, true, ProcessWindowStyle.Hidden);
@@ -254,7 +250,6 @@ namespace WindowsBaselineAssistant
                     return;
                 }
                 checkAllCheckBox.Checked = false;
-                //UIMessageBox.ShowSuccess(string.Format("已完成{0}项加固操作,请再次进行检测", fortifyCount.ToString()));
                 UIMessageBox.ShowSuccess($"已完成{fortifyCount}项加固操作,请再次进行检测");
             }
             catch (Exception ex)
@@ -311,8 +306,6 @@ namespace WindowsBaselineAssistant
                 IWorkbook workbook = new XSSFWorkbook();
                 ISheet sheet = workbook.CreateSheet("Sheet1");
                 string reportFileName = $"Windows安全基线检测加固结果汇总表-{Util.GetIPAddress()}.xlsx";
-                // 获取 DataGridView 中的数据
-                //DataGridView dataGridView = GetDataGridViewWithData(); // 请替换为你的实际 DataGridView 控件
                 // 在表格最上面添加一行系统信息
                 Report.AddSystemInfoRow(sheet);
                 // 将 DataGridView 中的数据写入 Excel 表格

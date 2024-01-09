@@ -1,9 +1,9 @@
-﻿using NPOI.OpenXmlFormats.Wordprocessing;
-using NPOI.XWPF.UserModel;
+﻿using NPOI.XWPF.UserModel;
 using Sunny.UI;
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Management;
 using System.Xml;
 
@@ -46,7 +46,6 @@ namespace WindowsBaselineAssistant
                 if (value != string.Empty)
                 {
                     return (section, value);
-                    //break;
                 }
             }
             return ("", "");
@@ -66,8 +65,8 @@ namespace WindowsBaselineAssistant
                 if ((bool)mo["IPEnabled"] == true)
                 {
                     //st=mo["IpAddress"].ToString();
-                    System.Array ar;
-                    ar = (System.Array)(mo.Properties["IpAddress"].Value);
+                    Array ar;
+                    ar = (Array)(mo.Properties["IpAddress"].Value);
                     st = ar.GetValue(0).ToString();
                     break;
                 }
@@ -84,7 +83,7 @@ namespace WindowsBaselineAssistant
             try
             {
                 ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT Caption, Version, CSDVersion FROM Win32_OperatingSystem");
-                foreach (ManagementObject os in searcher.Get())
+                foreach (ManagementObject os in searcher.Get().Cast<ManagementObject>())
                 {
                     string caption = os["Caption"].ToString();
                     string version = os["Version"].ToString();
@@ -139,7 +138,7 @@ namespace WindowsBaselineAssistant
                 CreateNoWindow = isnowindow,
                 WindowStyle = processWindowStyle,
                 Arguments = "/c " + command,
-                WorkingDirectory = Util.CurrentDirectory
+                WorkingDirectory = CurrentDirectory
             };
             // 创建进程对象
             Process process = new Process
@@ -150,9 +149,7 @@ namespace WindowsBaselineAssistant
             {
                 // 启动进程
                 process.Start();
-                //Thread.Sleep(500);
                 process.WaitForExit();
-                //Thread.Sleep(1000);
                 // 获取返回值
                 int exitCode = process.ExitCode;
                 return exitCode;
@@ -167,37 +164,6 @@ namespace WindowsBaselineAssistant
                 // 关闭进程
                 process.Close();
                 process.Dispose();
-            }
-        }
-
-
-        public static void InsertParagraph(XWPFDocument doc, string text, bool bold = false, bool italic = false)
-        {
-            // 创建段落
-            XWPFParagraph paragraph = doc.CreateParagraph();
-
-            // 创建运行文本
-            XWPFRun run = paragraph.CreateRun();
-            run.SetText(text);
-
-            // 设置文本样式
-            run.IsBold = bold;
-            run.IsItalic = italic;
-        }
-
-        public static void InsertTable(XWPFDocument doc, int rows, int cols)
-        {
-            // 创建表格
-            XWPFTable table = doc.CreateTable(rows, cols);
-
-            // 遍历表格的所有单元格，可以在单元格中添加文本或其他内容
-            for (int row = 0; row < rows; row++)
-            {
-                for (int col = 0; col < cols; col++)
-                {
-                    XWPFTableCell cell = table.GetRow(row).GetCell(col);
-                    cell.SetText($"行{row + 1}, 列{col + 1}");
-                }
             }
         }
     }

@@ -60,7 +60,7 @@
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>1486051850-windowssocialnetworkbrandlogo_79070.ico</ApplicationIcon>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Main.cs">
@@ -144,6 +144,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="1486051850-windowssocialnetworkbrandlogo_79070.ico" />
+    <Content Include="logo.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
