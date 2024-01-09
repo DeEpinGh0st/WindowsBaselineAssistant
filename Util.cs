@@ -1,4 +1,6 @@
-﻿using Sunny.UI;
+﻿using NPOI.OpenXmlFormats.Wordprocessing;
+using NPOI.XWPF.UserModel;
+using Sunny.UI;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -165,6 +167,37 @@ namespace WindowsBaselineAssistant
                 // 关闭进程
                 process.Close();
                 process.Dispose();
+            }
+        }
+
+
+        public static void InsertParagraph(XWPFDocument doc, string text, bool bold = false, bool italic = false)
+        {
+            // 创建段落
+            XWPFParagraph paragraph = doc.CreateParagraph();
+
+            // 创建运行文本
+            XWPFRun run = paragraph.CreateRun();
+            run.SetText(text);
+
+            // 设置文本样式
+            run.IsBold = bold;
+            run.IsItalic = italic;
+        }
+
+        public static void InsertTable(XWPFDocument doc, int rows, int cols)
+        {
+            // 创建表格
+            XWPFTable table = doc.CreateTable(rows, cols);
+
+            // 遍历表格的所有单元格，可以在单元格中添加文本或其他内容
+            for (int row = 0; row < rows; row++)
+            {
+                for (int col = 0; col < cols; col++)
+                {
+                    XWPFTableCell cell = table.GetRow(row).GetCell(col);
+                    cell.SetText($"行{row + 1}, 列{col + 1}");
+                }
             }
         }
     }

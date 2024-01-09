@@ -267,7 +267,7 @@
             this.ReportBtn.Name = "ReportBtn";
             this.ReportBtn.Size = new System.Drawing.Size(100, 35);
             this.ReportBtn.TabIndex = 1;
-            this.ReportBtn.Text = "导出报告";
+            this.ReportBtn.Text = "导出结果";
             this.ReportBtn.TipsFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.ReportBtn.Click += new System.EventHandler(this.ReportBtn_Click);
             // 
@@ -369,7 +369,7 @@
             this.rateLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.rateLabel.Location = new System.Drawing.Point(130, 647);
             this.rateLabel.Name = "rateLabel";
-            this.rateLabel.Size = new System.Drawing.Size(116, 23);
+            this.rateLabel.Size = new System.Drawing.Size(399, 23);
             this.rateLabel.TabIndex = 4;
             this.rateLabel.Text = "-";
             this.rateLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;

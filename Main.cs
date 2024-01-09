@@ -1,4 +1,9 @@
-﻿using Sunny.UI;
+﻿using NPOI.OpenXmlFormats.Wordprocessing;
+using NPOI.SS.UserModel;
+using NPOI.SS.Util;
+using NPOI.XSSF.UserModel;
+using NPOI.XWPF.UserModel;
+using Sunny.UI;
 using System;
 using System.Diagnostics;
 using System.Drawing;
@@ -23,6 +28,7 @@ namespace WindowsBaselineAssistant
         string secInfoCmd = "secedit /export /cfg config.cfg";
         string fortifyCmd = "secedit /configure /db fortify.sdb /cfg fortify.cfg";
         string openRegCmd = "regjump.exe {0} /accepteula";
+        string suggestTip = string.Empty;
 
         private void SetPassStyle(int index)
         {
@@ -166,16 +172,19 @@ namespace WindowsBaselineAssistant
                 if (ratePercent < 50)
                 {
                     rateLabel.ForeColor = Color.Red;
+                    suggestTip = "建议进行加固!";
                 }
                 else if (ratePercent >= 50 && ratePercent < 80)
                 {
                     rateLabel.ForeColor = Color.Orange;
+                    suggestTip = "建议根据业务需求进行加固!";
                 }
                 else
                 {
                     rateLabel.ForeColor = Color.Green;
+                    suggestTip = "满足基线要求,可自行判断进行加固!";
                 }
-                rateLabel.Text = ratePercent + "%";
+                rateLabel.Text = ratePercent + $"%  {suggestTip}";
             }
             catch (Exception ex)
             {
@@ -241,11 +250,12 @@ namespace WindowsBaselineAssistant
                 int code = Util.ExecutExternalProgram(fortifyCmd, true, ProcessWindowStyle.Hidden);
                 if (code != 0)
                 {
-                    UIMessageBox.ShowWarning(string.Format("已完成{0}项加固操作,secedit加固出现错误.请检查%windir%\\security\\logs\\scesrv.log", fortifyCount.ToString()));
+                    UIMessageBox.ShowWarning($"已完成{fortifyCount}项加固操作,secedit加固出现错误.请检查%windir%\\security\\logs\\scesrv.log");
                     return;
                 }
                 checkAllCheckBox.Checked = false;
-                UIMessageBox.ShowSuccess(string.Format("已完成{0}项加固操作,请再次进行检测", fortifyCount.ToString()));
+                //UIMessageBox.ShowSuccess(string.Format("已完成{0}项加固操作,请再次进行检测", fortifyCount.ToString()));
+                UIMessageBox.ShowSuccess($"已完成{fortifyCount}项加固操作,请再次进行检测");
             }
             catch (Exception ex)
             {
@@ -287,9 +297,42 @@ namespace WindowsBaselineAssistant
 
         }
 
+        [Obsolete]
         private void ReportBtn_Click(object sender, EventArgs e)
         {
-            UIMessageBox.ShowInfo("施工中......");
+            try
+            {
+                if (BaselineList.Rows.Count == 0)
+                {
+                    UIMessageBox.ShowWarning($"无检测数据,请检测或加固后再尝试此操作!");
+                    return;
+                }
+                // 创建一个新的 Excel 工作簿和工作表
+                IWorkbook workbook = new XSSFWorkbook();
+                ISheet sheet = workbook.CreateSheet("Sheet1");
+                string reportFileName = $"Windows安全基线检测加固结果汇总表-{Util.GetIPAddress()}.xlsx";
+                // 获取 DataGridView 中的数据
+                //DataGridView dataGridView = GetDataGridViewWithData(); // 请替换为你的实际 DataGridView 控件
+                // 在表格最上面添加一行系统信息
+                Report.AddSystemInfoRow(sheet);
+                // 将 DataGridView 中的数据写入 Excel 表格
+                Report.WriteDataGridViewToExcel(BaselineList, sheet);
+                // 自动调整列宽
+                Report.AutoSizeColumns(sheet);
+                // 保存 Excel 文件
+                using (FileStream fs = new FileStream(reportFileName, FileMode.Create, FileAccess.Write))
+                {
+                    workbook.Write(fs);
+                    UIMessageBox.ShowSuccess($"导出成功！\n结果已保存到\"{reportFileName}\"");
+                }
+            }
+            catch (Exception ex)
+            {
+
+                UIMessageBox.ShowError($"导出错误!\n{ex.Message}");
+            }
+
         }
+
     }
 }
