@@ -327,5 +327,9 @@ namespace WindowsBaselineAssistant
 
         }
 
+        private void RepoLinkLabel_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://github.com/DeEpinGh0st/WindowsBaselineAssistant");
+        }
     }
 }

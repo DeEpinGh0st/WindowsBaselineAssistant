@@ -65,6 +65,7 @@
             this.uiLabel7 = new Sunny.UI.UILabel();
             this.OSNameLabel = new Sunny.UI.UILabel();
             this.checkAllCheckBox = new Sunny.UI.UICheckBox();
+            this.RepoLinkLabel = new Sunny.UI.UILinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.BaselineList)).BeginInit();
             this.uiContextMenuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -277,13 +278,13 @@
             this.AboutLinkLabel.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.AboutLinkLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.AboutLinkLabel.LinkBehavior = System.Windows.Forms.LinkBehavior.AlwaysUnderline;
-            this.AboutLinkLabel.Location = new System.Drawing.Point(834, 650);
+            this.AboutLinkLabel.Location = new System.Drawing.Point(834, 628);
             this.AboutLinkLabel.Name = "AboutLinkLabel";
             this.AboutLinkLabel.Size = new System.Drawing.Size(217, 27);
             this.AboutLinkLabel.TabIndex = 2;
             this.AboutLinkLabel.TabStop = true;
             this.AboutLinkLabel.Text = "Author: S0cke3t";
-            this.AboutLinkLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.AboutLinkLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.AboutLinkLabel.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
             this.AboutLinkLabel.Click += new System.EventHandler(this.AboutLinkLabel_Click);
             // 
@@ -454,12 +455,28 @@
             this.checkAllCheckBox.Text = "全选";
             this.checkAllCheckBox.CheckedChanged += new System.EventHandler(this.checkAllCheckBox_CheckedChanged);
             // 
+            // RepoLinkLabel
+            // 
+            this.RepoLinkLabel.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
+            this.RepoLinkLabel.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.RepoLinkLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.RepoLinkLabel.LinkBehavior = System.Windows.Forms.LinkBehavior.AlwaysUnderline;
+            this.RepoLinkLabel.Location = new System.Drawing.Point(792, 659);
+            this.RepoLinkLabel.Name = "RepoLinkLabel";
+            this.RepoLinkLabel.Size = new System.Drawing.Size(268, 27);
+            this.RepoLinkLabel.TabIndex = 12;
+            this.RepoLinkLabel.TabStop = true;
+            this.RepoLinkLabel.Text = "Github: WindowsBaselineAssistant";
+            this.RepoLinkLabel.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.RepoLinkLabel.Click += new System.EventHandler(this.RepoLinkLabel_Click);
+            // 
             // Main
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
             this.ClientSize = new System.Drawing.Size(1078, 693);
             this.ControlBoxFillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(171)))), ((int)(((byte)(160)))));
+            this.Controls.Add(this.RepoLinkLabel);
             this.Controls.Add(this.checkAllCheckBox);
             this.Controls.Add(this.OSNameLabel);
             this.Controls.Add(this.uiLabel7);
@@ -527,5 +544,6 @@
         private System.Windows.Forms.DataGridViewButtonColumn StatusColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn FortifyColumn;
         private Sunny.UI.UICheckBox checkAllCheckBox;
+        private Sunny.UI.UILinkLabel RepoLinkLabel;
     }
 }

@@ -5,7 +5,7 @@
 		<type>registry</type>
         <registry>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp</registry>
         <regitem>PortNumber</regitem>
-        <standard>3389</standard>
+        <standard>!3389</standard>
 		<dtype>fixed</dtype>
 		<warning>1</warning>
     </item>
@@ -20,7 +20,7 @@
     </item>
 	<item>
         <name>检查密码最长使用期限</name>
-        <description>长期修改密码会提高密码暴露风险,所以为了提高系统的保密性.需要检查密码最长使用期限.</description>
+        <description>长期不修改密码会提高密码暴露风险,所以为了提高系统的保密性.需要检查密码最长使用期限.</description>
 		<type>secedit</type>
 		<mark>MaximumPasswordAge</mark>
         <standard>90</standard>

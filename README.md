@@ -22,7 +22,7 @@ WindowsBaselineAssistant(WBA)是一个用于检测和加固Windows安全基线�
 
 WBA支持自定义规则以适应不同环境下的检测需求  
 
-WBA的所有规则位于item.xml文件中,其中检测规则分为`registry`和`secedit`两种,判定规则分为`fixed,enum,greaternumber,lessnumber,array,equals`六种.  
+WBA的所有规则位于`item.xml`文件中,其中检测规则分为`registry`和`secedit`两种,判定规则分为`fixed,enum,greaternumber,lessnumber,array,equals`六种.  
 
 ### 规则格式
 
@@ -53,11 +53,11 @@ WBA的所有规则位于item.xml文件中,其中检测规则分为`registry`和`
 **secedit(读取config.cfg信息)**
 ```xml
 <item>
-    <name>检查密码最长使用期限</name>
-    <description>长期修改密码会提高密码暴露风险,所以为了提高系统的保密性.需要检查密码最长使用期限.</description>
+	<name>检查密码最长使用期限</name>
+	<description>长期修改密码会提高密码暴露风险,所以为了提高系统的保密性.需要检查密码最长使用期限.</description>
 	<type>secedit</type>
 	<mark>MaximumPasswordAge</mark>
-    <standard>90</standard>
+	<standard>90</standard>
 	<dtype>greaternumber</dtype>
 </item>
 ```
@@ -92,12 +92,12 @@ WBA的所有规则位于item.xml文件中,其中检测规则分为`registry`和`
 
 ```xml
 <item>
-    <name>检查处于SYN_RCVD 状态下,且至少已经进行了一次重新传输的TCP连接阈值</name>
-    <description>xxxxxx</description>
+	<name>检查处于SYN_RCVD 状态下,且至少已经进行了一次重新传输的TCP连接阈值</name>
+	<description>xxxxxx</description>
 	<type>registry</type>
-    <registry>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\Tcpip\Parameters</registry>
-    <regitem>TcpMaxHalfOpenRetried</regitem>
-    <standard>400</standard>
+	<registry>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\Tcpip\Parameters</registry>
+	<regitem>TcpMaxHalfOpenRetried</regitem>
+	<standard>400</standard>
 	<dtype>lessnumber</dtype>
 </item>
 ```
@@ -119,5 +119,5 @@ WBA的所有规则位于item.xml文件中,其中检测规则分为`registry`和`
 
 #### 为什么加固后,通过Windows管理界面查看配置项未进行更改?
 
-这通常时你的规则和你的Windows系统不匹配造成的,你需要重新查找检测项在注册表和secedit中的检测位置,并更新的你的规则库
+这通常是你的规则和你的Windows系统不匹配造成的,你需要重新查找检测项在注册表和secedit中的检测位置,并更新的你的规则库
 
