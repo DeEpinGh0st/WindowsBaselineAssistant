@@ -71,6 +71,11 @@ namespace WindowsBaselineAssistant
                     BaselineList.Rows[index].Cells[0].Value = xmlNode["name"].InnerText;
                     BaselineList.Rows[index].Cells[1].Value = xmlNode["description"].InnerText;
                     BaselineList.Rows[index].Cells[4].Value = xmlNode["standard"].InnerText;
+                    BaselineList.Rows[index].Cells[8].Value = "string";
+                    if (Util.ContainsElement(xmlNode, "valuetype"))
+                    {
+                        BaselineList.Rows[index].Cells[8].Value = xmlNode["valuetype"].InnerText;
+                    }
                     string queryType = xmlNode["type"].InnerText;
                     string reality = string.Empty, section = string.Empty, warning = string.Empty;
                     //string warning = string.Empty;
@@ -78,8 +83,6 @@ namespace WindowsBaselineAssistant
                     switch (queryType)
                     {
                         case "secedit":
-                            BaselineList.Rows[index].Cells[2].Value = "-";
-                            BaselineList.Rows[index].Cells[3].Value = "-";
                             string mark = xmlNode["mark"].InnerText;
                             (section, reality) = Util.GetResultByMark(mark);
                             BaselineList.Rows[index].Cells[2].Value = section;
@@ -95,13 +98,24 @@ namespace WindowsBaselineAssistant
                         default:
                             break;
                     }
-                    string dataType = xmlNode["dtype"].InnerText;
-                    if (Util.ContainsElement(xmlNode, "warning"))
+                    string assessment = xmlNode["assessment"].InnerText;
+                    if (Util.ContainsElement(xmlNode, "manual"))
                     {
                         BaselineList.Rows[index].Cells[6].Value = "手动加固";
                         BaselineList.Rows[index].Cells[7].ReadOnly = true;
+                        BaselineList.Rows[index].Cells[6].Style.ForeColor = Color.Orange;
                         BaselineList.Rows[index].Cells[7].Style.BackColor = Color.Orange;
                         BaselineList.Rows[index].Cells[7].ToolTipText = "该项不支持自动加固";
+                        passCount++;
+                        continue;
+                    }
+                    if (Util.ContainsElement(xmlNode, "ignore"))
+                    {
+                        BaselineList.Rows[index].Cells[6].Value = "已忽略";
+                        BaselineList.Rows[index].Cells[7].ReadOnly = true;
+                        BaselineList.Rows[index].Cells[6].Style.ForeColor = UIColor.LayuiBlue;
+                        BaselineList.Rows[index].Cells[7].Style.BackColor = UIColor.LayuiBlue;
+                        BaselineList.Rows[index].Cells[7].ToolTipText = "该项配置为忽略";
                         passCount++;
                         continue;
                     }
@@ -110,7 +124,7 @@ namespace WindowsBaselineAssistant
                     {
                         continue;
                     }
-                    switch (dataType)
+                    switch (assessment)
                     {
                         case "fixed"://注：固定值为不符合
                             if (!reality.Equals(standard))
@@ -228,13 +242,14 @@ namespace WindowsBaselineAssistant
                     {
                         continue;
                     }
-                    string fortifyItem, fortifyField, fortifyValue = string.Empty;
+                    string fortifyItem, fortifyField, fortifyValue, fortifyValueType = string.Empty;
                     fortifyItem = dataGridViewRow.Cells["ItemColumn"].Value.ToString();
                     fortifyField = dataGridViewRow.Cells["FieldColumn"].Value.ToString();
                     fortifyValue = dataGridViewRow.Cells["StandardColumn"].Value.ToString();
+                    fortifyValueType = dataGridViewRow.Cells["ValueTypeColumn"].Value.ToString();
                     if (fortifyItem.Contains("HKEY"))
                     {
-                        RegistryHelper.SaveValue(fortifyItem, fortifyField, fortifyValue);
+                        RegistryHelper.SaveValue(fortifyItem, fortifyField, fortifyValue, fortifyValueType);
                         fortifyCount++;
                         continue;
                     }
@@ -330,6 +345,16 @@ namespace WindowsBaselineAssistant
         private void RepoLinkLabel_Click(object sender, EventArgs e)
         {
             Process.Start("https://github.com/DeEpinGh0st/WindowsBaselineAssistant");
+        }
+
+        private void showValueTypeuiCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!showValueTypeuiCheckBox.Checked)
+            {
+                BaselineList.Columns[8].Visible = false;
+                return;
+            }
+            BaselineList.Columns[8].Visible = true;
         }
     }
 }

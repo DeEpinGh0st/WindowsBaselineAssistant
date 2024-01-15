@@ -23,9 +23,9 @@ namespace WHC.OrderWater.Commons
             string result = string.Empty;
             foreach (var item in strings)
             {
-                result = result + item + "\r\n";
+                result = result + item + ",";
             }
-            return result;
+            return result.Substring(0, result.Length - 1);
         }
 
         private static (RegistryKey, string) FormatBaseKey(string fullSoftwareKey)
@@ -106,17 +106,22 @@ namespace WHC.OrderWater.Commons
         public static void SaveValue(string softwareKey, string key, string value)
         {
             (RegistryKey registryKey, string subKey) = FormatBaseKey(softwareKey);
-            //return GetValue(registryKey, subKey, key);
-            SaveValue(registryKey, subKey, key, value);
+            SaveValue(registryKey, subKey, key, value, "String");
         }
 
+
+        public static void SaveValue(string softwareKey, string key, string value, string kind)
+        {
+            (RegistryKey registryKey, string subKey) = FormatBaseKey(softwareKey);
+            SaveValue(registryKey, subKey, key, value, kind);
+        }
         /// <summary>
         /// Saves the key and the value to registry.
         /// </summary>
         /// <param name="key">registry key</param>
         /// <param name="value">the value of the key</param>
         /// <returns>Returns true if successful, otherwise return false.</returns>
-        public static void SaveValue(RegistryKey registryKey, string softwareKey, string key, string value)
+        public static void SaveValue(RegistryKey registryKey, string softwareKey, string key, string value, string kind)
         {
             try
             {
@@ -136,13 +141,47 @@ namespace WHC.OrderWater.Commons
                 {
                     reg = registryKey.CreateSubKey(softwareKey);
                 }
-                reg.SetValue(key, value);
-                //return true;
+                (RegistryValueKind valueType, object valueReality) = GetValueKind(kind, value);
+                reg.SetValue(key, valueReality, valueType);
             }
             catch (Exception)
             {
                 throw;
-                //return false;
+            }
+        }
+
+        /// <summary>
+        /// 获取配置文件检测项数据类型
+        /// </summary>
+        /// <param name="kind">检测项类型</param>
+        /// <param name="valueType">转换后的注册表数据类型</param>
+        /// <returns></returns>
+        private static (RegistryValueKind, object) GetValueKind(string kind, string value)
+        {
+            RegistryValueKind valueType;
+            switch (kind)
+            {
+                case "string":
+                    valueType = RegistryValueKind.String;
+                    return (valueType, value);
+                case "expandstring":
+                    valueType = RegistryValueKind.ExpandString;
+                    return (valueType, value);
+                /*case "Binary":
+                    valueType = RegistryValueKind.Binary;
+                    break;*/
+                case "dword":
+                    valueType = RegistryValueKind.DWord;
+                    return (valueType, value);
+                case "qword":
+                    valueType = RegistryValueKind.QWord;
+                    return (valueType, value);
+                case "multistring":
+                    valueType = RegistryValueKind.MultiString;
+                    return (valueType, value.Split(','));
+                default:
+                    valueType = RegistryValueKind.String;
+                    return (valueType, value);
             }
         }
         #endregion

@@ -6,7 +6,7 @@ WindowsBaselineAssistant(WBA)是一个用于检测和加固Windows安全基线�
 
 ## 截图
 
-![UIMain](/assets/image-20240109220715021.png)
+![UIMain](./assets/image-20240115155426706.png)
 
 
 ## 工具运行要求
@@ -30,13 +30,14 @@ WBA的所有规则位于`item.xml`文件中,其中检测规则分为`registry`�
 
 ```xml
 <item>
-    <name>检查是否已启用并正确配置ICMP攻击保护</name>
-    <description>配置ICMP攻击保护预防ICMP攻击,防止DOS攻击导致服务器停止响应与奔溃</description>
+	<name>检查源路由配置</name>
+	<description>源路由攻击有源地址欺骗、IP欺骗等,为了提高系统的可靠性,需要检查是否启用正确配置源路由攻击保护.</description>
 	<type>registry</type>
-    <registry>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\Tcpip\Parameters</registry>
-    <regitem>EnableICMPRedirect</regitem>
-    <standard>0</standard>
-	<dtype>enum</dtype>
+	<registry>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters</registry>
+	<regitem>DisableIPSourceRouting</regitem>
+	<standard>2</standard>
+	<assessment>enum</assessment>
+	<valuetype>dword</valuetype>
 </item>
 ```
 |   名称   |   解释   |
@@ -47,7 +48,8 @@ WBA的所有规则位于`item.xml`文件中,其中检测规则分为`registry`�
 |   registry   |   检测项的注册表路径   |
 |   regitem   |   检测的注册表项   |
 |   standard   |   标准值   |
-|   dtype   |   判定规则(见: 判定规则)   |
+|   assessment   |   判定规则(见: 判定规则)   |
+| valuetype | 注册表数据类型(见: 数据类型) |
 
 
 **secedit(读取config.cfg信息)**
@@ -58,7 +60,7 @@ WBA的所有规则位于`item.xml`文件中,其中检测规则分为`registry`�
 	<type>secedit</type>
 	<mark>MaximumPasswordAge</mark>
 	<standard>90</standard>
-	<dtype>greaternumber</dtype>
+	<assessment>greaternumber</assessment>
 </item>
 ```
 |   名称   |   解释   |
@@ -68,7 +70,29 @@ WBA的所有规则位于`item.xml`文件中,其中检测规则分为`registry`�
 |   type   |   同上   |
 |   mark   |   secedit文件中的键   |
 |   standard   |   同上   |
-|   dtype   |   同上   |
+|   assessment   |   同上   |
+
+**附加标识**
+
+manual: 用于标识检测项需要手动进行加固
+
+```xml
+<item>
+	<manual>1<manual>
+</item>
+```
+
+![image-20240115160311962](./assets/image-20240115160311962.png)
+
+ignore: 用于标识检测项为已忽略
+
+```xml
+<item>
+	<ignore>1<ignore>
+</item>
+```
+
+![image-20240115160420571](./assets/image-20240115160420571.png)
 
 **判定规则**
 
@@ -81,14 +105,28 @@ WBA的所有规则位于`item.xml`文件中,其中检测规则分为`registry`�
 |   array   |   检测项的标准值是一个数组(多行)   |   相同: 符合 反之: 不符合   |
 |   equals   |   检测项的标准值等于检测值   |   相同: 符合 反之: 不符合   |
 
+**数据类型**
+
+| 注册表类型   | 工具映射类型 | 类型解释                                       |
+| ------------ | ------------ | ---------------------------------------------- |
+| String       | string       | 字符串类型                                     |
+| ExpandString | expandstring | 可扩展字符串类型的注册表值，通常包含了环境变量 |
+| Binary       | 暂不支持     | 二进制数据类型                                 |
+| DWord        | dword        | 32位整数类型                                   |
+| QWord        | qword        | 64位整数类型                                   |
+| MultiString  | multistring  | 多行字符串类型                                 |
+| Unknown      | 默认         | 未知类型                                       |
+| None         | 暂不支持     | 没有特定类型                                   |
+
 **例**
 
-如现在要检测`重新传输的TCP连接阈值` 
-检测类型为`检索注册表`
-检索的注册表路径为`HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\services\\Tcpip\\Parameters` 
-检测项为`TcpMaxHalfOpenRetried` 
-标准值为`400` 
-检测值要小于此值时`判定符合`  
+如现在要检测`重新传输的TCP连接阈值`   
+检测类型为`检索注册表  `
+检索的注册表路径为`HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\services\\Tcpip\\Parameters`   
+检测项为`TcpMaxHalfOpenRetried`   
+标准值为`400`   
+数据类型为`DWord`  
+检测值要小于此值时`判定符合`    
 
 ```xml
 <item>
@@ -98,7 +136,8 @@ WBA的所有规则位于`item.xml`文件中,其中检测规则分为`registry`�
 	<registry>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\Tcpip\Parameters</registry>
 	<regitem>TcpMaxHalfOpenRetried</regitem>
 	<standard>400</standard>
-	<dtype>lessnumber</dtype>
+	<assessment>lessnumber</assessment>
+    <valuetype>dword</valuetype>
 </item>
 ```
 

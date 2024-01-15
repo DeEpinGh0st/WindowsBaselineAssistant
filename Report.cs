@@ -93,7 +93,7 @@ namespace WindowsBaselineAssistant
                 ICellStyle cellStyle = sheet.Workbook.CreateCellStyle();
                 // 写入表头
                 IRow headerRow = sheet.CreateRow(1);
-                for (int i = 0; i < dataGridView.Columns.Count - 1; i++) // 不输出最后一列数据
+                for (int i = 0; i < dataGridView.Columns.Count - 2; i++) // 不输出最后两列数据
                 {
                     ICell cell = headerRow.CreateCell(i);
                     cell.SetCellValue(dataGridView.Columns[i].HeaderText);
@@ -105,7 +105,7 @@ namespace WindowsBaselineAssistant
                     DataGridViewRow dataGridViewRow = dataGridView.Rows[i];
                     IRow excelRow = sheet.CreateRow(i + 2);
 
-                    for (int j = 0; j < dataGridViewRow.Cells.Count - 1; j++) // 不输出最后一列数据
+                    for (int j = 0; j < dataGridViewRow.Cells.Count - 2; j++) // 不输出最后两列数据
                     {
                         DataGridViewCell dataGridViewCell = dataGridViewRow.Cells[j];
                         ICell cell = excelRow.CreateCell(j);

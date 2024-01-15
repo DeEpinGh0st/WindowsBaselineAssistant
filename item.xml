@@ -6,8 +6,9 @@
         <registry>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp</registry>
         <regitem>PortNumber</regitem>
         <standard>!3389</standard>
-		<dtype>fixed</dtype>
-		<warning>1</warning>
+		<assessment>fixed</assessment>
+		<valuetype>dword</valuetype>
+		<manual>1</manual>
     </item>
     <item>
         <name>检查源路由配置</name>
@@ -16,7 +17,8 @@
         <registry>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters</registry>
         <regitem>DisableIPSourceRouting</regitem>
         <standard>2</standard>
-		<dtype>enum</dtype>
+		<assessment>enum</assessment>
+		<valuetype>dword</valuetype>
     </item>
 	<item>
         <name>检查密码最长使用期限</name>
@@ -24,7 +26,7 @@
 		<type>secedit</type>
 		<mark>MaximumPasswordAge</mark>
         <standard>90</standard>
-		<dtype>greaternumber</dtype>
+		<assessment>greaternumber</assessment>
     </item>
 		<item>
         <name>检查密码长度最小值</name>
@@ -32,7 +34,7 @@
 		<type>secedit</type>
 		<mark>MinimumPasswordLength</mark>
         <standard>8</standard>
-		<dtype>greaternumber</dtype>
+		<assessment>greaternumber</assessment>
     </item>
 	<item>
         <name>检查是否启用密码复杂度要求</name>
@@ -40,7 +42,7 @@
 		<type>secedit</type>
 		<mark>PasswordComplexity</mark>
         <standard>1</standard>
-		<dtype>enum</dtype>
+		<assessment>enum</assessment>
     </item>
 	<item>
         <name>检查"强制密码历史"个数</name>
@@ -48,7 +50,7 @@
 		<type>secedit</type>
 		<mark>PasswordHistorySize</mark>
         <standard>2</standard>
-		<dtype>greaternumber</dtype>
+		<assessment>greaternumber</assessment>
     </item>
 	<item>
         <name>检查是否启用帐户锁定阈值</name>
@@ -56,7 +58,7 @@
 		<type>secedit</type>
 		<mark>LockoutBadCount</mark>
         <standard>1</standard>
-		<dtype>enum</dtype>
+		<assessment>enum</assessment>
     </item>
 	<item>
         <name>检查是否已正确配置帐户锁定时间</name>
@@ -64,7 +66,7 @@
 		<type>secedit</type>
 		<mark>ResetLockoutCount</mark>
         <standard>5</standard>
-		<dtype>greaternumber</dtype>
+		<assessment>greaternumber</assessment>
     </item>
 	<item>
         <name>检查是否已正确配置"复位帐户锁定计数器"时间</name>
@@ -72,7 +74,7 @@
 		<type>secedit</type>
 		<mark>LockoutDuration</mark>
         <standard>5</standard>
-		<dtype>greaternumber</dtype>
+		<assessment>greaternumber</assessment>
     </item>
 	<item>
         <name>检查可远程访问的注册表路径和子路径</name>
@@ -81,7 +83,8 @@
 		<registry>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurePipeServers\winreg\AllowedPaths</registry>
         <regitem>Machine</regitem>
         <standard></standard>
-		<dtype>array</dtype>
+		<assessment>array</assessment>
+		<valuetype>multistring</valuetype>
     </item>
 	<item>
         <name>检查是否已删除可匿名访问的共享和命名管道</name>
@@ -90,7 +93,8 @@
         <registry>HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\LanmanServer\Parameters</registry>
         <regitem>NullSessionPipes</regitem>
         <standard></standard>
-		<dtype>array</dtype>
+		<assessment>array</assessment>
+		<valuetype>multistring</valuetype>
     </item>
 	<item>
         <name>检查是否已删除可匿名访问的共享和命名管道2</name>
@@ -99,7 +103,8 @@
         <registry>HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\LanmanServer\Parameters</registry>
         <regitem>NullSessionShares</regitem>
         <standard></standard>
-		<dtype>array</dtype>
+		<assessment>array</assessment>
+		<valuetype>multistring</valuetype>
     </item>
 	<item>
         <name>检查是否已限制SAM匿名用户连接</name>
@@ -108,7 +113,8 @@
         <registry>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa</registry>
         <regitem>Restrictanonymous</regitem>
         <standard>1</standard>
-		<dtype>enum</dtype>
+		<assessment>enum</assessment>
+		<valuetype>dword</valuetype>
     </item>
 	<item>
         <name>检查是否已限制SAM匿名用户连接2</name>
@@ -117,7 +123,8 @@
         <registry>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa</registry>
         <regitem>Restrictanonymoussam</regitem>
         <standard>1</standard>
-		<dtype>enum</dtype>
+		<assessment>enum</assessment>
+		<valuetype>dword</valuetype>
     </item>
 	<item>
         <name>检查可关闭系统的帐户和组</name>
@@ -125,7 +132,7 @@
 		<type>secedit</type>
 		<mark>SeShutdownPrivilege</mark>
         <standard>*S-1-5-32-544</standard>
-		<dtype>equals</dtype>
+		<assessment>equals</assessment>
     </item>
 	<item>
         <name>检查是否已限制可从远端关闭系统的帐户和组</name>
@@ -133,7 +140,7 @@
 		<type>secedit</type>
 		<mark>SeRemoteShutdownPrivilege</mark>
         <standard>*S-1-5-32-544</standard>
-		<dtype>equals</dtype>
+		<assessment>equals</assessment>
     </item>
 	<item>
         <name>检查是否已限制"取得文件或其他对象的所有权"的帐户和组</name>
@@ -141,7 +148,7 @@
 		<type>secedit</type>
 		<mark>SeProfileSingleProcessPrivilege</mark>
         <standard>*S-1-5-32-544</standard>
-		<dtype>equals</dtype>
+		<assessment>equals</assessment>
     </item>
 	<item>
         <name>检查是否开启策略更改审核</name>
@@ -149,7 +156,7 @@
 		<type>secedit</type>
 		<mark>AuditSystemEvents</mark>
         <standard>3</standard>
-		<dtype>enum</dtype>
+		<assessment>enum</assessment>
     </item>
 	<item>
         <name>检查是否开启登录事件审核</name>
@@ -157,7 +164,7 @@
 		<type>secedit</type>
 		<mark>AuditLogonEvents</mark>
         <standard>3</standard>
-		<dtype>enum</dtype>
+		<assessment>enum</assessment>
     </item>
 	<item>
         <name>检查是否开启对象访问审核</name>
@@ -165,7 +172,7 @@
 		<type>secedit</type>
 		<mark>AuditObjectAccess</mark>
         <standard>3</standard>
-		<dtype>enum</dtype>
+		<assessment>enum</assessment>
     </item>
 	<item>
         <name>检查是否开启进程跟踪审核</name>
@@ -173,7 +180,7 @@
 		<type>secedit</type>
 		<mark>AuditProcessTracking</mark>
         <standard>3</standard>
-		<dtype>enum</dtype>
+		<assessment>enum</assessment>
     </item>
 	<item>
         <name>检查是否开启目录服务访问审核</name>
@@ -181,7 +188,7 @@
 		<type>secedit</type>
 		<mark>AuditDSAccess</mark>
         <standard>3</standard>
-		<dtype>enum</dtype>
+		<assessment>enum</assessment>
     </item>
 	<item>
         <name>检查是否开启特权使用审核</name>
@@ -189,7 +196,7 @@
 		<type>secedit</type>
 		<mark>AuditPrivilegeUse</mark>
         <standard>3</standard>
-		<dtype>enum</dtype>
+		<assessment>enum</assessment>
     </item>
 	<item>
         <name>检查是否开启系统事件审核</name>
@@ -197,7 +204,7 @@
 		<type>secedit</type>
 		<mark>AuditSystemEvents</mark>
         <standard>3</standard>
-		<dtype>enum</dtype>
+		<assessment>enum</assessment>
     </item>
 	<item>
         <name>检查是否开启帐户登录事件审核</name>
@@ -205,7 +212,7 @@
 		<type>secedit</type>
 		<mark>AuditAccountLogon</mark>
         <standard>3</standard>
-		<dtype>enum</dtype>
+		<assessment>enum</assessment>
     </item>
 	<item>
         <name>检查是否开启帐户管理审核</name>
@@ -213,7 +220,7 @@
 		<type>secedit</type>
 		<mark>AuditAccountManage</mark>
         <standard>3</standard>
-		<dtype>enum</dtype>
+		<assessment>enum</assessment>
     </item>
 	<item>
         <name>检查系统日志文件达到最大大小时的动作的序号</name>
@@ -222,7 +229,8 @@
         <registry>HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\eventlog\System</registry>
         <regitem>Retention</regitem>
         <standard>0</standard>
-		<dtype>enum</dtype>
+		<assessment>enum</assessment>
+		<valuetype>dword</valuetype>
     </item>
 	<item>
         <name>检查系统日志最大大小</name>
@@ -231,7 +239,8 @@
         <registry>HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\eventlog\System</registry>
         <regitem>MaxSize</regitem>
         <standard>8388608</standard>
-		<dtype>greaternumber</dtype>
+		<assessment>greaternumber</assessment>
+		<valuetype>dword</valuetype>
     </item>
 	<item>
         <name>检查应用程序日志文件达到最大大小时的动作的序号</name>
@@ -240,7 +249,8 @@
         <registry>HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\eventlog\Application</registry>
         <regitem>Retention</regitem>
         <standard>0</standard>
-		<dtype>enum</dtype>
+		<assessment>enum</assessment>
+		<valuetype>dword</valuetype>
     </item>
 	<item>
         <name>检查应用程序日志最大大小</name>
@@ -249,7 +259,8 @@
         <registry>HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\eventlog\Application</registry>
         <regitem>MaxSize</regitem>
         <standard>8388608</standard>
-		<dtype>greaternumber</dtype>
+		<assessment>greaternumber</assessment>
+		<valuetype>dword</valuetype>
     </item>
 	<item>
         <name>检查安全日志文件达到最大大小时的动作的序号</name>
@@ -258,7 +269,8 @@
         <registry>HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\eventlog\Security</registry>
         <regitem>Retention</regitem>
         <standard>0</standard>
-		<dtype>enum</dtype>
+		<assessment>enum</assessment>
+		<valuetype>dword</valuetype>
     </item>
 	<item>
         <name>检查安全日志最大大小</name>
@@ -267,7 +279,8 @@
         <registry>HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\eventlog\Security</registry>
         <regitem>MaxSize</regitem>
         <standard>8388608</standard>
-		<dtype>greaternumber</dtype>
+		<assessment>greaternumber</assessment>
+		<valuetype>dword</valuetype>
     </item>
 	<item>
         <name>检查是否已开启Windows防火墙</name>
@@ -276,7 +289,8 @@
         <registry>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile</registry>
         <regitem>EnableFirewall</regitem>
         <standard>1</standard>
-		<dtype>enum</dtype>
+		<assessment>enum</assessment>
+		<valuetype>dword</valuetype>
     </item>
 	<item>
         <name>检查是否已启用SYN攻击保护</name>
@@ -285,7 +299,8 @@
         <registry>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\Tcpip\Parameters</registry>
         <regitem>SynAttackProtect</regitem>
         <standard>1</standard>
-		<dtype>enum</dtype>
+		<assessment>enum</assessment>
+		<valuetype>dword</valuetype>
     </item>
 	<item>
         <name>检查TCP连接请求阈值</name>
@@ -294,7 +309,8 @@
         <registry>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\Tcpip\Parameters</registry>
         <regitem>TcpMaxPortsExhausted</regitem>
         <standard>5</standard>
-		<dtype>enum</dtype>
+		<assessment>enum</assessment>
+		<valuetype>dword</valuetype>
     </item>
 	<item>
         <name>检查取消尝试响应 SYN 请求之前要重新传输 SYN-ACK 的次数</name>
@@ -303,7 +319,8 @@
         <registry>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\Tcpip\Parameters</registry>
         <regitem>TcpMaxConnectResponseRetransmissions</regitem>
         <standard>2</standard>
-		<dtype>enum</dtype>
+		<assessment>enum</assessment>
+		<valuetype>dword</valuetype>
     </item>
 	<item>
         <name>检查处于SYN_RCVD 状态下的 TCP 连接阈值</name>
@@ -312,7 +329,8 @@
         <registry>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\Tcpip\Parameters</registry>
         <regitem>TcpMaxHalfOpen</regitem>
         <standard>500</standard>
-		<dtype>lessnumber</dtype>
+		<assessment>lessnumber</assessment>
+		<valuetype>dword</valuetype>
     </item>
 	<item>
         <name>检查处于SYN_RCVD 状态下,且至少已经进行了一次重新传输的TCP连接阈值</name>
@@ -321,7 +339,8 @@
         <registry>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\Tcpip\Parameters</registry>
         <regitem>TcpMaxHalfOpenRetried</regitem>
         <standard>400</standard>
-		<dtype>lessnumber</dtype>
+		<assessment>lessnumber</assessment>
+		<valuetype>dword</valuetype>
     </item>
 	<item>
         <name>检查是否已启用并正确配置ICMP攻击保护</name>
@@ -330,7 +349,8 @@
         <registry>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\Tcpip\Parameters</registry>
         <regitem>EnableICMPRedirect</regitem>
         <standard>0</standard>
-		<dtype>enum</dtype>
+		<assessment>enum</assessment>
+		<valuetype>dword</valuetype>
     </item>
 	<item>
         <name>检查是否已禁用失效网关检测</name>
@@ -339,7 +359,8 @@
         <registry>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\Tcpip\Parameters</registry>
         <regitem>EnableDeadGWDetect</regitem>
         <standard>0</standard>
-		<dtype>enum</dtype>
+		<assessment>enum</assessment>
+		<valuetype>dword</valuetype>
     </item>
 	<item>
         <name>检查是否已正确配置重传单独数据片段的次数</name>
@@ -348,7 +369,8 @@
         <registry>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\Tcpip\Parameters</registry>
         <regitem>TcpMaxDataRetransmissions</regitem>
         <standard>2</standard>
-		<dtype>enum</dtype>
+		<assessment>enum</assessment>
+		<valuetype>dword</valuetype>
     </item>
 	<item>
         <name>检查是否已禁用路由发现功能</name>
@@ -357,7 +379,8 @@
         <registry>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\Tcpip\Parameters</registry>
         <regitem>PerformRouterDiscovery</regitem>
         <standard>0</standard>
-		<dtype>enum</dtype>
+		<assessment>enum</assessment>
+		<valuetype>dword</valuetype>
     </item>
 	<item>
         <name>检查是否已正确配置TCP"连接存活时间</name>
@@ -366,7 +389,8 @@
         <registry>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\Tcpip\Parameters</registry>
         <regitem>KeepAliveTime</regitem>
         <standard>300000</standard>
-		<dtype>lessnumber</dtype>
+		<assessment>lessnumber</assessment>
+		<valuetype>dword</valuetype>
     </item>
 	<item>
         <name>检查是否已启用并正确配置TCP碎片攻击保护</name>
@@ -375,7 +399,8 @@
         <registry>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\Tcpip\Parameters</registry>
         <regitem>EnablePMTUDiscovery</regitem>
         <standard>0</standard>
-		<dtype>enum</dtype>
+		<assessment>enum</assessment>
+		<valuetype>dword</valuetype>
     </item>
 	<item>
         <name>检查是否已启用"不显示最后的用户名"策略</name>
@@ -384,7 +409,8 @@
         <registry>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System</registry>
         <regitem>Dontdisplaylastusername</regitem>
         <standard>1</standard>
-		<dtype>enum</dtype>
+		<assessment>enum</assessment>
+		<valuetype>dword</valuetype>
     </item>
 	<item>
         <name>检查是否已正确配置"提示用户在密码过期之前进行更改"策略</name>
@@ -393,7 +419,8 @@
         <registry>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon</registry>
         <regitem>PasswordExpiryWarning</regitem>
         <standard>14</standard>
-		<dtype>greaternumber</dtype>
+		<assessment>greaternumber</assessment>
+		<valuetype>dword</valuetype>
     </item>
 	<item>
         <name>检查是否已正确配置"锁定会话时显示用户信息"策略</name>
@@ -402,7 +429,8 @@
         <registry>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System</registry>
         <regitem>DontDisplayLockedUserId</regitem>
         <standard>3</standard>
-		<dtype>enum</dtype>
+		<assessment>enum</assessment>
+		<valuetype>dword</valuetype>
     </item>
 	<item>
         <name>检查是否已禁用Windows硬盘默认共享</name>
@@ -411,7 +439,8 @@
         <registry>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\LanmanServer\Parameters</registry>
         <regitem>AutoShareServer</regitem>
         <standard>0</standard>
-		<dtype>enum</dtype>
+		<assessment>enum</assessment>
+		<valuetype>dword</valuetype>
     </item>
 	<item>
         <name>检查是否已禁用Windows硬盘默认共享2</name>
@@ -420,7 +449,8 @@
         <registry>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\LanmanServer\Parameters</registry>
         <regitem>AutoShareWks</regitem>
         <standard>0</standard>
-		<dtype>enum</dtype>
+		<assessment>enum</assessment>
+		<valuetype>dword</valuetype>
     </item>
 	<item>
         <name>检查是否已启用并正确配置屏幕保护程序</name>
@@ -429,7 +459,8 @@
         <registry>HKEY_CURRENT_USER\Control Panel\Desktop</registry>
         <regitem>ScreenSaveActive</regitem>
         <standard>1</standard>
-		<dtype>enum</dtype>
+		<assessment>enum</assessment>
+		<valuetype>string</valuetype>
     </item>
 	<item>
         <name>检查屏幕保护程序等待时间</name>
@@ -438,7 +469,8 @@
         <registry>HKEY_CURRENT_USER\Control Panel\Desktop</registry>
         <regitem>ScreenSaveTimeOut</regitem>
         <standard>300</standard>
-		<dtype>lessnumber</dtype>
+		<assessment>lessnumber</assessment>
+		<valuetype>string</valuetype>
     </item>
 	<item>
         <name>检查是否已启用在恢复时显示登陆界面</name>
@@ -447,7 +479,8 @@
         <registry>HKEY_CURRENT_USER\Control Panel\Desktop</registry>
         <regitem>ScreenSaverIsSecure</regitem>
         <standard>1</standard>
-		<dtype>enum</dtype>
+		<assessment>enum</assessment>
+		<valuetype>string</valuetype>
     </item>
 	<item>
         <name>检查是否已启用并正确配置Windows网络时间同步服务(NTP)</name>
@@ -456,7 +489,8 @@
         <registry>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\W32Time\TimeProviders\NtpServer</registry>
         <regitem>Enabled</regitem>
         <standard>0</standard>
-		<dtype>enum</dtype>
+		<assessment>enum</assessment>
+		<valuetype>dword</valuetype>
     </item>
 	<item>
         <name>检查是否已关闭Windows自动播放</name>
@@ -465,7 +499,8 @@
         <registry>HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\AutoplayHandlers</registry>
         <regitem>DisableAutoplay</regitem>
         <standard>1</standard>
-		<dtype>enum</dtype>
+		<assessment>enum</assessment>
+		<valuetype>dword</valuetype>
     </item>
 	<item>
         <name>检查是否正确配置服务器在暂停会话前所需的空闲时间量</name>
@@ -474,7 +509,8 @@
         <registry>HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\LanmanServer\Parameters</registry>
         <regitem>Autodisconnect</regitem>
         <standard>15</standard>
-		<dtype>enum</dtype>
+		<assessment>enum</assessment>
+		<valuetype>dword</valuetype>
     </item>
 	<item>
         <name>检查是否已启用"当登录时间用完时自动注销用户"策略</name>
@@ -483,7 +519,8 @@
         <registry>HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\LanmanServer\Parameters</registry>
         <regitem>Enableforcedlogoff</regitem>
         <standard>1</standard>
-		<dtype>enum</dtype>
+		<assessment>enum</assessment>
+		<valuetype>dword</valuetype>
     </item>
 	<item>
         <name>检查是否已禁用"登录时无须按 Ctrl+Alt+Del"策略</name>
@@ -492,7 +529,8 @@
         <registry>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System</registry>
         <regitem>Disablecad</regitem>
         <standard>0</standard>
-		<dtype>enum</dtype>
+		<assessment>enum</assessment>
+		<valuetype>dword</valuetype>
     </item>
 	<item>
         <name>检查是否已禁止Windows自动登录</name>
@@ -501,7 +539,8 @@
         <registry>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon</registry>
         <regitem>AutoAdminLogon</regitem>
         <standard>0</standard>
-		<dtype>enum</dtype>
+		<assessment>enum</assessment>
+		<valuetype>string</valuetype>
     </item>
 	<item>
         <name>域环境：检查是否已正确配置"可被缓存保存的登录的个数"策略</name>
@@ -510,6 +549,7 @@
         <registry>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon</registry>
         <regitem>CachedLogonsCount</regitem>
         <standard>5</standard>
-		<dtype>lessnumber</dtype>
+		<assessment>lessnumber</assessment>
+		<valuetype>string</valuetype>
     </item>
 </items>
