@@ -63,6 +63,12 @@
     <ApplicationIcon>logo.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="AddRule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddRule.Designer.cs">
+      <DependentUpon>AddRule.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,6 +85,12 @@
     <Compile Include="RegistryHelper.cs" />
     <Compile Include="Report.cs" />
     <Compile Include="Util.cs" />
+    <Compile Include="Welcome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Welcome.Designer.cs">
+      <DependentUpon>Welcome.cs</DependentUpon>
+    </Compile>
     <Compile Include="XmlHelper.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -119,12 +131,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AddRule.resx">
+      <DependentUpon>AddRule.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Welcome.resx">
+      <DependentUpon>Welcome.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

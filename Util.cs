@@ -1,10 +1,12 @@
 ﻿using NPOI.XWPF.UserModel;
 using Sunny.UI;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Management;
+using System.Windows.Forms;
 using System.Xml;
 
 namespace WindowsBaselineAssistant
@@ -165,6 +167,54 @@ namespace WindowsBaselineAssistant
                 process.Close();
                 process.Dispose();
             }
+        }
+
+        /// <summary>
+        ///检查所有文本框是否为空
+        /// </summary>
+        /// <param name="form">要检查的窗体名称</param>
+        /// <param name="type">可选:检测类型[secedit],设置此值时跳过FieldTextBox检查</param>
+        /// <returns>检查通过:true,反之false</returns>
+        public static bool AreTextBoxesFilled(Form form, string type = null)
+        {
+            foreach (Control control in form.Controls)
+            {
+                if (control is UITextBox textBox)
+                {
+                    if (type.Equals("secedit") && textBox.Name.Equals("FieldTextBox"))
+                    {
+                        continue; // 如果type的值为secedit且文本框名为FieldTextBox，则跳过检查
+                    }
+
+                    if (string.IsNullOrWhiteSpace(textBox.Text))
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+        // 方法用于添加item元素数据
+        public static void AddItem(XmlDocument xmlDoc, XmlElement parentElement, Dictionary<string, string> itemData)
+        {
+            // 创建item元素
+            XmlElement itemElement = xmlDoc.CreateElement("item");
+            parentElement.AppendChild(itemElement);
+
+            // 添加字典中的键值对作为子元素及其文本内容
+            foreach (var pair in itemData)
+            {
+                AddXmlElement(xmlDoc, itemElement, pair.Key, pair.Value);
+            }
+        }
+
+        // 辅助方法用于添加子元素及其文本内容
+        private static void AddXmlElement(XmlDocument xmlDoc, XmlElement parentElement, string elementName, string text)
+        {
+            XmlElement element = xmlDoc.CreateElement(elementName);
+            element.InnerText = text;
+            parentElement.AppendChild(element);
         }
     }
 }

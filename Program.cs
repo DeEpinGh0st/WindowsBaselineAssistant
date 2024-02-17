@@ -13,7 +13,7 @@ namespace WindowsBaselineAssistant
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Main());//2.开启窗口的消息循坏，初始化并启动Main窗口
+            Application.Run(new Welcome());//2.开启窗口的消息循坏，初始化并启动Main窗口
         }
     }
 }

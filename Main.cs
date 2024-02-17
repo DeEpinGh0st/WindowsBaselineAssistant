@@ -26,6 +26,8 @@ namespace WindowsBaselineAssistant
         string fortifyCmd = "secedit /configure /db fortify.sdb /cfg fortify.cfg";
         string openRegCmd = "regjump.exe {0} /accepteula";
         string suggestTip = string.Empty;
+        readonly string fortifyTip = "在进行加固前，我们需要确认您已知晓该操作对您设备关键性位置进行更改的风险.\n\n" +
+            "是否了解该操作的风险?";
 
         private void SetPassStyle(int index)
         {
@@ -229,6 +231,10 @@ namespace WindowsBaselineAssistant
         {
             try
             {
+                if (!UIMessageDialog.ShowAskDialog(this,fortifyTip,UIStyle.LayuiOrange))
+                {
+                    return;
+                }
                 int fortifyCount = 0;
                 if (File.Exists(fortifyFile))
                 {
@@ -355,6 +361,12 @@ namespace WindowsBaselineAssistant
                 return;
             }
             BaselineList.Columns[8].Visible = true;
+        }
+
+        private void AddRulebtn_Click(object sender, EventArgs e)
+        {
+            AddRule addRule = new AddRule();
+            addRule.ShowDialog();
         }
     }
 }

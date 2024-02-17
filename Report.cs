@@ -1,5 +1,6 @@
 ﻿using NPOI.SS.UserModel;
 using NPOI.SS.Util;
+using Sunny.UI;
 using System;
 using System.Windows.Forms;
 
@@ -112,7 +113,7 @@ namespace WindowsBaselineAssistant
                         cell.SetCellValue(dataGridViewCell.Value?.ToString() ?? "");
 
                         // 根据倒数第二列的值设置单元格底色
-                        string valueInSecondLastColumn = dataGridView.Rows[i].Cells[dataGridView.Columns.Count - 2].Value?.ToString();
+                        string valueInSecondLastColumn = dataGridView.Rows[i].Cells[dataGridView.Columns.Count - 3].Value?.ToString();
                         SetCellStyleBasedOnValue(cell, valueInSecondLastColumn);
                     }
                 }
@@ -143,6 +144,9 @@ namespace WindowsBaselineAssistant
                         break;
                     case "不符合":
                         cellStyle.FillForegroundColor = IndexedColors.Coral.Index;
+                        break;
+                    case "已忽略":
+                        cellStyle.FillForegroundColor = IndexedColors.SkyBlue.Index;
                         break;
                     default:
                         cellStyle.FillForegroundColor = IndexedColors.LightYellow.Index;
