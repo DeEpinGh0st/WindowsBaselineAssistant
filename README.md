@@ -1,12 +1,18 @@
+<p align="center">
+<img src="https://socialify.git.ci/DeEpinGh0st/WindowsBaselineAssistant/image?description=1&language=1&name=1&owner=1&pattern=Floating%20Cogs&theme=Light" alt="WindowsBaselineAssistant"/>
+<img src="https://img.shields.io/github/stars/DeEpinGh0st/WindowsBaselineAssistant?style=flat" alt="GitHub Repo stars"/>
+<img src="https://img.shields.io/github/downloads/DeEpinGh0st/WindowsBaselineAssistant/total?style=flat" alt="GitHub Downloads (all assets, all releases)"/>
+<img alt="GitHub Release" src="https://img.shields.io/github/release/DeEpinGh0st/WindowsBaselineAssistant"/>
+<img src="https://img.shields.io/github/release-date/DeEpinGh0st/WindowsBaselineAssistant?style=flat" alt="GitHub Release Date"/>
+<p>
 
 # WindowsBaselineAssistant
 
 WindowsBaselineAssistant(WBA)是一个用于检测和加固Windows安全基线的辅助工具,借助此工具你可以免去繁琐的手工检测和加固操作,实现一键检测和加固你的Windows安全基线,并可以导出检测或加固结果,解放你的双手~
 
-
 ## 截图
 
-![UIMain](./assets/image-20240115155426706.png)
+![UIMain](./assets/Snipaste_2024-02-19_12-56-52.png)
 
 
 ## 工具运行要求
@@ -18,6 +24,7 @@ WindowsBaselineAssistant(WBA)是一个用于检测和加固Windows安全基线�
 - SunnyUI.Common 3.6.3
 - System.ValueTuple 4.5.0
 - NPOI 2.5.1
+- Costura.Fody 4.1.0
 ## 自定义规则
 
 WBA支持自定义规则以适应不同环境下的检测需求  

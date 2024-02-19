@@ -175,14 +175,14 @@
             this.uiContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.OpenSubKeyToolStripMenuItem});
             this.uiContextMenuStrip.Name = "uiContextMenuStrip";
-            this.uiContextMenuStrip.Size = new System.Drawing.Size(181, 48);
+            this.uiContextMenuStrip.Size = new System.Drawing.Size(171, 26);
             this.uiContextMenuStrip.Style = Sunny.UI.UIStyle.Custom;
             // 
             // OpenSubKeyToolStripMenuItem
             // 
             this.OpenSubKeyToolStripMenuItem.Image = global::WindowsBaselineAssistant.Properties.Resources.file_type_registry_icon_130200;
             this.OpenSubKeyToolStripMenuItem.Name = "OpenSubKeyToolStripMenuItem";
-            this.OpenSubKeyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.OpenSubKeyToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.OpenSubKeyToolStripMenuItem.Text = "打开注册表项";
             this.OpenSubKeyToolStripMenuItem.Click += new System.EventHandler(this.OpenSubKeyToolStripMenuItem_Click);
             // 
@@ -551,7 +551,7 @@
             this.Name = "Main";
             this.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
             this.Style = Sunny.UI.UIStyle.Custom;
-            this.Text = "Windows基线检测加固助手 v1.2";
+            this.Text = "Windows基线检测加固助手";
             this.TitleColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
             this.ZoomScaleRect = new System.Drawing.Rectangle(15, 15, 800, 450);
             this.Load += new System.EventHandler(this.Main_Load);

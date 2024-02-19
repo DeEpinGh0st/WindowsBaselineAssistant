@@ -5,6 +5,7 @@ using System;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Reflection;
 using System.Windows.Forms;
 using System.Xml;
 using WHC.OrderWater.Commons;
@@ -222,6 +223,11 @@ namespace WindowsBaselineAssistant
 
         private void Main_Load(object sender, EventArgs e)
         {
+            // 获取当前执行的程序集
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            // 获取程序集的版本信息
+            Version version = assembly.GetName().Version;
+            this.Text += $" v{version}";
             OSLabel.Text = Util.GetOSVersion();
             IPLabel.Text = Util.GetIPAddress();
             OSNameLabel.Text = Environment.MachineName;
@@ -231,6 +237,11 @@ namespace WindowsBaselineAssistant
         {
             try
             {
+                if (BaselineList.RowCount.Equals(0))
+                {
+                    UIMessageBox.ShowWarning($"无检测数据,请检测后再尝试此操作!");
+                    return;
+                }
                 if (!UIMessageDialog.ShowAskDialog(this,fortifyTip,UIStyle.LayuiOrange))
                 {
                     return;
@@ -318,7 +329,7 @@ namespace WindowsBaselineAssistant
         {
             try
             {
-                if (BaselineList.Rows.Count == 0)
+                if (BaselineList.RowCount.Equals(0))
                 {
                     UIMessageBox.ShowWarning($"无检测数据,请检测或加固后再尝试此操作!");
                     return;
