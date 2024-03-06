@@ -69,6 +69,7 @@
             this.RepoLinkLabel = new Sunny.UI.UILinkLabel();
             this.showValueTypeuiCheckBox = new Sunny.UI.UICheckBox();
             this.AddRulebtn = new Sunny.UI.UISymbolButton();
+            this.uiLabel8 = new Sunny.UI.UILabel();
             ((System.ComponentModel.ISupportInitialize)(this.BaselineList)).BeginInit();
             this.uiContextMenuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -298,9 +299,9 @@
             this.AboutLinkLabel.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.AboutLinkLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.AboutLinkLabel.LinkBehavior = System.Windows.Forms.LinkBehavior.AlwaysUnderline;
-            this.AboutLinkLabel.Location = new System.Drawing.Point(840, 628);
+            this.AboutLinkLabel.Location = new System.Drawing.Point(909, 628);
             this.AboutLinkLabel.Name = "AboutLinkLabel";
-            this.AboutLinkLabel.Size = new System.Drawing.Size(211, 27);
+            this.AboutLinkLabel.Size = new System.Drawing.Size(142, 27);
             this.AboutLinkLabel.TabIndex = 2;
             this.AboutLinkLabel.TabStop = true;
             this.AboutLinkLabel.Text = "Author: S0cke3t";
@@ -481,12 +482,12 @@
             this.RepoLinkLabel.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.RepoLinkLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.RepoLinkLabel.LinkBehavior = System.Windows.Forms.LinkBehavior.AlwaysUnderline;
-            this.RepoLinkLabel.Location = new System.Drawing.Point(792, 659);
+            this.RepoLinkLabel.Location = new System.Drawing.Point(921, 659);
             this.RepoLinkLabel.Name = "RepoLinkLabel";
-            this.RepoLinkLabel.Size = new System.Drawing.Size(268, 27);
+            this.RepoLinkLabel.Size = new System.Drawing.Size(135, 27);
             this.RepoLinkLabel.TabIndex = 12;
             this.RepoLinkLabel.TabStop = true;
-            this.RepoLinkLabel.Text = "Github: WindowsBaselineAssistant";
+            this.RepoLinkLabel.Text = "代码仓库&&BUG反馈";
             this.RepoLinkLabel.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
             this.RepoLinkLabel.Click += new System.EventHandler(this.RepoLinkLabel_Click);
             // 
@@ -517,12 +518,24 @@
             this.AddRulebtn.TipsFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.AddRulebtn.Click += new System.EventHandler(this.AddRulebtn_Click);
             // 
+            // uiLabel8
+            // 
+            this.uiLabel8.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiLabel8.ForeColor = System.Drawing.Color.Red;
+            this.uiLabel8.Location = new System.Drawing.Point(535, 655);
+            this.uiLabel8.Name = "uiLabel8";
+            this.uiLabel8.Size = new System.Drawing.Size(338, 23);
+            this.uiLabel8.TabIndex = 14;
+            this.uiLabel8.Text = "Tips: 右键注册表项可快速定位到该注册表项";
+            this.uiLabel8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // Main
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
             this.ClientSize = new System.Drawing.Size(1078, 693);
             this.ControlBoxFillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(171)))), ((int)(((byte)(160)))));
+            this.Controls.Add(this.uiLabel8);
             this.Controls.Add(this.showValueTypeuiCheckBox);
             this.Controls.Add(this.RepoLinkLabel);
             this.Controls.Add(this.checkAllCheckBox);
@@ -597,5 +610,6 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn FortifyColumn;
         private System.Windows.Forms.DataGridViewLinkColumn ValueTypeColumn;
         private Sunny.UI.UISymbolButton AddRulebtn;
+        private Sunny.UI.UILabel uiLabel8;
     }
 }

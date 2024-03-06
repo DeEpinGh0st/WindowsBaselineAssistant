@@ -88,6 +88,7 @@
             this.Text = "欢迎";
             this.TitleColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(87)))), ((int)(((byte)(34)))));
             this.ZoomScaleRect = new System.Drawing.Rectangle(15, 15, 800, 450);
+            this.Load += new System.EventHandler(this.Welcome_Load);
             this.ResumeLayout(false);
 
         }

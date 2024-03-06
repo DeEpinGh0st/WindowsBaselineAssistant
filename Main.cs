@@ -21,10 +21,12 @@ namespace WindowsBaselineAssistant
         XmlNodeList xmlNodeList;
         XmlDocument xmlDocument;
         XmlElement xmlElement;
-        static string secInfoFile = $"{Util.CurrentDirectory}config.cfg";
-        static string fortifyFile = $"{Util.CurrentDirectory}fortify.cfg";
-        string secInfoCmd = "secedit /export /cfg config.cfg";
-        string fortifyCmd = "secedit /configure /db fortify.sdb /cfg fortify.cfg";
+        /*static string secInfoFile = $"{Util.CurrentDirectory}config.cfg";
+        static string fortifyFile = $"{Util.CurrentDirectory}fortify.cfg";*/
+        static string secInfoFile = $"{Util.RoamingDirectory}config.cfg";
+        static string fortifyFile = $"{Util.RoamingDirectory}fortify.cfg";
+        string secInfoCmd = $"secedit /export /cfg {Util.RoamingDirectory}config.cfg";
+        string fortifyCmd = $"secedit /configure /db {Util.RoamingDirectory}fortify.sdb /cfg {Util.RoamingDirectory}fortify.cfg";
         string openRegCmd = "regjump.exe {0} /accepteula";
         string suggestTip = string.Empty;
         readonly string fortifyTip = "在进行加固前，我们需要确认您已知晓该操作对您设备关键性位置进行更改的风险.\n\n" +
@@ -51,6 +53,10 @@ namespace WindowsBaselineAssistant
                 {
                     UIMessageBox.ShowError("未找到配置文件");
                     return;
+                }
+                if (!Directory.Exists(Util.RoamingDirectory))
+                {
+                    Directory.CreateDirectory(Util.RoamingDirectory);
                 }
                 if (File.Exists(secInfoFile))
                 {

@@ -34,5 +34,10 @@ namespace WindowsBaselineAssistant
             th.Start();
             this.Close();
         }
+
+        private void Welcome_Load(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using NPOI.XWPF.UserModel;
+﻿using Microsoft.Win32;
+using NPOI.XWPF.UserModel;
 using Sunny.UI;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Linq;
 using System.Management;
 using System.Windows.Forms;
 using System.Xml;
+using WHC.OrderWater.Commons;
 
 namespace WindowsBaselineAssistant
 {
@@ -15,7 +17,10 @@ namespace WindowsBaselineAssistant
     {
         private static string currentDirectory = AppDomain.CurrentDomain.BaseDirectory;
 
-        public static string CurrentDirectory { get => currentDirectory; set => currentDirectory = value; }
+        public static string CurrentDirectory { get => currentDirectory; }
+        public static string RoamingDirectory { get => $"{roamingDirectory}\\WindowsBaselineAssistant\\"; }
+
+        private static string roamingDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
 
         /// <summary>
         /// 读xml文件
@@ -40,7 +45,7 @@ namespace WindowsBaselineAssistant
         /// <returns>节,值</returns>
         public static (string, string) GetResultByMark(string mark)
         {
-            IniFile ini = new IniFile(currentDirectory + "\\config.cfg");
+            IniFile ini = new IniFile(RoamingDirectory + "\\config.cfg");
             string[] sections = ini.Sections;
             foreach (var section in sections)
             {
@@ -216,5 +221,15 @@ namespace WindowsBaselineAssistant
             element.InnerText = text;
             parentElement.AppendChild(element);
         }
+
+        /*public static bool IsHomeEdition()
+        {
+            string edition = RegistryHelper.GetValue(Registry.LocalMachine, @"SOFTWARE\Microsoft\Windows NT\CurrentVersion", "EditionID");
+            if (edition.Contains("Home"))
+            {
+                return true;
+            }
+            return false;
+        }*/
     }
 }
