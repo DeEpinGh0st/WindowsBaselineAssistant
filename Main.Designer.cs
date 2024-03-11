@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -69,9 +70,13 @@
             this.RepoLinkLabel = new Sunny.UI.UILinkLabel();
             this.showValueTypeuiCheckBox = new Sunny.UI.UICheckBox();
             this.AddRulebtn = new Sunny.UI.UISymbolButton();
-            this.uiLabel8 = new Sunny.UI.UILabel();
+            this.uiGroupBox1 = new Sunny.UI.UIGroupBox();
+            this.Logbtn = new Sunny.UI.UIButton();
+            this.Tipbtn = new Sunny.UI.UIButton();
+            this.uiToolTip1 = new Sunny.UI.UIToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.BaselineList)).BeginInit();
             this.uiContextMenuStrip.SuspendLayout();
+            this.uiGroupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // BaselineList
@@ -518,16 +523,60 @@
             this.AddRulebtn.TipsFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.AddRulebtn.Click += new System.EventHandler(this.AddRulebtn_Click);
             // 
-            // uiLabel8
+            // uiGroupBox1
             // 
-            this.uiLabel8.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiLabel8.ForeColor = System.Drawing.Color.Red;
-            this.uiLabel8.Location = new System.Drawing.Point(535, 655);
-            this.uiLabel8.Name = "uiLabel8";
-            this.uiLabel8.Size = new System.Drawing.Size(338, 23);
-            this.uiLabel8.TabIndex = 14;
-            this.uiLabel8.Text = "Tips: 右键注册表项可快速定位到该注册表项";
-            this.uiLabel8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.uiGroupBox1.Controls.Add(this.Tipbtn);
+            this.uiGroupBox1.Controls.Add(this.Logbtn);
+            this.uiGroupBox1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
+            this.uiGroupBox1.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
+            this.uiGroupBox1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiGroupBox1.Location = new System.Drawing.Point(661, 621);
+            this.uiGroupBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uiGroupBox1.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiGroupBox1.Name = "uiGroupBox1";
+            this.uiGroupBox1.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
+            this.uiGroupBox1.Size = new System.Drawing.Size(179, 63);
+            this.uiGroupBox1.TabIndex = 15;
+            this.uiGroupBox1.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // Logbtn
+            // 
+            this.Logbtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Logbtn.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Logbtn.LightStyle = true;
+            this.Logbtn.Location = new System.Drawing.Point(97, 27);
+            this.Logbtn.MinimumSize = new System.Drawing.Size(1, 1);
+            this.Logbtn.Name = "Logbtn";
+            this.Logbtn.Size = new System.Drawing.Size(66, 28);
+            this.Logbtn.TabIndex = 16;
+            this.Logbtn.Text = "日志目录";
+            this.Logbtn.TipsFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Logbtn.TipsText = "!";
+            this.Logbtn.Click += new System.EventHandler(this.Logbtn_Click);
+            // 
+            // Tipbtn
+            // 
+            this.Tipbtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Tipbtn.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Tipbtn.LightStyle = true;
+            this.Tipbtn.Location = new System.Drawing.Point(17, 27);
+            this.Tipbtn.MinimumSize = new System.Drawing.Size(1, 1);
+            this.Tipbtn.Name = "Tipbtn";
+            this.Tipbtn.Size = new System.Drawing.Size(66, 28);
+            this.Tipbtn.TabIndex = 16;
+            this.Tipbtn.Text = "Tips";
+            this.Tipbtn.TipsFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiToolTip1.SetToolTip(this.Tipbtn, "- 右键注册表项可快速定位到该项位置.\r\n- 拷贝日志时,请先关闭软件再进行操作.\r\n");
+            // 
+            // uiToolTip1
+            // 
+            this.uiToolTip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(54)))), ((int)(((byte)(54)))));
+            this.uiToolTip1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(239)))));
+            this.uiToolTip1.IsBalloon = true;
+            this.uiToolTip1.OwnerDraw = true;
+            this.uiToolTip1.TitleFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiToolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.uiToolTip1.ToolTipTitle = "Tips";
             // 
             // Main
             // 
@@ -535,7 +584,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
             this.ClientSize = new System.Drawing.Size(1078, 693);
             this.ControlBoxFillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(171)))), ((int)(((byte)(160)))));
-            this.Controls.Add(this.uiLabel8);
+            this.Controls.Add(this.uiGroupBox1);
             this.Controls.Add(this.showValueTypeuiCheckBox);
             this.Controls.Add(this.RepoLinkLabel);
             this.Controls.Add(this.checkAllCheckBox);
@@ -570,6 +619,7 @@
             this.Load += new System.EventHandler(this.Main_Load);
             ((System.ComponentModel.ISupportInitialize)(this.BaselineList)).EndInit();
             this.uiContextMenuStrip.ResumeLayout(false);
+            this.uiGroupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -610,6 +660,9 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn FortifyColumn;
         private System.Windows.Forms.DataGridViewLinkColumn ValueTypeColumn;
         private Sunny.UI.UISymbolButton AddRulebtn;
-        private Sunny.UI.UILabel uiLabel8;
+        private Sunny.UI.UIGroupBox uiGroupBox1;
+        private Sunny.UI.UIButton Tipbtn;
+        private Sunny.UI.UIButton Logbtn;
+        private Sunny.UI.UIToolTip uiToolTip1;
     }
 }

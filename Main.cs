@@ -17,6 +17,7 @@ namespace WindowsBaselineAssistant
         public Main()
         {
             InitializeComponent();
+            LogHelper.OnError += LogHelper_OnError;
         }
         XmlNodeList xmlNodeList;
         XmlDocument xmlDocument;
@@ -208,7 +209,8 @@ namespace WindowsBaselineAssistant
             }
             catch (Exception ex)
             {
-                UIMessageBox.ShowError(ex.Message);
+                LogHelper.WriteLog(ex.Message.ToString(), ex);
+                UIMessageBox.ShowError("检测出现异常");
             }
         }
 
@@ -237,6 +239,10 @@ namespace WindowsBaselineAssistant
             OSLabel.Text = Util.GetOSVersion();
             IPLabel.Text = Util.GetIPAddress();
             OSNameLabel.Text = Environment.MachineName;
+            if (!Directory.Exists(Util.RoamingDirectory))
+            {
+                Directory.CreateDirectory(Util.RoamingDirectory);
+            }
         }
 
         private void FortifyBtn_Click(object sender, EventArgs e)
@@ -248,7 +254,7 @@ namespace WindowsBaselineAssistant
                     UIMessageBox.ShowWarning($"无检测数据,请检测后再尝试此操作!");
                     return;
                 }
-                if (!UIMessageDialog.ShowAskDialog(this,fortifyTip,UIStyle.LayuiOrange))
+                if (!UIMessageDialog.ShowAskDialog(this, fortifyTip, UIStyle.LayuiOrange))
                 {
                     return;
                 }
@@ -292,7 +298,8 @@ namespace WindowsBaselineAssistant
             }
             catch (Exception ex)
             {
-                UIMessageBox.ShowError(ex.Message);
+                LogHelper.WriteLog(ex.Message.ToString(), ex);
+                UIMessageBox.ShowError("加固出现异常");
             }
         }
 
@@ -359,8 +366,8 @@ namespace WindowsBaselineAssistant
             }
             catch (Exception ex)
             {
-
-                UIMessageBox.ShowError($"导出错误!\n{ex.Message}");
+                LogHelper.WriteLog(ex.Message.ToString(), ex);
+                UIMessageBox.ShowError("导出出现异常");
             }
 
         }
@@ -384,6 +391,20 @@ namespace WindowsBaselineAssistant
         {
             AddRule addRule = new AddRule();
             addRule.ShowDialog();
+        }
+
+        private void Logbtn_Click(object sender, EventArgs e)
+        {
+            // 启动资源管理器并打开该文件夹
+            Process.Start("explorer.exe", Util.RoamingDirectory);
+            Logbtn.ShowTips = false;
+        }
+        private void LogHelper_OnError()
+        {
+            Invoke(new Action(() =>
+            {
+                Logbtn.ShowTips = true;
+            }));
         }
     }
 }

@@ -91,7 +91,8 @@ namespace WindowsBaselineAssistant
             }
             catch (Exception ex)
             {
-                UIMessageBox.ShowError(ex.Message);
+                LogHelper.WriteLog(ex.Message.ToString(), ex);
+                UIMessageBox.ShowError("添加规则出现异常");
             }
         }
         

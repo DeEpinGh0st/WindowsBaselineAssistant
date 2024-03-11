@@ -102,8 +102,9 @@ namespace WindowsBaselineAssistant
                     return systemInfo;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                LogHelper.WriteLog(ex.Message.ToString(), ex);
                 return "获取系统信息失败";
             }
             return "无法获取系统详细版本信息";
@@ -163,7 +164,8 @@ namespace WindowsBaselineAssistant
             }
             catch (Exception ex)
             {
-                UIMessageBox.ShowError(ex.Message);
+                //UIMessageBox.ShowError(ex.Message);
+                LogHelper.WriteLog(ex.Message.ToString(),ex);
                 return -1;
             }
             finally

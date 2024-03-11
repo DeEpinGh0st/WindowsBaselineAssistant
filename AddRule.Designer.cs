@@ -54,6 +54,7 @@
             this.uiAvatar3 = new Sunny.UI.UIAvatar();
             this.uiAvatar4 = new Sunny.UI.UIAvatar();
             this.uiToolTip1 = new Sunny.UI.UIToolTip(this.components);
+            this.uiToolTip2 = new Sunny.UI.UIToolTip(this.components);
             this.SuspendLayout();
             // 
             // label1
@@ -405,6 +406,12 @@
             this.uiToolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.uiToolTip1.ToolTipTitle = "提示";
             // 
+            // uiToolTip2
+            // 
+            this.uiToolTip2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(54)))), ((int)(((byte)(54)))));
+            this.uiToolTip2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(239)))));
+            this.uiToolTip2.OwnerDraw = true;
+            // 
             // AddRule
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -471,5 +478,6 @@
         private Sunny.UI.UIAvatar uiAvatar3;
         private Sunny.UI.UIAvatar uiAvatar4;
         private Sunny.UI.UIToolTip uiToolTip1;
+        private Sunny.UI.UIToolTip uiToolTip2;
     }
 }
