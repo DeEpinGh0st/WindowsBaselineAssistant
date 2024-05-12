@@ -12,19 +12,23 @@ WindowsBaselineAssistant(WBA)是一个用于检测和加固Windows安全基线�
 
 ## 截图
 
-![UIMain](./assets/Snipaste_2024-02-19_12-56-52.png)
+![image-20240512214646083](assets/image-20240512214646083.png)
 
 
 ## 工具运行要求
 
-- .Net Framework 4.0及以上
+| 版本        | 开发框架           | 环境要求                           |
+| ----------- | ------------------ | ---------------------------------- |
+| v1.0-v1.2.2 | .Net Framework 4.0 | .Net Framework 4.0及以上           |
+| >=v1.2.3    | .Net 8 with R2R    | 已集成到exe中,无需安装额外运行环境 |
+
 ## 项目依赖库
 
-- SunnyUI 3.6.3
-- SunnyUI.Common 3.6.3
-- System.ValueTuple 4.5.0
-- NPOI 2.5.1
-- Costura.Fody 4.1.0
+- SunnyUI 3.6.5
+- SunnyUI.Common 3.6.5
+- NPOI 2.7.0
+- Fody 6.8.0
+- Log4Net 2.0.17
 ## 自定义规则
 
 WBA支持自定义规则以适应不同环境下的检测需求  
@@ -153,8 +157,8 @@ ignore: 用于标识检测项为已忽略
 ## 致谢
 
  - [SunnyUI  .Net界面库](https://github.com/yhuse/SunnyUI)
- - [System.ValueTuple  实现了C#中元组的底层类型](https://www.nuget.org/packages/System.ValueTuple/4.5.0/ReportAbuse)
  - [NPOI  POI的.Net实现,用于读写office文档](https://github.com/nissl-lab/npoi)
+ - [Log4Net .Net下日志记录库](https://github.com/apache/logging-log4net/)
 
 
 ## FAQ

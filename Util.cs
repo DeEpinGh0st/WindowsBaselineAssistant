@@ -1,15 +1,13 @@
-﻿using Microsoft.Win32;
-using NPOI.XWPF.UserModel;
-using Sunny.UI;
+﻿using Sunny.UI;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Management;
+using System.Net.NetworkInformation;
+using System.Net.Sockets;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using System.Xml;
-using WHC.OrderWater.Commons;
 
 namespace WindowsBaselineAssistant
 {
@@ -62,23 +60,25 @@ namespace WindowsBaselineAssistant
         /// 获取本机IP地址
         /// </summary>
         /// <returns>IP地址</returns>
-        public static string GetIPAddress()
+        public static List<string> GetIPAddress()
         {
-            string st = "";
-            ManagementClass mc = new ManagementClass("Win32_NetworkAdapterConfiguration");
-            ManagementObjectCollection moc = mc.GetInstances();
-            foreach (ManagementObject mo in moc)
+            List<string> ips = new List<string>();
+            foreach (NetworkInterface item in NetworkInterface.GetAllNetworkInterfaces())
             {
-                if ((bool)mo["IPEnabled"] == true)
+                if (item.NetworkInterfaceType == NetworkInterfaceType.Ethernet ||
+                    item.NetworkInterfaceType == NetworkInterfaceType.Wireless80211 &&
+                    item.OperationalStatus == OperationalStatus.Up)
                 {
-                    //st=mo["IpAddress"].ToString();
-                    Array ar;
-                    ar = (Array)(mo.Properties["IpAddress"].Value);
-                    st = ar.GetValue(0).ToString();
-                    break;
+                    foreach (UnicastIPAddressInformation ip in item.GetIPProperties().UnicastAddresses)
+                    {
+                        if (ip.Address.AddressFamily == AddressFamily.InterNetwork)
+                        {
+                            ips.Add(ip.Address.ToString());
+                        }
+                    }
                 }
             }
-            return st;
+            return ips;
         }
 
         /// <summary>
@@ -89,25 +89,15 @@ namespace WindowsBaselineAssistant
         {
             try
             {
-                ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT Caption, Version, CSDVersion FROM Win32_OperatingSystem");
-                foreach (ManagementObject os in searcher.Get().Cast<ManagementObject>())
-                {
-                    string caption = os["Caption"].ToString();
-                    string version = os["Version"].ToString();
-                    string csdVersion = os["CSDVersion"] != null ? os["CSDVersion"].ToString() : string.Empty;
-                    //string buildNumber = os["BuildNumber"].ToString();
-                    // 组合详细版本信息
-                    string systemInfo = $"{caption}{version}{csdVersion}";
-
-                    return systemInfo;
-                }
+                var osDescription = RuntimeInformation.OSDescription;
+                var osArchitecture = RuntimeInformation.OSArchitecture;
+                return $"{osDescription} {osArchitecture}";
             }
             catch (Exception ex)
             {
                 LogHelper.WriteLog(ex.Message.ToString(), ex);
                 return "获取系统信息失败";
             }
-            return "无法获取系统详细版本信息";
         }
 
         /// <summary>
@@ -165,7 +155,7 @@ namespace WindowsBaselineAssistant
             catch (Exception ex)
             {
                 //UIMessageBox.ShowError(ex.Message);
-                LogHelper.WriteLog(ex.Message.ToString(),ex);
+                LogHelper.WriteLog(ex.Message.ToString(), ex);
                 return -1;
             }
             finally

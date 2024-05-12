@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Data;
 using System.IO;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.Xml;
 using System.Xml.Serialization;
 
@@ -40,7 +38,7 @@ namespace WHC.OrderWater.Commons
         /// <param name="path"></param>
         /// <param name="obj"></param>
         /// <returns></returns>
-        public static bool Serialize(string path, object obj)
+        /*public static bool Serialize(string path, object obj)
         {
             try
             {
@@ -57,7 +55,7 @@ namespace WHC.OrderWater.Commons
             {
                 return false;
             }
-        }
+        }*/
         /// <summary>
         /// 序列化
         /// </summary>
@@ -99,7 +97,7 @@ namespace WHC.OrderWater.Commons
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        public static object Deserialize(string path)
+        /*public static object Deserialize(string path)
         {
             try
             {
@@ -116,7 +114,7 @@ namespace WHC.OrderWater.Commons
             {
                 return null;
             }
-        }
+        }*/
 
         /// <summary>
         /// 反序列化

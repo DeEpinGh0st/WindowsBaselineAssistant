@@ -1,6 +1,5 @@
 ﻿using NPOI.SS.UserModel;
 using NPOI.SS.Util;
-using Sunny.UI;
 using System;
 using System.Windows.Forms;
 
@@ -25,7 +24,7 @@ namespace WindowsBaselineAssistant
         /// </summary>
         /// <param name="sheet">要添加的工作簿</param>
         [Obsolete]
-        public static void AddSystemInfoRow(ISheet sheet)
+        public static void AddSystemInfoRow(ISheet sheet, string os, string ip, string hostname)
         {
             try
             {
@@ -35,7 +34,7 @@ namespace WindowsBaselineAssistant
                 // 添加单元格内容
                 string sheetTitle = $"" +
                     $"Windows安全基线检测/加固结果汇总表\n" +
-                    $"系统版本:{Util.GetOSVersion()}   IP地址:{Util.GetIPAddress()}   主机名:{Environment.MachineName}";
+                    $"系统版本:{os}   IP地址:{ip}   主机名:{hostname}";
                 systemInfoRow.CreateCell(0).SetCellValue(sheetTitle);
 
                 // 创建样式

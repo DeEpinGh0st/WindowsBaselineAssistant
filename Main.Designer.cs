@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -36,592 +36,583 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
-            this.BaselineList = new Sunny.UI.UIDataGridView();
-            this.NameColumn = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.DdescriptionColumn = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.ItemColumn = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.uiContextMenuStrip = new Sunny.UI.UIContextMenuStrip();
-            this.OpenSubKeyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.FieldColumn = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.StandardColumn = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.RealityColumn = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.StatusColumn = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.FortifyColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ValueTypeColumn = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.CheckBtn = new Sunny.UI.UISymbolButton();
-            this.FortifyBtn = new Sunny.UI.UISymbolButton();
-            this.ReportBtn = new Sunny.UI.UISymbolButton();
-            this.AboutLinkLabel = new Sunny.UI.UILinkLabel();
-            this.uiLabel1 = new Sunny.UI.UILabel();
-            this.uiLabel2 = new Sunny.UI.UILabel();
-            this.uiLabel3 = new Sunny.UI.UILabel();
-            this.uiLabel4 = new Sunny.UI.UILabel();
-            this.totalCountLabel = new Sunny.UI.UILabel();
-            this.passCountLabel = new Sunny.UI.UILabel();
-            this.failCountLabel = new Sunny.UI.UILabel();
-            this.rateLabel = new Sunny.UI.UILabel();
-            this.uiLabel5 = new Sunny.UI.UILabel();
-            this.OSLabel = new Sunny.UI.UILabel();
-            this.uiLabel6 = new Sunny.UI.UILabel();
-            this.IPLabel = new Sunny.UI.UILabel();
-            this.uiLabel7 = new Sunny.UI.UILabel();
-            this.OSNameLabel = new Sunny.UI.UILabel();
-            this.checkAllCheckBox = new Sunny.UI.UICheckBox();
-            this.RepoLinkLabel = new Sunny.UI.UILinkLabel();
-            this.showValueTypeuiCheckBox = new Sunny.UI.UICheckBox();
-            this.AddRulebtn = new Sunny.UI.UISymbolButton();
-            this.uiGroupBox1 = new Sunny.UI.UIGroupBox();
-            this.Logbtn = new Sunny.UI.UIButton();
-            this.Tipbtn = new Sunny.UI.UIButton();
-            this.uiToolTip1 = new Sunny.UI.UIToolTip(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.BaselineList)).BeginInit();
-            this.uiContextMenuStrip.SuspendLayout();
-            this.uiGroupBox1.SuspendLayout();
-            this.SuspendLayout();
+            BaselineList = new Sunny.UI.UIDataGridView();
+            NameColumn = new System.Windows.Forms.DataGridViewLinkColumn();
+            DdescriptionColumn = new System.Windows.Forms.DataGridViewLinkColumn();
+            ItemColumn = new System.Windows.Forms.DataGridViewLinkColumn();
+            uiContextMenuStrip = new Sunny.UI.UIContextMenuStrip();
+            OpenSubKeyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            FieldColumn = new System.Windows.Forms.DataGridViewLinkColumn();
+            StandardColumn = new System.Windows.Forms.DataGridViewLinkColumn();
+            RealityColumn = new System.Windows.Forms.DataGridViewLinkColumn();
+            StatusColumn = new System.Windows.Forms.DataGridViewButtonColumn();
+            FortifyColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            ValueTypeColumn = new System.Windows.Forms.DataGridViewLinkColumn();
+            CheckBtn = new Sunny.UI.UISymbolButton();
+            FortifyBtn = new Sunny.UI.UISymbolButton();
+            ReportBtn = new Sunny.UI.UISymbolButton();
+            uiLabel1 = new Sunny.UI.UILabel();
+            uiLabel2 = new Sunny.UI.UILabel();
+            uiLabel3 = new Sunny.UI.UILabel();
+            uiLabel4 = new Sunny.UI.UILabel();
+            totalCountLabel = new Sunny.UI.UILabel();
+            passCountLabel = new Sunny.UI.UILabel();
+            failCountLabel = new Sunny.UI.UILabel();
+            rateLabel = new Sunny.UI.UILabel();
+            uiLabel5 = new Sunny.UI.UILabel();
+            OSLabel = new Sunny.UI.UILabel();
+            uiLabel6 = new Sunny.UI.UILabel();
+            uiLabel7 = new Sunny.UI.UILabel();
+            OSNameLabel = new Sunny.UI.UILabel();
+            checkAllCheckBox = new Sunny.UI.UICheckBox();
+            showValueTypeuiCheckBox = new Sunny.UI.UICheckBox();
+            AddRulebtn = new Sunny.UI.UISymbolButton();
+            uiGroupBox1 = new Sunny.UI.UIGroupBox();
+            Tipbtn = new Sunny.UI.UIButton();
+            Logbtn = new Sunny.UI.UIButton();
+            uiToolTip1 = new Sunny.UI.UIToolTip(components);
+            BlogAvatar = new Sunny.UI.UIAvatar();
+            RepoAvatar = new Sunny.UI.UIAvatar();
+            IpListComboBox = new Sunny.UI.UIComboBox();
+            ((System.ComponentModel.ISupportInitialize)BaselineList).BeginInit();
+            uiContextMenuStrip.SuspendLayout();
+            uiGroupBox1.SuspendLayout();
+            SuspendLayout();
             // 
             // BaselineList
             // 
-            this.BaselineList.AllowUserToAddRows = false;
-            this.BaselineList.AllowUserToDeleteRows = false;
-            this.BaselineList.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
-            this.BaselineList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.BaselineList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.BaselineList.BackgroundColor = System.Drawing.Color.White;
-            this.BaselineList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            BaselineList.AllowUserToAddRows = false;
+            BaselineList.AllowUserToDeleteRows = false;
+            BaselineList.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(235, 243, 255);
+            BaselineList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            BaselineList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            BaselineList.BackgroundColor = System.Drawing.Color.White;
+            BaselineList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(80, 160, 255);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 134);
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.BaselineList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.BaselineList.ColumnHeadersHeight = 32;
-            this.BaselineList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.BaselineList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.NameColumn,
-            this.DdescriptionColumn,
-            this.ItemColumn,
-            this.FieldColumn,
-            this.StandardColumn,
-            this.RealityColumn,
-            this.StatusColumn,
-            this.FortifyColumn,
-            this.ValueTypeColumn});
+            BaselineList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            BaselineList.ColumnHeadersHeight = 32;
+            BaselineList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            BaselineList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { NameColumn, DdescriptionColumn, ItemColumn, FieldColumn, StandardColumn, RealityColumn, StatusColumn, FortifyColumn, ValueTypeColumn });
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 134);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(48, 48, 48);
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.SkyBlue;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.BaselineList.DefaultCellStyle = dataGridViewCellStyle4;
-            this.BaselineList.EnableHeadersVisualStyles = false;
-            this.BaselineList.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.BaselineList.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.BaselineList.Location = new System.Drawing.Point(27, 104);
-            this.BaselineList.Name = "BaselineList";
+            BaselineList.DefaultCellStyle = dataGridViewCellStyle4;
+            BaselineList.EnableHeadersVisualStyles = false;
+            BaselineList.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 134);
+            BaselineList.GridColor = System.Drawing.Color.FromArgb(80, 160, 255);
+            BaselineList.Location = new System.Drawing.Point(27, 104);
+            BaselineList.Name = "BaselineList";
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(235, 243, 255);
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 134);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(48, 48, 48);
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(80, 160, 255);
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.BaselineList.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            this.BaselineList.RowHeadersVisible = false;
+            BaselineList.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            BaselineList.RowHeadersVisible = false;
             dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.BaselineList.RowsDefaultCellStyle = dataGridViewCellStyle6;
-            this.BaselineList.RowTemplate.Height = 23;
-            this.BaselineList.SelectedIndex = -1;
-            this.BaselineList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.BaselineList.Size = new System.Drawing.Size(1024, 425);
-            this.BaselineList.StripeOddColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
-            this.BaselineList.TabIndex = 0;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 134);
+            BaselineList.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            BaselineList.RowTemplate.Height = 23;
+            BaselineList.SelectedIndex = -1;
+            BaselineList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            BaselineList.Size = new System.Drawing.Size(1024, 425);
+            BaselineList.StripeOddColor = System.Drawing.Color.FromArgb(235, 243, 255);
+            BaselineList.TabIndex = 0;
             // 
             // NameColumn
             // 
-            this.NameColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.NameColumn.HeaderText = "检测名称";
-            this.NameColumn.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-            this.NameColumn.LinkColor = System.Drawing.Color.Black;
-            this.NameColumn.Name = "NameColumn";
-            this.NameColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.NameColumn.TrackVisitedState = false;
-            this.NameColumn.VisitedLinkColor = System.Drawing.Color.Black;
+            NameColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            NameColumn.HeaderText = "检测名称";
+            NameColumn.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            NameColumn.LinkColor = System.Drawing.Color.Black;
+            NameColumn.Name = "NameColumn";
+            NameColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            NameColumn.TrackVisitedState = false;
+            NameColumn.VisitedLinkColor = System.Drawing.Color.Black;
             // 
             // DdescriptionColumn
             // 
-            this.DdescriptionColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.DdescriptionColumn.HeaderText = "描述";
-            this.DdescriptionColumn.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-            this.DdescriptionColumn.LinkColor = System.Drawing.Color.Black;
-            this.DdescriptionColumn.Name = "DdescriptionColumn";
-            this.DdescriptionColumn.TrackVisitedState = false;
-            this.DdescriptionColumn.VisitedLinkColor = System.Drawing.Color.Black;
+            DdescriptionColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            DdescriptionColumn.HeaderText = "描述";
+            DdescriptionColumn.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            DdescriptionColumn.LinkColor = System.Drawing.Color.Black;
+            DdescriptionColumn.Name = "DdescriptionColumn";
+            DdescriptionColumn.TrackVisitedState = false;
+            DdescriptionColumn.VisitedLinkColor = System.Drawing.Color.Black;
             // 
             // ItemColumn
             // 
-            this.ItemColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ItemColumn.ContextMenuStrip = this.uiContextMenuStrip;
-            this.ItemColumn.HeaderText = "注册/SecEdit表项";
-            this.ItemColumn.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-            this.ItemColumn.LinkColor = System.Drawing.Color.Black;
-            this.ItemColumn.Name = "ItemColumn";
-            this.ItemColumn.TrackVisitedState = false;
-            this.ItemColumn.VisitedLinkColor = System.Drawing.Color.Black;
+            ItemColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            ItemColumn.ContextMenuStrip = uiContextMenuStrip;
+            ItemColumn.HeaderText = "注册/SecEdit表项";
+            ItemColumn.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            ItemColumn.LinkColor = System.Drawing.Color.Black;
+            ItemColumn.Name = "ItemColumn";
+            ItemColumn.TrackVisitedState = false;
+            ItemColumn.VisitedLinkColor = System.Drawing.Color.Black;
             // 
             // uiContextMenuStrip
             // 
-            this.uiContextMenuStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
-            this.uiContextMenuStrip.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiContextMenuStrip.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.OpenSubKeyToolStripMenuItem});
-            this.uiContextMenuStrip.Name = "uiContextMenuStrip";
-            this.uiContextMenuStrip.Size = new System.Drawing.Size(171, 26);
-            this.uiContextMenuStrip.Style = Sunny.UI.UIStyle.Custom;
+            uiContextMenuStrip.BackColor = System.Drawing.Color.FromArgb(238, 248, 248);
+            uiContextMenuStrip.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 134);
+            uiContextMenuStrip.ForeColor = System.Drawing.Color.FromArgb(48, 48, 48);
+            uiContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { OpenSubKeyToolStripMenuItem });
+            uiContextMenuStrip.Name = "uiContextMenuStrip";
+            uiContextMenuStrip.Size = new System.Drawing.Size(171, 26);
+            uiContextMenuStrip.Style = Sunny.UI.UIStyle.Custom;
             // 
             // OpenSubKeyToolStripMenuItem
             // 
-            this.OpenSubKeyToolStripMenuItem.Image = global::WindowsBaselineAssistant.Properties.Resources.file_type_registry_icon_130200;
-            this.OpenSubKeyToolStripMenuItem.Name = "OpenSubKeyToolStripMenuItem";
-            this.OpenSubKeyToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-            this.OpenSubKeyToolStripMenuItem.Text = "打开注册表项";
-            this.OpenSubKeyToolStripMenuItem.Click += new System.EventHandler(this.OpenSubKeyToolStripMenuItem_Click);
+            OpenSubKeyToolStripMenuItem.Image = Properties.Resources.file_type_registry_icon_130200;
+            OpenSubKeyToolStripMenuItem.Name = "OpenSubKeyToolStripMenuItem";
+            OpenSubKeyToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            OpenSubKeyToolStripMenuItem.Text = "打开注册表项";
+            OpenSubKeyToolStripMenuItem.Click += OpenSubKeyToolStripMenuItem_Click;
             // 
             // FieldColumn
             // 
-            this.FieldColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.FieldColumn.HeaderText = "注册/SecEdit表字段";
-            this.FieldColumn.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-            this.FieldColumn.LinkColor = System.Drawing.Color.Black;
-            this.FieldColumn.Name = "FieldColumn";
-            this.FieldColumn.TrackVisitedState = false;
-            this.FieldColumn.VisitedLinkColor = System.Drawing.Color.Black;
-            this.FieldColumn.Width = 156;
+            FieldColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            FieldColumn.HeaderText = "注册/SecEdit表字段";
+            FieldColumn.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            FieldColumn.LinkColor = System.Drawing.Color.Black;
+            FieldColumn.Name = "FieldColumn";
+            FieldColumn.TrackVisitedState = false;
+            FieldColumn.VisitedLinkColor = System.Drawing.Color.Black;
+            FieldColumn.Width = 156;
             // 
             // StandardColumn
             // 
-            this.StandardColumn.HeaderText = "标准值";
-            this.StandardColumn.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-            this.StandardColumn.LinkColor = System.Drawing.Color.Black;
-            this.StandardColumn.Name = "StandardColumn";
-            this.StandardColumn.TrackVisitedState = false;
-            this.StandardColumn.VisitedLinkColor = System.Drawing.Color.Black;
+            StandardColumn.HeaderText = "标准值";
+            StandardColumn.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            StandardColumn.LinkColor = System.Drawing.Color.Black;
+            StandardColumn.Name = "StandardColumn";
+            StandardColumn.TrackVisitedState = false;
+            StandardColumn.VisitedLinkColor = System.Drawing.Color.Black;
             // 
             // RealityColumn
             // 
-            this.RealityColumn.HeaderText = "检测值";
-            this.RealityColumn.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-            this.RealityColumn.LinkColor = System.Drawing.Color.Black;
-            this.RealityColumn.Name = "RealityColumn";
-            this.RealityColumn.TrackVisitedState = false;
-            this.RealityColumn.VisitedLinkColor = System.Drawing.Color.Black;
+            RealityColumn.HeaderText = "检测值";
+            RealityColumn.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            RealityColumn.LinkColor = System.Drawing.Color.Black;
+            RealityColumn.Name = "RealityColumn";
+            RealityColumn.TrackVisitedState = false;
+            RealityColumn.VisitedLinkColor = System.Drawing.Color.Black;
             // 
             // StatusColumn
             // 
-            this.StatusColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            StatusColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Red;
-            this.StatusColumn.DefaultCellStyle = dataGridViewCellStyle3;
-            this.StatusColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.StatusColumn.HeaderText = "检测结果";
-            this.StatusColumn.Name = "StatusColumn";
-            this.StatusColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.StatusColumn.Width = 76;
+            StatusColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            StatusColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            StatusColumn.HeaderText = "检测结果";
+            StatusColumn.Name = "StatusColumn";
+            StatusColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            StatusColumn.Width = 76;
             // 
             // FortifyColumn
             // 
-            this.FortifyColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.FortifyColumn.HeaderText = "加固";
-            this.FortifyColumn.Name = "FortifyColumn";
-            this.FortifyColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.FortifyColumn.Width = 44;
+            FortifyColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            FortifyColumn.HeaderText = "加固";
+            FortifyColumn.Name = "FortifyColumn";
+            FortifyColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            FortifyColumn.Width = 44;
             // 
             // ValueTypeColumn
             // 
-            this.ValueTypeColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.ValueTypeColumn.HeaderText = "数据类型";
-            this.ValueTypeColumn.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-            this.ValueTypeColumn.LinkColor = System.Drawing.Color.Black;
-            this.ValueTypeColumn.Name = "ValueTypeColumn";
-            this.ValueTypeColumn.ReadOnly = true;
-            this.ValueTypeColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.ValueTypeColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.ValueTypeColumn.TrackVisitedState = false;
-            this.ValueTypeColumn.Visible = false;
-            this.ValueTypeColumn.VisitedLinkColor = System.Drawing.Color.Black;
-            this.ValueTypeColumn.Width = 5;
+            ValueTypeColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            ValueTypeColumn.HeaderText = "数据类型";
+            ValueTypeColumn.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            ValueTypeColumn.LinkColor = System.Drawing.Color.Black;
+            ValueTypeColumn.Name = "ValueTypeColumn";
+            ValueTypeColumn.ReadOnly = true;
+            ValueTypeColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            ValueTypeColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            ValueTypeColumn.TrackVisitedState = false;
+            ValueTypeColumn.Visible = false;
+            ValueTypeColumn.VisitedLinkColor = System.Drawing.Color.Black;
             // 
             // CheckBtn
             // 
-            this.CheckBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.CheckBtn.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.CheckBtn.Location = new System.Drawing.Point(251, 580);
-            this.CheckBtn.MinimumSize = new System.Drawing.Size(1, 1);
-            this.CheckBtn.Name = "CheckBtn";
-            this.CheckBtn.Size = new System.Drawing.Size(100, 35);
-            this.CheckBtn.Symbol = 61442;
-            this.CheckBtn.TabIndex = 1;
-            this.CheckBtn.Text = "检测";
-            this.CheckBtn.TipsFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.CheckBtn.Click += new System.EventHandler(this.CheckBtn_Click);
+            CheckBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            CheckBtn.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 134);
+            CheckBtn.Location = new System.Drawing.Point(251, 580);
+            CheckBtn.MinimumSize = new System.Drawing.Size(1, 1);
+            CheckBtn.Name = "CheckBtn";
+            CheckBtn.Size = new System.Drawing.Size(100, 35);
+            CheckBtn.Symbol = 61442;
+            CheckBtn.TabIndex = 1;
+            CheckBtn.Text = "检测";
+            CheckBtn.TipsFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 134);
+            CheckBtn.Click += CheckBtn_Click;
             // 
             // FortifyBtn
             // 
-            this.FortifyBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.FortifyBtn.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.FortifyBtn.Location = new System.Drawing.Point(409, 580);
-            this.FortifyBtn.MinimumSize = new System.Drawing.Size(1, 1);
-            this.FortifyBtn.Name = "FortifyBtn";
-            this.FortifyBtn.Size = new System.Drawing.Size(100, 35);
-            this.FortifyBtn.Symbol = 61475;
-            this.FortifyBtn.TabIndex = 1;
-            this.FortifyBtn.Text = "加固";
-            this.FortifyBtn.TipsFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.FortifyBtn.Click += new System.EventHandler(this.FortifyBtn_Click);
+            FortifyBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            FortifyBtn.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 134);
+            FortifyBtn.Location = new System.Drawing.Point(409, 580);
+            FortifyBtn.MinimumSize = new System.Drawing.Size(1, 1);
+            FortifyBtn.Name = "FortifyBtn";
+            FortifyBtn.Size = new System.Drawing.Size(100, 35);
+            FortifyBtn.Symbol = 61475;
+            FortifyBtn.TabIndex = 1;
+            FortifyBtn.Text = "加固";
+            FortifyBtn.TipsFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 134);
+            FortifyBtn.Click += FortifyBtn_Click;
             // 
             // ReportBtn
             // 
-            this.ReportBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ReportBtn.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ReportBtn.Location = new System.Drawing.Point(576, 580);
-            this.ReportBtn.MinimumSize = new System.Drawing.Size(1, 1);
-            this.ReportBtn.Name = "ReportBtn";
-            this.ReportBtn.Size = new System.Drawing.Size(100, 35);
-            this.ReportBtn.Symbol = 61568;
-            this.ReportBtn.TabIndex = 1;
-            this.ReportBtn.Text = "导出结果";
-            this.ReportBtn.TipsFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ReportBtn.Click += new System.EventHandler(this.ReportBtn_Click);
-            // 
-            // AboutLinkLabel
-            // 
-            this.AboutLinkLabel.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.AboutLinkLabel.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.AboutLinkLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.AboutLinkLabel.LinkBehavior = System.Windows.Forms.LinkBehavior.AlwaysUnderline;
-            this.AboutLinkLabel.Location = new System.Drawing.Point(909, 628);
-            this.AboutLinkLabel.Name = "AboutLinkLabel";
-            this.AboutLinkLabel.Size = new System.Drawing.Size(142, 27);
-            this.AboutLinkLabel.TabIndex = 2;
-            this.AboutLinkLabel.TabStop = true;
-            this.AboutLinkLabel.Text = "Author: S0cke3t";
-            this.AboutLinkLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.AboutLinkLabel.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
-            this.AboutLinkLabel.Click += new System.EventHandler(this.AboutLinkLabel_Click);
+            ReportBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            ReportBtn.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 134);
+            ReportBtn.Location = new System.Drawing.Point(576, 580);
+            ReportBtn.MinimumSize = new System.Drawing.Size(1, 1);
+            ReportBtn.Name = "ReportBtn";
+            ReportBtn.Size = new System.Drawing.Size(100, 35);
+            ReportBtn.Symbol = 61568;
+            ReportBtn.TabIndex = 1;
+            ReportBtn.Text = "导出结果";
+            ReportBtn.TipsFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 134);
+            ReportBtn.Click += ReportBtn_Click;
             // 
             // uiLabel1
             // 
-            this.uiLabel1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiLabel1.Location = new System.Drawing.Point(24, 550);
-            this.uiLabel1.Name = "uiLabel1";
-            this.uiLabel1.Size = new System.Drawing.Size(100, 23);
-            this.uiLabel1.TabIndex = 3;
-            this.uiLabel1.Text = "总检测数: ";
-            this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            uiLabel1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 134);
+            uiLabel1.ForeColor = System.Drawing.Color.FromArgb(48, 48, 48);
+            uiLabel1.Location = new System.Drawing.Point(24, 550);
+            uiLabel1.Name = "uiLabel1";
+            uiLabel1.Size = new System.Drawing.Size(100, 23);
+            uiLabel1.TabIndex = 3;
+            uiLabel1.Text = "总检测数: ";
+            uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // uiLabel2
             // 
-            this.uiLabel2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiLabel2.ForeColor = System.Drawing.Color.Green;
-            this.uiLabel2.Location = new System.Drawing.Point(24, 582);
-            this.uiLabel2.Name = "uiLabel2";
-            this.uiLabel2.Size = new System.Drawing.Size(100, 23);
-            this.uiLabel2.TabIndex = 3;
-            this.uiLabel2.Text = "符合数: ";
-            this.uiLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            uiLabel2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 134);
+            uiLabel2.ForeColor = System.Drawing.Color.Green;
+            uiLabel2.Location = new System.Drawing.Point(24, 582);
+            uiLabel2.Name = "uiLabel2";
+            uiLabel2.Size = new System.Drawing.Size(100, 23);
+            uiLabel2.TabIndex = 3;
+            uiLabel2.Text = "符合数: ";
+            uiLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // uiLabel3
             // 
-            this.uiLabel3.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.uiLabel3.Location = new System.Drawing.Point(24, 614);
-            this.uiLabel3.Name = "uiLabel3";
-            this.uiLabel3.Size = new System.Drawing.Size(100, 23);
-            this.uiLabel3.TabIndex = 3;
-            this.uiLabel3.Text = "不符合数: ";
-            this.uiLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            uiLabel3.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 134);
+            uiLabel3.ForeColor = System.Drawing.Color.FromArgb(192, 0, 0);
+            uiLabel3.Location = new System.Drawing.Point(24, 614);
+            uiLabel3.Name = "uiLabel3";
+            uiLabel3.Size = new System.Drawing.Size(100, 23);
+            uiLabel3.TabIndex = 3;
+            uiLabel3.Text = "不符合数: ";
+            uiLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // uiLabel4
             // 
-            this.uiLabel4.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.uiLabel4.Location = new System.Drawing.Point(24, 647);
-            this.uiLabel4.Name = "uiLabel4";
-            this.uiLabel4.Size = new System.Drawing.Size(100, 23);
-            this.uiLabel4.TabIndex = 3;
-            this.uiLabel4.Text = "符合率: ";
-            this.uiLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            uiLabel4.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 134);
+            uiLabel4.ForeColor = System.Drawing.Color.FromArgb(192, 0, 192);
+            uiLabel4.Location = new System.Drawing.Point(24, 647);
+            uiLabel4.Name = "uiLabel4";
+            uiLabel4.Size = new System.Drawing.Size(100, 23);
+            uiLabel4.TabIndex = 3;
+            uiLabel4.Text = "符合率: ";
+            uiLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // totalCountLabel
             // 
-            this.totalCountLabel.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.totalCountLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.totalCountLabel.Location = new System.Drawing.Point(130, 550);
-            this.totalCountLabel.Name = "totalCountLabel";
-            this.totalCountLabel.Size = new System.Drawing.Size(129, 23);
-            this.totalCountLabel.TabIndex = 4;
-            this.totalCountLabel.Text = "-";
-            this.totalCountLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            totalCountLabel.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 134);
+            totalCountLabel.ForeColor = System.Drawing.Color.FromArgb(48, 48, 48);
+            totalCountLabel.Location = new System.Drawing.Point(130, 550);
+            totalCountLabel.Name = "totalCountLabel";
+            totalCountLabel.Size = new System.Drawing.Size(129, 23);
+            totalCountLabel.TabIndex = 4;
+            totalCountLabel.Text = "-";
+            totalCountLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // passCountLabel
             // 
-            this.passCountLabel.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.passCountLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.passCountLabel.Location = new System.Drawing.Point(130, 582);
-            this.passCountLabel.Name = "passCountLabel";
-            this.passCountLabel.Size = new System.Drawing.Size(116, 23);
-            this.passCountLabel.TabIndex = 4;
-            this.passCountLabel.Text = "-";
-            this.passCountLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            passCountLabel.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 134);
+            passCountLabel.ForeColor = System.Drawing.Color.FromArgb(48, 48, 48);
+            passCountLabel.Location = new System.Drawing.Point(130, 582);
+            passCountLabel.Name = "passCountLabel";
+            passCountLabel.Size = new System.Drawing.Size(116, 23);
+            passCountLabel.TabIndex = 4;
+            passCountLabel.Text = "-";
+            passCountLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // failCountLabel
             // 
-            this.failCountLabel.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.failCountLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.failCountLabel.Location = new System.Drawing.Point(130, 614);
-            this.failCountLabel.Name = "failCountLabel";
-            this.failCountLabel.Size = new System.Drawing.Size(116, 23);
-            this.failCountLabel.TabIndex = 4;
-            this.failCountLabel.Text = "-";
-            this.failCountLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            failCountLabel.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 134);
+            failCountLabel.ForeColor = System.Drawing.Color.FromArgb(48, 48, 48);
+            failCountLabel.Location = new System.Drawing.Point(130, 614);
+            failCountLabel.Name = "failCountLabel";
+            failCountLabel.Size = new System.Drawing.Size(116, 23);
+            failCountLabel.TabIndex = 4;
+            failCountLabel.Text = "-";
+            failCountLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // rateLabel
             // 
-            this.rateLabel.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.rateLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.rateLabel.Location = new System.Drawing.Point(130, 647);
-            this.rateLabel.Name = "rateLabel";
-            this.rateLabel.Size = new System.Drawing.Size(399, 23);
-            this.rateLabel.TabIndex = 4;
-            this.rateLabel.Text = "-";
-            this.rateLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            rateLabel.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 134);
+            rateLabel.ForeColor = System.Drawing.Color.FromArgb(48, 48, 48);
+            rateLabel.Location = new System.Drawing.Point(130, 647);
+            rateLabel.Name = "rateLabel";
+            rateLabel.Size = new System.Drawing.Size(399, 23);
+            rateLabel.TabIndex = 4;
+            rateLabel.Text = "-";
+            rateLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // uiLabel5
             // 
-            this.uiLabel5.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiLabel5.Location = new System.Drawing.Point(27, 60);
-            this.uiLabel5.Name = "uiLabel5";
-            this.uiLabel5.Size = new System.Drawing.Size(80, 23);
-            this.uiLabel5.TabIndex = 5;
-            this.uiLabel5.Text = "系统版本: ";
-            this.uiLabel5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            uiLabel5.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 134);
+            uiLabel5.ForeColor = System.Drawing.Color.FromArgb(48, 48, 48);
+            uiLabel5.Location = new System.Drawing.Point(27, 60);
+            uiLabel5.Name = "uiLabel5";
+            uiLabel5.Size = new System.Drawing.Size(80, 23);
+            uiLabel5.TabIndex = 5;
+            uiLabel5.Text = "系统版本: ";
+            uiLabel5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // OSLabel
             // 
-            this.OSLabel.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.OSLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.OSLabel.Location = new System.Drawing.Point(113, 61);
-            this.OSLabel.Name = "OSLabel";
-            this.OSLabel.Size = new System.Drawing.Size(416, 23);
-            this.OSLabel.TabIndex = 6;
-            this.OSLabel.Text = "-";
-            this.OSLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            OSLabel.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 134);
+            OSLabel.ForeColor = System.Drawing.Color.FromArgb(48, 48, 48);
+            OSLabel.Location = new System.Drawing.Point(113, 61);
+            OSLabel.Name = "OSLabel";
+            OSLabel.Size = new System.Drawing.Size(416, 23);
+            OSLabel.TabIndex = 6;
+            OSLabel.Text = "-";
+            OSLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // uiLabel6
             // 
-            this.uiLabel6.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiLabel6.Location = new System.Drawing.Point(547, 60);
-            this.uiLabel6.Name = "uiLabel6";
-            this.uiLabel6.Size = new System.Drawing.Size(67, 23);
-            this.uiLabel6.TabIndex = 7;
-            this.uiLabel6.Text = "IP地址: ";
-            this.uiLabel6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // IPLabel
-            // 
-            this.IPLabel.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.IPLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.IPLabel.Location = new System.Drawing.Point(613, 60);
-            this.IPLabel.Name = "IPLabel";
-            this.IPLabel.Size = new System.Drawing.Size(170, 23);
-            this.IPLabel.TabIndex = 8;
-            this.IPLabel.Text = "-";
-            this.IPLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            uiLabel6.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 134);
+            uiLabel6.ForeColor = System.Drawing.Color.FromArgb(48, 48, 48);
+            uiLabel6.Location = new System.Drawing.Point(541, 60);
+            uiLabel6.Name = "uiLabel6";
+            uiLabel6.Size = new System.Drawing.Size(67, 23);
+            uiLabel6.TabIndex = 7;
+            uiLabel6.Text = "IP地址: ";
+            uiLabel6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // uiLabel7
             // 
-            this.uiLabel7.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiLabel7.Location = new System.Drawing.Point(802, 61);
-            this.uiLabel7.Name = "uiLabel7";
-            this.uiLabel7.Size = new System.Drawing.Size(71, 23);
-            this.uiLabel7.TabIndex = 9;
-            this.uiLabel7.Text = "主机名: ";
-            this.uiLabel7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            uiLabel7.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 134);
+            uiLabel7.ForeColor = System.Drawing.Color.FromArgb(48, 48, 48);
+            uiLabel7.Location = new System.Drawing.Point(802, 61);
+            uiLabel7.Name = "uiLabel7";
+            uiLabel7.Size = new System.Drawing.Size(71, 23);
+            uiLabel7.TabIndex = 9;
+            uiLabel7.Text = "主机名: ";
+            uiLabel7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // OSNameLabel
             // 
-            this.OSNameLabel.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.OSNameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.OSNameLabel.Location = new System.Drawing.Point(872, 60);
-            this.OSNameLabel.Name = "OSNameLabel";
-            this.OSNameLabel.Size = new System.Drawing.Size(166, 23);
-            this.OSNameLabel.TabIndex = 10;
-            this.OSNameLabel.Text = "-";
-            this.OSNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            OSNameLabel.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 134);
+            OSNameLabel.ForeColor = System.Drawing.Color.FromArgb(48, 48, 48);
+            OSNameLabel.Location = new System.Drawing.Point(872, 60);
+            OSNameLabel.Name = "OSNameLabel";
+            OSNameLabel.Size = new System.Drawing.Size(166, 23);
+            OSNameLabel.TabIndex = 10;
+            OSNameLabel.Text = "-";
+            OSNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // checkAllCheckBox
             // 
-            this.checkAllCheckBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.checkAllCheckBox.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.checkAllCheckBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.checkAllCheckBox.Location = new System.Drawing.Point(988, 535);
-            this.checkAllCheckBox.MinimumSize = new System.Drawing.Size(1, 1);
-            this.checkAllCheckBox.Name = "checkAllCheckBox";
-            this.checkAllCheckBox.Size = new System.Drawing.Size(63, 29);
-            this.checkAllCheckBox.TabIndex = 11;
-            this.checkAllCheckBox.Text = "全选";
-            this.checkAllCheckBox.CheckedChanged += new System.EventHandler(this.checkAllCheckBox_CheckedChanged);
-            // 
-            // RepoLinkLabel
-            // 
-            this.RepoLinkLabel.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.RepoLinkLabel.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.RepoLinkLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.RepoLinkLabel.LinkBehavior = System.Windows.Forms.LinkBehavior.AlwaysUnderline;
-            this.RepoLinkLabel.Location = new System.Drawing.Point(921, 659);
-            this.RepoLinkLabel.Name = "RepoLinkLabel";
-            this.RepoLinkLabel.Size = new System.Drawing.Size(135, 27);
-            this.RepoLinkLabel.TabIndex = 12;
-            this.RepoLinkLabel.TabStop = true;
-            this.RepoLinkLabel.Text = "代码仓库&&BUG反馈";
-            this.RepoLinkLabel.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
-            this.RepoLinkLabel.Click += new System.EventHandler(this.RepoLinkLabel_Click);
+            checkAllCheckBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            checkAllCheckBox.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 134);
+            checkAllCheckBox.ForeColor = System.Drawing.Color.FromArgb(48, 48, 48);
+            checkAllCheckBox.Location = new System.Drawing.Point(988, 535);
+            checkAllCheckBox.MinimumSize = new System.Drawing.Size(1, 1);
+            checkAllCheckBox.Name = "checkAllCheckBox";
+            checkAllCheckBox.Size = new System.Drawing.Size(63, 29);
+            checkAllCheckBox.TabIndex = 11;
+            checkAllCheckBox.Text = "全选";
+            checkAllCheckBox.CheckedChanged += checkAllCheckBox_CheckedChanged;
             // 
             // showValueTypeuiCheckBox
             // 
-            this.showValueTypeuiCheckBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.showValueTypeuiCheckBox.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.showValueTypeuiCheckBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.showValueTypeuiCheckBox.Location = new System.Drawing.Point(925, 570);
-            this.showValueTypeuiCheckBox.MinimumSize = new System.Drawing.Size(1, 1);
-            this.showValueTypeuiCheckBox.Name = "showValueTypeuiCheckBox";
-            this.showValueTypeuiCheckBox.Size = new System.Drawing.Size(126, 29);
-            this.showValueTypeuiCheckBox.TabIndex = 13;
-            this.showValueTypeuiCheckBox.Text = "显示数据类型";
-            this.showValueTypeuiCheckBox.CheckedChanged += new System.EventHandler(this.showValueTypeuiCheckBox_CheckedChanged);
+            showValueTypeuiCheckBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            showValueTypeuiCheckBox.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 134);
+            showValueTypeuiCheckBox.ForeColor = System.Drawing.Color.FromArgb(48, 48, 48);
+            showValueTypeuiCheckBox.Location = new System.Drawing.Point(925, 570);
+            showValueTypeuiCheckBox.MinimumSize = new System.Drawing.Size(1, 1);
+            showValueTypeuiCheckBox.Name = "showValueTypeuiCheckBox";
+            showValueTypeuiCheckBox.Size = new System.Drawing.Size(126, 29);
+            showValueTypeuiCheckBox.TabIndex = 13;
+            showValueTypeuiCheckBox.Text = "显示数据类型";
+            showValueTypeuiCheckBox.CheckedChanged += showValueTypeuiCheckBox_CheckedChanged;
             // 
             // AddRulebtn
             // 
-            this.AddRulebtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.AddRulebtn.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.AddRulebtn.Location = new System.Drawing.Point(740, 580);
-            this.AddRulebtn.MinimumSize = new System.Drawing.Size(1, 1);
-            this.AddRulebtn.Name = "AddRulebtn";
-            this.AddRulebtn.Size = new System.Drawing.Size(100, 35);
-            this.AddRulebtn.Symbol = 61543;
-            this.AddRulebtn.TabIndex = 1;
-            this.AddRulebtn.Text = "添加规则";
-            this.AddRulebtn.TipsFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.AddRulebtn.Click += new System.EventHandler(this.AddRulebtn_Click);
+            AddRulebtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            AddRulebtn.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 134);
+            AddRulebtn.Location = new System.Drawing.Point(740, 580);
+            AddRulebtn.MinimumSize = new System.Drawing.Size(1, 1);
+            AddRulebtn.Name = "AddRulebtn";
+            AddRulebtn.Size = new System.Drawing.Size(100, 35);
+            AddRulebtn.Symbol = 61543;
+            AddRulebtn.TabIndex = 1;
+            AddRulebtn.Text = "添加规则";
+            AddRulebtn.TipsFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 134);
+            AddRulebtn.Click += AddRulebtn_Click;
             // 
             // uiGroupBox1
             // 
-            this.uiGroupBox1.Controls.Add(this.Tipbtn);
-            this.uiGroupBox1.Controls.Add(this.Logbtn);
-            this.uiGroupBox1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
-            this.uiGroupBox1.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
-            this.uiGroupBox1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiGroupBox1.Location = new System.Drawing.Point(661, 621);
-            this.uiGroupBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.uiGroupBox1.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiGroupBox1.Name = "uiGroupBox1";
-            this.uiGroupBox1.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
-            this.uiGroupBox1.Size = new System.Drawing.Size(179, 63);
-            this.uiGroupBox1.TabIndex = 15;
-            this.uiGroupBox1.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // Logbtn
-            // 
-            this.Logbtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Logbtn.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.Logbtn.LightStyle = true;
-            this.Logbtn.Location = new System.Drawing.Point(97, 27);
-            this.Logbtn.MinimumSize = new System.Drawing.Size(1, 1);
-            this.Logbtn.Name = "Logbtn";
-            this.Logbtn.Size = new System.Drawing.Size(66, 28);
-            this.Logbtn.TabIndex = 16;
-            this.Logbtn.Text = "日志目录";
-            this.Logbtn.TipsFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.Logbtn.TipsText = "!";
-            this.Logbtn.Click += new System.EventHandler(this.Logbtn_Click);
+            uiGroupBox1.Controls.Add(Tipbtn);
+            uiGroupBox1.Controls.Add(Logbtn);
+            uiGroupBox1.FillColor = System.Drawing.Color.FromArgb(238, 248, 248);
+            uiGroupBox1.FillColor2 = System.Drawing.Color.FromArgb(238, 248, 248);
+            uiGroupBox1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 134);
+            uiGroupBox1.Location = new System.Drawing.Point(661, 621);
+            uiGroupBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            uiGroupBox1.MinimumSize = new System.Drawing.Size(1, 1);
+            uiGroupBox1.Name = "uiGroupBox1";
+            uiGroupBox1.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
+            uiGroupBox1.Size = new System.Drawing.Size(179, 63);
+            uiGroupBox1.TabIndex = 15;
+            uiGroupBox1.Text = null;
+            uiGroupBox1.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Tipbtn
             // 
-            this.Tipbtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Tipbtn.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.Tipbtn.LightStyle = true;
-            this.Tipbtn.Location = new System.Drawing.Point(17, 27);
-            this.Tipbtn.MinimumSize = new System.Drawing.Size(1, 1);
-            this.Tipbtn.Name = "Tipbtn";
-            this.Tipbtn.Size = new System.Drawing.Size(66, 28);
-            this.Tipbtn.TabIndex = 16;
-            this.Tipbtn.Text = "Tips";
-            this.Tipbtn.TipsFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiToolTip1.SetToolTip(this.Tipbtn, "- 右键注册表项可快速定位到该项位置.\r\n- 拷贝日志时,请先关闭软件再进行操作.\r\n");
+            Tipbtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            Tipbtn.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 134);
+            Tipbtn.LightStyle = true;
+            Tipbtn.Location = new System.Drawing.Point(17, 27);
+            Tipbtn.MinimumSize = new System.Drawing.Size(1, 1);
+            Tipbtn.Name = "Tipbtn";
+            Tipbtn.Size = new System.Drawing.Size(66, 28);
+            Tipbtn.TabIndex = 16;
+            Tipbtn.Text = "Tips";
+            Tipbtn.TipsFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 134);
+            uiToolTip1.SetToolTip(Tipbtn, "- 右键注册表项可快速定位到该项位置.\r\n- 拷贝日志时,请先关闭软件再进行操作.\r\n");
+            // 
+            // Logbtn
+            // 
+            Logbtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            Logbtn.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 134);
+            Logbtn.LightStyle = true;
+            Logbtn.Location = new System.Drawing.Point(97, 27);
+            Logbtn.MinimumSize = new System.Drawing.Size(1, 1);
+            Logbtn.Name = "Logbtn";
+            Logbtn.Size = new System.Drawing.Size(66, 28);
+            Logbtn.TabIndex = 16;
+            Logbtn.Text = "日志目录";
+            Logbtn.TipsFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 134);
+            Logbtn.TipsText = "!";
+            Logbtn.Click += Logbtn_Click;
             // 
             // uiToolTip1
             // 
-            this.uiToolTip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(54)))), ((int)(((byte)(54)))));
-            this.uiToolTip1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(239)))));
-            this.uiToolTip1.IsBalloon = true;
-            this.uiToolTip1.OwnerDraw = true;
-            this.uiToolTip1.TitleFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiToolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.uiToolTip1.ToolTipTitle = "Tips";
+            uiToolTip1.BackColor = System.Drawing.Color.FromArgb(54, 54, 54);
+            uiToolTip1.ForeColor = System.Drawing.Color.FromArgb(239, 239, 239);
+            uiToolTip1.IsBalloon = true;
+            uiToolTip1.OwnerDraw = true;
+            uiToolTip1.TitleFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 134);
+            uiToolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            uiToolTip1.ToolTipTitle = "Tips";
+            // 
+            // BlogAvatar
+            // 
+            BlogAvatar.FillColor = System.Drawing.Color.FromArgb(238, 248, 248);
+            BlogAvatar.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 134);
+            BlogAvatar.Location = new System.Drawing.Point(971, 644);
+            BlogAvatar.MinimumSize = new System.Drawing.Size(1, 1);
+            BlogAvatar.Name = "BlogAvatar";
+            BlogAvatar.Size = new System.Drawing.Size(37, 40);
+            BlogAvatar.Symbol = 161850;
+            BlogAvatar.TabIndex = 17;
+            BlogAvatar.Click += BlogAvatar_Click;
+            // 
+            // RepoAvatar
+            // 
+            RepoAvatar.FillColor = System.Drawing.Color.FromArgb(238, 248, 248);
+            RepoAvatar.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 134);
+            RepoAvatar.Location = new System.Drawing.Point(1019, 644);
+            RepoAvatar.MinimumSize = new System.Drawing.Size(1, 1);
+            RepoAvatar.Name = "RepoAvatar";
+            RepoAvatar.Size = new System.Drawing.Size(37, 40);
+            RepoAvatar.Symbol = 161595;
+            RepoAvatar.TabIndex = 17;
+            RepoAvatar.Text = "uiAvatar1";
+            RepoAvatar.Click += RepoAvatar_Click;
+            // 
+            // IpListComboBox
+            // 
+            IpListComboBox.DataSource = null;
+            IpListComboBox.DropDownStyle = Sunny.UI.UIDropDownStyle.DropDownList;
+            IpListComboBox.FillColor = System.Drawing.Color.White;
+            IpListComboBox.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 134);
+            IpListComboBox.ItemHoverColor = System.Drawing.Color.FromArgb(155, 200, 255);
+            IpListComboBox.ItemSelectForeColor = System.Drawing.Color.FromArgb(235, 243, 255);
+            IpListComboBox.Location = new System.Drawing.Point(609, 58);
+            IpListComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            IpListComboBox.MinimumSize = new System.Drawing.Size(63, 0);
+            IpListComboBox.Name = "IpListComboBox";
+            IpListComboBox.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
+            IpListComboBox.Size = new System.Drawing.Size(165, 30);
+            IpListComboBox.SymbolSize = 24;
+            IpListComboBox.TabIndex = 16;
+            IpListComboBox.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            IpListComboBox.Watermark = "";
             // 
             // Main
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
-            this.ClientSize = new System.Drawing.Size(1078, 693);
-            this.ControlBoxFillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(171)))), ((int)(((byte)(160)))));
-            this.Controls.Add(this.uiGroupBox1);
-            this.Controls.Add(this.showValueTypeuiCheckBox);
-            this.Controls.Add(this.RepoLinkLabel);
-            this.Controls.Add(this.checkAllCheckBox);
-            this.Controls.Add(this.OSNameLabel);
-            this.Controls.Add(this.uiLabel7);
-            this.Controls.Add(this.IPLabel);
-            this.Controls.Add(this.uiLabel6);
-            this.Controls.Add(this.OSLabel);
-            this.Controls.Add(this.uiLabel5);
-            this.Controls.Add(this.rateLabel);
-            this.Controls.Add(this.failCountLabel);
-            this.Controls.Add(this.passCountLabel);
-            this.Controls.Add(this.totalCountLabel);
-            this.Controls.Add(this.uiLabel4);
-            this.Controls.Add(this.uiLabel3);
-            this.Controls.Add(this.uiLabel2);
-            this.Controls.Add(this.uiLabel1);
-            this.Controls.Add(this.AboutLinkLabel);
-            this.Controls.Add(this.AddRulebtn);
-            this.Controls.Add(this.ReportBtn);
-            this.Controls.Add(this.FortifyBtn);
-            this.Controls.Add(this.CheckBtn);
-            this.Controls.Add(this.BaselineList);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
-            this.Name = "Main";
-            this.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
-            this.Style = Sunny.UI.UIStyle.Custom;
-            this.Text = "Windows基线检测加固助手";
-            this.TitleColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
-            this.ZoomScaleRect = new System.Drawing.Rectangle(15, 15, 800, 450);
-            this.Load += new System.EventHandler(this.Main_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.BaselineList)).EndInit();
-            this.uiContextMenuStrip.ResumeLayout(false);
-            this.uiGroupBox1.ResumeLayout(false);
-            this.ResumeLayout(false);
-
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            BackColor = System.Drawing.Color.FromArgb(238, 248, 248);
+            ClientSize = new System.Drawing.Size(1078, 693);
+            ControlBoxFillHoverColor = System.Drawing.Color.FromArgb(51, 171, 160);
+            Controls.Add(RepoAvatar);
+            Controls.Add(BlogAvatar);
+            Controls.Add(IpListComboBox);
+            Controls.Add(uiGroupBox1);
+            Controls.Add(showValueTypeuiCheckBox);
+            Controls.Add(checkAllCheckBox);
+            Controls.Add(OSNameLabel);
+            Controls.Add(uiLabel7);
+            Controls.Add(uiLabel6);
+            Controls.Add(OSLabel);
+            Controls.Add(uiLabel5);
+            Controls.Add(rateLabel);
+            Controls.Add(failCountLabel);
+            Controls.Add(passCountLabel);
+            Controls.Add(totalCountLabel);
+            Controls.Add(uiLabel4);
+            Controls.Add(uiLabel3);
+            Controls.Add(uiLabel2);
+            Controls.Add(uiLabel1);
+            Controls.Add(AddRulebtn);
+            Controls.Add(ReportBtn);
+            Controls.Add(FortifyBtn);
+            Controls.Add(CheckBtn);
+            Controls.Add(BaselineList);
+            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
+            MaximizeBox = false;
+            Name = "Main";
+            RectColor = System.Drawing.Color.FromArgb(0, 150, 136);
+            Style = Sunny.UI.UIStyle.Custom;
+            Text = "Windows基线检测加固助手";
+            TitleColor = System.Drawing.Color.FromArgb(0, 150, 136);
+            ZoomScaleRect = new System.Drawing.Rectangle(15, 15, 800, 450);
+            Load += Main_Load;
+            ((System.ComponentModel.ISupportInitialize)BaselineList).EndInit();
+            uiContextMenuStrip.ResumeLayout(false);
+            uiGroupBox1.ResumeLayout(false);
+            ResumeLayout(false);
         }
 
         #endregion
@@ -630,7 +621,6 @@
         private Sunny.UI.UISymbolButton CheckBtn;
         private Sunny.UI.UISymbolButton FortifyBtn;
         private Sunny.UI.UISymbolButton ReportBtn;
-        private Sunny.UI.UILinkLabel AboutLinkLabel;
         private Sunny.UI.UILabel uiLabel1;
         private Sunny.UI.UILabel uiLabel2;
         private Sunny.UI.UILabel uiLabel3;
@@ -644,11 +634,9 @@
         private Sunny.UI.UILabel uiLabel5;
         private Sunny.UI.UILabel OSLabel;
         private Sunny.UI.UILabel uiLabel6;
-        private Sunny.UI.UILabel IPLabel;
         private Sunny.UI.UILabel uiLabel7;
         private Sunny.UI.UILabel OSNameLabel;
         private Sunny.UI.UICheckBox checkAllCheckBox;
-        private Sunny.UI.UILinkLabel RepoLinkLabel;
         private Sunny.UI.UICheckBox showValueTypeuiCheckBox;
         private System.Windows.Forms.DataGridViewLinkColumn NameColumn;
         private System.Windows.Forms.DataGridViewLinkColumn DdescriptionColumn;
@@ -664,5 +652,8 @@
         private Sunny.UI.UIButton Tipbtn;
         private Sunny.UI.UIButton Logbtn;
         private Sunny.UI.UIToolTip uiToolTip1;
+        private Sunny.UI.UIComboBox IpListComboBox;
+        private Sunny.UI.UIAvatar BlogAvatar;
+        private Sunny.UI.UIAvatar RepoAvatar;
     }
 }

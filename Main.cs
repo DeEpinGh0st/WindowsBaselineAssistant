@@ -40,10 +40,6 @@ namespace WindowsBaselineAssistant
             BaselineList.Rows[index].Cells[7].Style.BackColor = Color.LightGray;
         }
 
-        private void AboutLinkLabel_Click(object sender, EventArgs e)
-        {
-            Process.Start("https://saferoad.cc/");
-        }
 
         private void CheckBtn_Click(object sender, EventArgs e)
         {
@@ -237,7 +233,11 @@ namespace WindowsBaselineAssistant
             Version version = assembly.GetName().Version;
             this.Text += $" v{version}";
             OSLabel.Text = Util.GetOSVersion();
-            IPLabel.Text = Util.GetIPAddress();
+            foreach (string ip in Util.GetIPAddress())
+            {
+                IpListComboBox.Items.Add(ip);
+            }
+            IpListComboBox.SelectedIndex = 0;
             OSNameLabel.Text = Environment.MachineName;
             if (!Directory.Exists(Util.RoamingDirectory))
             {
@@ -350,9 +350,9 @@ namespace WindowsBaselineAssistant
                 // 创建一个新的 Excel 工作簿和工作表
                 IWorkbook workbook = new XSSFWorkbook();
                 ISheet sheet = workbook.CreateSheet("Sheet1");
-                string reportFileName = $"Windows安全基线检测加固结果汇总表-{Util.GetIPAddress()}.xlsx";
+                string reportFileName = $"Windows安全基线检测加固结果汇总表-{IpListComboBox.SelectedItem.ToString()}.xlsx";
                 // 在表格最上面添加一行系统信息
-                Report.AddSystemInfoRow(sheet);
+                Report.AddSystemInfoRow(sheet, OSLabel.Text, IpListComboBox.SelectedItem.ToString(), OSNameLabel.Text);
                 // 将 DataGridView 中的数据写入 Excel 表格
                 Report.WriteDataGridViewToExcel(BaselineList, sheet);
                 // 自动调整列宽
@@ -370,11 +370,6 @@ namespace WindowsBaselineAssistant
                 UIMessageBox.ShowError("导出出现异常");
             }
 
-        }
-
-        private void RepoLinkLabel_Click(object sender, EventArgs e)
-        {
-            Process.Start("https://github.com/DeEpinGh0st/WindowsBaselineAssistant");
         }
 
         private void showValueTypeuiCheckBox_CheckedChanged(object sender, EventArgs e)
@@ -405,6 +400,24 @@ namespace WindowsBaselineAssistant
             {
                 Logbtn.ShowTips = true;
             }));
+        }
+
+        private void BlogAvatar_Click(object sender, EventArgs e)
+        {
+            Process.Start(new ProcessStartInfo
+            {
+                FileName = "https://saferoad.cc/",
+                UseShellExecute = true
+            });
+        }
+
+        private void RepoAvatar_Click(object sender, EventArgs e)
+        {
+            Process.Start(new ProcessStartInfo
+            {
+                FileName = "https://github.com/DeEpinGh0st/WindowsBaselineAssistant",
+                UseShellExecute = true
+            });
         }
     }
 }

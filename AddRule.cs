@@ -1,15 +1,8 @@
 ﻿using Sunny.UI;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using System.Xml;
-using WHC.OrderWater.Commons;
 using System.IO;
+using System.Xml;
 
 namespace WindowsBaselineAssistant
 {
@@ -26,7 +19,7 @@ namespace WindowsBaselineAssistant
             {
                 //获取通用字段
                 string type = TypeComboBox.SelectedText;
-                if (!Util.AreTextBoxesFilled(this,type))
+                if (!Util.AreTextBoxesFilled(this, type))
                 {
                     UIMessageBox.ShowError("缺少必填项");
                     return;
@@ -95,7 +88,7 @@ namespace WindowsBaselineAssistant
                 UIMessageBox.ShowError("添加规则出现异常");
             }
         }
-        
+
 
         private void TypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
